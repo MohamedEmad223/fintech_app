@@ -31,13 +31,38 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
+  #Easy and Fast internationalizing and localization your Flutter Apps
+  easy_localization: ^3.0.8
+  #Flutter Secure Storage provides API to store data in secure storage
+  flutter_secure_storage: ^9.2.4
+  #Service Locator for Dart and Flutter projects
+  get_it: ^8.2.0
+  #Networking
+  dio: ^5.9.0
+  pretty_dio_logger: ^1.4.0
+  retrofit: ^4.7.2
+  retrofit_generator: ^10.0.5
+  logger: ^2.6.1
+  #API client generator
+  freezed: ^3.2.3
+  freezed_annotation: ^3.1.0
+  json_annotation: ^4.9.0
+  #State management
+  bloc: ^9.0.0
+  flutter_bloc: ^9.1.1
+  #Plugin for adapting screen
+  flutter_screenutil: ^5.9.3
+
+
   cupertino_icons: ^1.0.8
 
+  shared_preferences: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  #Code generator (mainly used with cubit & retrofit)
+  json_serializable: ^6.11.1
+  build_runner: ^2.8.0
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
