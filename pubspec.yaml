@@ -36,13 +36,14 @@ dependencies:
   #Flutter Secure Storage provides API to store data in secure storage
   flutter_secure_storage: ^9.2.4
   #Service Locator for Dart and Flutter projects
-  get_it: ^8.2.0
+  get_it: ^9.1.0
   #Networking
   dio: ^5.9.0
   pretty_dio_logger: ^1.4.0
   retrofit: ^4.7.2
   retrofit_generator: ^10.0.5
-  logger: ^2.6.1
+  logger: ^2.6.2
+  dio_smart_retry: ^7.0.1
   #API client generator
   freezed: ^3.2.3
   freezed_annotation: ^3.1.0
@@ -52,6 +53,8 @@ dependencies:
   flutter_bloc: ^9.1.1
   #Plugin for adapting screen
   flutter_screenutil: ^5.9.3
+  #Styled Toast
+  flutter_styled_toast: ^2.2.1
 
 
   cupertino_icons: ^1.0.8
@@ -112,3 +115,6 @@ flutter:
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
+  assets:
+    - assets/translations/
+
