@@ -37,7 +37,7 @@ jobs:
       - name: Install Fastlane Gems
         run: |
           cd android
-          bundle install     # ← الحل السحري!
+          bundle install     
 
       - name: Set Firebase Token
         run: echo "FIREBASE_TOKEN=${{ secrets.FIREBASE_CLI_TOKEN }}" >> $GITHUB_ENV
