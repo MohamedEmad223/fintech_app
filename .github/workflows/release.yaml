@@ -1,10 +1,10 @@
 name: Release Build & Deploy
 
 on:
-  workflow_dispatch:   # Manual trigger
+  workflow_dispatch:   
   push:
     branches:
-      - develop        # Auto trigger on develop
+      - develop       
 
 jobs:
   release:
