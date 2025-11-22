@@ -34,6 +34,11 @@ jobs:
           ruby-version: '3.2.2'
           bundler-cache: true
 
+      - name: Install Fastlane Gems
+        run: |
+          cd android
+          bundle install     # ← الحل السحري!
+
       - name: Set Firebase Token
         run: echo "FIREBASE_TOKEN=${{ secrets.FIRBASE_CLI_TOKEN }}" >> $GITHUB_ENV
 
