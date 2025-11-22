@@ -1,0 +1,43 @@
+name: Release Build & Deploy
+
+on:
+  workflow_dispatch:   # Manual trigger
+  push:
+    branches:
+      - develop        # Auto trigger on develop
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Java
+        uses: actions/setup-java@v3
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.35.7'
+
+      - name: Flutter Pub Get
+        run: flutter pub get
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2.2'
+          bundler-cache: true
+
+      - name: Set Firebase Token
+        run: echo "FIREBASE_TOKEN=${{ secrets.FIRBASE_CLI_TOKEN }}" >> $GITHUB_ENV
+
+      - name: Run Fastlane Release
+        run: |
+          cd android
+          bundle exec fastlane firebase_distribution
