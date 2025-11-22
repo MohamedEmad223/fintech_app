@@ -14,6 +14,7 @@ class _ApiService implements ApiService {
   _ApiService(this._dio, {this.baseUrl, this.errorLogger}) {
     baseUrl ??= 'https://api.example.com/';
   }
+// ignore_for_file: unused_field
 
   final Dio _dio;
 

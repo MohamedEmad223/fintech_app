@@ -69,8 +69,9 @@ List<Duration> generateExponentialDelays() {
     final int delaySeconds = initialDelaySeconds * (1 << i); // 2^i
     delays.add(
       Duration(
-        seconds:
-            delaySeconds > maxDelaySeconds ? maxDelaySeconds : delaySeconds,
+        seconds: delaySeconds > maxDelaySeconds
+            ? maxDelaySeconds
+            : delaySeconds,
       ),
     );
   }
