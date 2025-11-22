@@ -14,16 +14,17 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Setup Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: '3.35.7'
+      - name: Setup FVM & Flutter
+        run: |
+          dart pub global activate fvm
+          fvm install 3.35.7
+          fvm use 3.35.7
 
       - name: Install Dependencies
-        run: flutter pub get
+        run: fvm flutter pub get
 
       - name: Run Analyzer
-        run: flutter analyze .
+        run: fvm flutter analyze .
 
       - name: Check Formatting
-        run: dart format .
+        run: fvm dart format .
