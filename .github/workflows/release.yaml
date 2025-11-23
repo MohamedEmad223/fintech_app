@@ -40,7 +40,7 @@ jobs:
           bundle install
 
       - name: Set Firebase Token
-        run: echo "FIREBASE_TOKEN=${{ secrets.FIREBASE_CLI_TOKEN }}" >> $GITHUB_ENV
+        run: echo "FIREBASE_CLI_TOKEN=${{ secrets.FIREBASE_CLI_TOKEN }}" >> $GITHUB_ENV
 
       - name: Run Fastlane Release
         run: |
