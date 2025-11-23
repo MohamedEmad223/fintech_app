@@ -26,7 +26,7 @@ platform :android do
     android_artifact_type: "APK",
     android_artifact_path: "../build/app/outputs/flutter-apk/app-production-release.apk",
     testers: "MohamedElbakrawy70@gmail.com,alyaatalaat205@gmail.com,attia3104@gmail.com",
-    release_notes: "New release with fastlane Available"
+    release_notes: "New release with workflow improvements"
   )
   end
 end
