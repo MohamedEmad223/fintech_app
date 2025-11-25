@@ -1,3 +1,5 @@
+import 'package:fintech_app/core/routing/routes.dart';
+import 'package:fintech_app/features/portfolio/view/portfolio_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
@@ -11,6 +13,11 @@ class AppRouter {
       //       child: LoginScreen(),
       //     ),
       //   );
+      case Routes.portfolioScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const PortfolioScreen(),
+        );
       default:
         return null;
     }
