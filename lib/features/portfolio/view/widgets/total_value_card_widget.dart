@@ -1,4 +1,5 @@
 import 'package:fintech_app/core/theming/app_colors.dart';
+import 'package:fintech_app/core/theming/app_styles.dart';
 import 'package:fintech_app/features/portfolio/view/widgets/positioned_container_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -65,34 +66,12 @@ class TotalValueCard extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisSize: MainAxisSize.min,
               children: [
-                Text(
-                  'Total Value',
-                  style: TextStyle(
-                    color: Colors.white.withValues(alpha: 0.8),
-                    fontSize: 20,
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: 0.5,
-                  ),
-                ),
+                Text('Total Value', style: AppStyles.font20grayebold),
                 SizedBox(height: 16),
-                Text(
-                  '\$143,421.20',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 48,
-                    fontWeight: FontWeight.bold,
-                    letterSpacing: -1,
-                  ),
-                ),
+                Text('\$143,421.20', style: AppStyles.font28WhiteMedium),
                 SizedBox(height: 16),
                 Row(
                   children: [
-                    Icon(
-                      Icons.arrow_upward_rounded,
-                      color: Color(0xFF4ade80),
-                      size: 20,
-                    ),
-                    SizedBox(width: 4),
                     Text(
                       '+2.5% (\$305.20) Today',
                       style: TextStyle(

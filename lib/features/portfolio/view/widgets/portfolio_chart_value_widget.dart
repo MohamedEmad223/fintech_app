@@ -13,7 +13,7 @@ class PortfolioChartValueWidget extends StatelessWidget {
         AssetData(
           name: 'Bitcoin',
           symbol: '\$54,382.64 BTC',
-          percentage: 50,
+          percentage: 20,
           color: AppColors.chartCyan,
           icon: Icons.currency_bitcoin,
         ),
@@ -27,7 +27,7 @@ class PortfolioChartValueWidget extends StatelessWidget {
         AssetData(
           name: 'Litecoin',
           symbol: '\$64,20.5 LTC',
-          percentage: 20,
+          percentage: 55,
           color: AppColors.chartCoral,
           icon: Icons.currency_lira,
         ),

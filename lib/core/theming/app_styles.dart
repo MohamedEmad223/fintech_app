@@ -35,9 +35,16 @@ class AppStyles {
     fontFamily: 'Lato',
   );
 
-  static TextStyle font24BlackPrimary = TextStyle(
+  static TextStyle font24PrimaryBold = TextStyle(
     fontSize: 24.sp,
     fontWeight: FontWeightHelper.bold,
+    color: AppColors.primary,
+    fontFamily: 'Lato',
+  );
+
+  static TextStyle font16PrimarySemiBold = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.semiBold,
     color: AppColors.primary,
     fontFamily: 'Lato',
   );
@@ -50,6 +57,20 @@ class AppStyles {
     fontSize: 12.sp,
     fontWeight: FontWeightHelper.regular,
     color: AppColors.textTertiary,
+    fontFamily: 'Lato',
+  );
+
+  static TextStyle font20grayebold = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: AppColors.cardBackground,
+    fontFamily: 'Lato',
+  );
+
+  static TextStyle font28WhiteMedium = TextStyle(
+    fontSize: 28.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: AppColors.cardBackground,
     fontFamily: 'Lato',
   );
 
@@ -86,8 +107,17 @@ class AppStyles {
     fontFamily: 'Lato',
   );
 
-  static TextStyle font24BlackBold = TextStyle(
+  static TextStyle font24PrimaryLatoBold = TextStyle(
     fontSize: 24.sp,
     fontWeight: FontWeightHelper.bold,
+    color: AppColors.primary,
+    fontFamily: 'Lato',
+  );
+
+  static TextStyle font16PrimaryLatoBold = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: AppColors.primary,
+    fontFamily: 'Lato',
   );
 }

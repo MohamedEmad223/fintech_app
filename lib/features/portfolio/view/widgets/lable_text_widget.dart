@@ -10,7 +10,7 @@ class LableTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: AppStyles.font24BlackBold.copyWith(fontSize: fontSize),
+      style: AppStyles.font24PrimaryLatoBold.copyWith(fontSize: fontSize),
     );
   }
 }

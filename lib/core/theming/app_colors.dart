@@ -6,6 +6,7 @@ abstract class AppColors {
   ///Initial now
   static const primary = Color(0xFF1D3A70);
   static const secondary = Color(0xFFF56C2A);
+  static const blue = Color(0xff4766F9);
 
   // Portfolio Colors
   // Gradient colors for portfolio card
@@ -15,7 +16,7 @@ abstract class AppColors {
   // Chart colors
   static const chartCyan = Color(0xFF00D9FF);
   static const chartPurple = Color(0xFF9D6CFF);
-  static const chartCoral = Color(0xFFFF6B9D);
+  static const chartCoral = Color(0xFFFF928A);
 
   // Status colors
   static const successGreen = Color(0xFF00C853);

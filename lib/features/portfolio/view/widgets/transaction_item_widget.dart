@@ -53,7 +53,7 @@ class TransactionItemWidget extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(description, style: AppStyles.font16BlackBold),
+                Text(description, style: AppStyles.font16PrimaryLatoBold),
                 SizedBox(height: 2.h),
                 Text(timeAgo, style: AppStyles.font12GreyRegular),
               ],
@@ -62,7 +62,7 @@ class TransactionItemWidget extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Text(amount, style: AppStyles.font16BlackBold),
+              Text(amount, style: AppStyles.font16PrimaryLatoBold),
               SizedBox(height: 2.h),
               Text(
                 dollarValue,

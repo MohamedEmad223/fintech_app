@@ -36,9 +36,7 @@ class BuildMonthSelectorWidget extends StatelessWidget {
               child: Text(
                 month,
                 style: AppStyles.font14BlackMedium.copyWith(
-                  color: isSelected
-                      ? AppColors.primary
-                      : AppColors.textSecondary,
+                  color: isSelected ? AppColors.blue : AppColors.textSecondary,
                 ),
               ),
             ),

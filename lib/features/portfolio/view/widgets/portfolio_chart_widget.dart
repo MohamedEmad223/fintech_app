@@ -1,4 +1,3 @@
-import 'package:fintech_app/core/theming/app_colors.dart';
 import 'package:fintech_app/core/theming/app_styles.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -38,7 +37,7 @@ class PortfolioChartWidget extends StatelessWidget {
         children: [
           SizedBox(
             width: 120.w,
-            height: 120.w,
+            height: 120.h,
             child: Stack(
               children: [
                 PieChart(
@@ -56,13 +55,15 @@ class PortfolioChartWidget extends StatelessWidget {
                   ),
                 ),
                 Center(
-                  child: Text(totalValue, style: AppStyles.font16BlackBold),
+                  child: Padding(
+                    padding: EdgeInsets.all(12.w),
+                    child: Text(totalValue, style: AppStyles.font16PrimaryBold),
+                  ),
                 ),
               ],
             ),
           ),
           SizedBox(width: 24.w),
-          // Legend
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,9 +87,7 @@ class PortfolioChartWidget extends StatelessWidget {
                           children: [
                             Text(
                               asset.symbol,
-                              style: AppStyles.font12GreyRegular.copyWith(
-                                color: AppColors.textTertiary,
-                              ),
+                              style: AppStyles.font16PrimarySemiBold,
                             ),
                           ],
                         ),
