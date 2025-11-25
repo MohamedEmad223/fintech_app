@@ -1,3 +1,4 @@
 abstract class AppAssets {
-  // static const String comingSoonOneJpg = 'assets/images/coming_soon_1.jpg';
+  static const String faliurArrowSvg = 'assets/svgs/faliur_arrow.svg';
+  static const String successArrowSvg = 'assets/svgs/success_arrow.svg';
 }

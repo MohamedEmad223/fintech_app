@@ -1,10 +1,93 @@
+import 'package:fintech_app/core/theming/app_colors.dart';
+import 'package:fintech_app/core/theming/font_weight_helper.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 class AppStyles {
-  /// Note
-  /// when Using TextStyle Don't add colors and instead use copy with
-  /// Example:
-  // static TextStyle font16BlackMedium = TextStyle(
-  //   fontSize: 16.sp,
-  //   color: AppColors.blackColor,
-  //   fontWeight: FontWeightHelper.medium,
-  // );
+  static TextStyle font32WhiteBold = TextStyle(
+    fontSize: 32.sp,
+    fontWeight: FontWeightHelper.bold,
+  );
+
+  static TextStyle font14WhiteMedium = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.medium,
+  );
+
+  static TextStyle font20PrimaryBold = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: AppColors.primary,
+    fontFamily: 'Lato',
+  );
+
+  static TextStyle font16PrimaryBold = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: AppColors.primary,
+    fontFamily: 'Lato',
+  );
+
+  static TextStyle font16BlackBold = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: Colors.black,
+    fontFamily: 'Lato',
+  );
+
+  static TextStyle font24BlackPrimary = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: AppColors.primary,
+    fontFamily: 'Lato',
+  );
+  static TextStyle font14BlackMedium = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.medium,
+  );
+
+  static TextStyle font12GreyRegular = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: AppColors.textTertiary,
+    fontFamily: 'Lato',
+  );
+
+  static TextStyle font12FailureRegular = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: AppColors.errorRed,
+    fontFamily: 'Lato',
+  );
+
+  static TextStyle font12SuccessRegular = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: AppColors.successGreen,
+    fontFamily: 'Lato',
+  );
+
+  static TextStyle font14OrangeMedium = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: AppColors.bitcoinOrange,
+  );
+
+  static TextStyle font12RedMedium = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: AppColors.errorRed,
+  );
+
+  static TextStyle font20BlackPrimary = TextStyle(
+    fontSize: 20.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: AppColors.primary,
+    fontFamily: 'Lato',
+  );
+
+  static TextStyle font24BlackBold = TextStyle(
+    fontSize: 24.sp,
+    fontWeight: FontWeightHelper.bold,
+  );
 }
