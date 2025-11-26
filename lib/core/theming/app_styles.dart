@@ -1,4 +1,5 @@
 import 'package:fintech_app/core/theming/app_colors.dart';
+import 'package:fintech_app/core/theming/font_text.dart';
 import 'package:fintech_app/core/theming/font_weight_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -18,74 +19,75 @@ class AppStyles {
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.bold,
     color: AppColors.primary,
-    fontFamily: 'Lato',
+    fontFamily: FontText.fontName,
   );
 
   static TextStyle font16PrimaryBold = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.bold,
     color: AppColors.primary,
-    fontFamily: 'Lato',
+    fontFamily: FontText.fontName,
   );
 
   static TextStyle font16BlackBold = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.bold,
     color: Colors.black,
-    fontFamily: 'Lato',
+    fontFamily: FontText.fontName,
   );
 
   static TextStyle font24PrimaryBold = TextStyle(
     fontSize: 24.sp,
     fontWeight: FontWeightHelper.bold,
     color: AppColors.primary,
-    fontFamily: 'Lato',
+    fontFamily: FontText.fontName,
   );
 
   static TextStyle font16PrimarySemiBold = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.semiBold,
     color: AppColors.primary,
-    fontFamily: 'Lato',
+    fontFamily: FontText.fontName,
   );
   static TextStyle font14BlackMedium = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.medium,
+    fontFamily: FontText.fontName,
   );
 
   static TextStyle font12GreyRegular = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeightHelper.regular,
     color: AppColors.textTertiary,
-    fontFamily: 'Lato',
+    fontFamily: FontText.fontName,
   );
 
   static TextStyle font20grayebold = TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.medium,
     color: AppColors.cardBackground,
-    fontFamily: 'Lato',
+    fontFamily: FontText.fontName,
   );
 
   static TextStyle font28WhiteMedium = TextStyle(
     fontSize: 28.sp,
     fontWeight: FontWeightHelper.bold,
     color: AppColors.cardBackground,
-    fontFamily: 'Lato',
+    fontFamily: FontText.fontName,
   );
 
   static TextStyle font12FailureRegular = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeightHelper.regular,
     color: AppColors.errorRed,
-    fontFamily: 'Lato',
+    fontFamily: FontText.fontName,
   );
 
   static TextStyle font12SuccessRegular = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.medium,
     color: AppColors.successGreen,
-    fontFamily: 'Lato',
+    fontFamily: FontText.fontName,
   );
 
   static TextStyle font14OrangeMedium = TextStyle(
@@ -104,20 +106,20 @@ class AppStyles {
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.bold,
     color: AppColors.primary,
-    fontFamily: 'Lato',
+    fontFamily: FontText.fontName,
   );
 
   static TextStyle font24PrimaryLatoBold = TextStyle(
     fontSize: 24.sp,
     fontWeight: FontWeightHelper.bold,
     color: AppColors.primary,
-    fontFamily: 'Lato',
+    fontFamily: FontText.fontName,
   );
 
   static TextStyle font16PrimaryLatoBold = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.bold,
     color: AppColors.primary,
-    fontFamily: 'Lato',
+    fontFamily: FontText.fontName,
   );
 }
