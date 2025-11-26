@@ -3,25 +3,11 @@ import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class AssetData {
-  final String name;
-  final String symbol;
-  final double percentage;
-  final Color color;
-  final IconData icon;
-
-  AssetData({
-    required this.name,
-    required this.symbol,
-    required this.percentage,
-    required this.color,
-    required this.icon,
-  });
-}
+import 'package:fintech_app/features/portfolio/data/models/assets_data_model.dart';
 
 class PortfolioChartWidget extends StatelessWidget {
   final String totalValue;
-  final List<AssetData> assets;
+  final List<AssetsDataModel> assets;
 
   const PortfolioChartWidget({
     super.key,
