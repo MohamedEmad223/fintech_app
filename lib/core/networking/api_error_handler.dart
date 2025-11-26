@@ -46,10 +46,9 @@ class ApiErrorHandler {
     return ApiErrorModel(
       message: error['message'] ?? "Unknown error occurred",
       statusCode: statusCode,
-      errorsDetails:
-          (error['details'] as List<dynamic>?)
-              ?.map((e) => e as String?)
-              .toList(),
+      errorsDetails: (error['details'] as List<dynamic>?)
+          ?.map((e) => e as String?)
+          .toList(),
     );
   }
 }

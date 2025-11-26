@@ -1,0 +1,7 @@
+{
+  "flutter": "3.38.1",
+  "flavors": {
+    "main.development.dart": "3.38.1",
+    "main.production.dart": "3.38.1"
+  }
+}

@@ -27,7 +27,7 @@ class DioFactory {
   static void addDioHeaders() async {
     dio?.options.headers = {
       'Accept': 'application/json',
-      'api_key': 'YOUR_API_KEY',
+      'x-cg-demo-api-key': 'CG-Jr4BoAMcdef5EG6GN12DxfCg',
       'Content-Type': 'application/json',
     };
   }
@@ -69,8 +69,9 @@ List<Duration> generateExponentialDelays() {
     final int delaySeconds = initialDelaySeconds * (1 << i); // 2^i
     delays.add(
       Duration(
-        seconds:
-            delaySeconds > maxDelaySeconds ? maxDelaySeconds : delaySeconds,
+        seconds: delaySeconds > maxDelaySeconds
+            ? maxDelaySeconds
+            : delaySeconds,
       ),
     );
   }

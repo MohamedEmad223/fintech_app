@@ -1,16 +1,15 @@
+import 'package:fintech_app/core/routing/routes.dart';
+import 'package:fintech_app/features/coin/presentation/screens/coin_details_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {
-  Route? generateRoute(RouteSettings settings) {
+  static Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
-      // case Routes.loginScreen:
-      //   return MaterialPageRoute(
-      //     settings: settings,
-      //     builder: (_) => BlocProvider(
-      //       create: (context) => sl<LoginCubit>(),
-      //       child: LoginScreen(),
-      //     ),
-      //   );
+      case Routes.coinDetailsScreen:
+        return MaterialPageRoute(
+          settings: settings,
+          builder: (_) => const CoinDetailsScreen(),
+        );
       default:
         return null;
     }
