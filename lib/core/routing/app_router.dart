@@ -1,6 +1,6 @@
 import 'package:fintech_app/core/routing/routes.dart';
 import 'package:fintech_app/features/auth/login_screen.dart';
-import 'package:fintech_app/features/portfolio/view/portfolio_screen.dart';
+import 'package:fintech_app/features/portfolio/presentation/portfolio_screen.dart';
 import 'package:flutter/material.dart';
 
 class AppRouter {

@@ -1,4 +1,4 @@
-import 'package:fintech_app/features/portfolio/view/widgets/holding_item_widget.dart';
+import 'package:fintech_app/features/portfolio/presentation/widgets/holding_item_widget.dart';
 import 'package:flutter/material.dart';
 
 class MyHoldingWidget extends StatelessWidget {

@@ -1,6 +1,6 @@
 import 'package:fintech_app/core/theming/app_colors.dart';
 import 'package:fintech_app/core/theming/app_styles.dart';
-import 'package:fintech_app/features/portfolio/view/widgets/positioned_container_widget.dart';
+import 'package:fintech_app/features/portfolio/presentation/widgets/positioned_container_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 

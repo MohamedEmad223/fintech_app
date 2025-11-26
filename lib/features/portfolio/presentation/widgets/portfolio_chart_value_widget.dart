@@ -1,5 +1,5 @@
 import 'package:fintech_app/core/theming/app_colors.dart';
-import 'package:fintech_app/features/portfolio/view/widgets/portfolio_chart_widget.dart';
+import 'package:fintech_app/features/portfolio/presentation/widgets/portfolio_chart_widget.dart';
 import 'package:flutter/material.dart';
 
 class PortfolioChartValueWidget extends StatelessWidget {
