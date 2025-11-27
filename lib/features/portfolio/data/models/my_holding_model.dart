@@ -1,21 +1,18 @@
-class MyHoldingModel {
-  final String icon;
-  final String name;
-  final String symbol;
-  final String amount;
-  final String dollarValue;
-  final String portfolioPercentage;
-  final double priceChange;
-  final double percentageChange;
+import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  MyHoldingModel({
-    required this.icon,
-    required this.name,
-    required this.symbol,
-    required this.amount,
-    required this.dollarValue,
-    required this.portfolioPercentage,
-    required this.priceChange,
-    required this.percentageChange,
-  });
+part 'my_holding_model.freezed.dart';
+
+@freezed
+abstract class MyHoldingModel with _$MyHoldingModel {
+  const factory MyHoldingModel({
+    required String icon,
+    required String name,
+    required String symbol,
+    required String amount,
+    required String dollarValue,
+    required String portfolioPercentage,
+    required double priceChange,
+    required double percentageChange,
+  }) = _MyHoldingModel;
 }
