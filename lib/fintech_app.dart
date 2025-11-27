@@ -1,3 +1,5 @@
+import 'package:fintech_app/core/routing/app_router.dart';
+import 'package:fintech_app/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +11,8 @@ class FintechApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final appRouter = AppRouter();
+
     return ScreenUtilInit(
       designSize: const Size(375, 827),
       minTextAdapt: true,
@@ -16,11 +20,11 @@ class FintechApp extends StatelessWidget {
       builder: (context, child) => BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, themeState) {
           return MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'Fintech App',
             theme: themeState.themeData,
-            home: const Scaffold(
-              body: Center(child: Text('Welcome to the Fintech App!')),
-            ),
+            onGenerateRoute: appRouter.generateRoute,
+            initialRoute: Routes.portfolioScreen,
           );
         },
       ),
