@@ -1,9 +1,23 @@
+import 'package:fintech_app/features/coin/domain/entity/coin_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:intl/intl.dart';
 import '../../../../core/utils/spacing.dart';
 
 class CoinStatistics extends StatelessWidget {
-  const CoinStatistics({super.key});
+  final CoinEntity coin;
+
+  const CoinStatistics({super.key, required this.coin});
+
+  String _formatCurrency(double value) {
+    final formatter = NumberFormat.currency(symbol: '\$', decimalDigits: 2);
+    return formatter.format(value);
+  }
+
+  String _formatNumber(double value) {
+    final formatter = NumberFormat.compact();
+    return formatter.format(value);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +33,14 @@ class CoinStatistics extends StatelessWidget {
           ),
         ),
         verticalSpace(16),
-        const _StatItem(label: 'Current Price', value: '44,826,12 \$'),
-        const _StatItem(label: 'Market Cap', value: '836,819 \$'),
-        const _StatItem(label: 'Volume 24h', value: '35,867 \$'),
-        const _StatItem(label: 'Available Supply', value: '18,784'),
-        const _StatItem(label: 'Max Supply', value: '21,000'),
+        _StatItem(label: 'Current Price', value: _formatCurrency(coin.currentPrice)),
+        _StatItem(label: 'Market Cap', value: _formatCurrency(coin.marketCap)),
+        _StatItem(label: 'Volume 24h', value: _formatCurrency(coin.totalVolume)),
+        _StatItem(label: 'High 24h', value: _formatCurrency(coin.high24h)),
+        _StatItem(label: 'Low 24h', value: _formatCurrency(coin.low24h)),
+        _StatItem(label: 'Circulating Supply', value: _formatNumber(coin.circulatingSupply)),
+        if (coin.maxSupply != null)
+          _StatItem(label: 'Max Supply', value: _formatNumber(coin.maxSupply!)),
       ],
     );
   }

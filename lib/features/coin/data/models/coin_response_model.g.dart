@@ -9,55 +9,73 @@ part of 'coin_response_model.dart';
 CoinResponseModel _$CoinResponseModelFromJson(
   Map<String, dynamic> json,
 ) => CoinResponseModel(
-  id: $enumDecode(_$IdEnumMap, json['id']),
-  symbol: json['symbol'] as String,
-  name: json['name'] as String,
-  webSlug: $enumDecode(_$IdEnumMap, json['web_slug']),
+  id: json['id'] as String,
+  symbol: json['symbol'] as String?,
+  name: json['name'] as String?,
+  webSlug: $enumDecodeNullable(_$IdEnumMap, json['web_slug']),
   assetPlatformId: json['asset_platform_id'],
-  platforms: Platforms.fromJson(json['platforms'] as Map<String, dynamic>),
-  detailPlatforms: DetailPlatforms.fromJson(
-    json['detail_platforms'] as Map<String, dynamic>,
-  ),
-  blockTimeInMinutes: (json['block_time_in_minutes'] as num).toInt(),
-  hashingAlgorithm: json['hashing_algorithm'] as String,
-  categories: (json['categories'] as List<dynamic>)
-      .map((e) => e as String)
+  platforms: json['platforms'] == null
+      ? null
+      : Platforms.fromJson(json['platforms'] as Map<String, dynamic>),
+  detailPlatforms: json['detail_platforms'] == null
+      ? null
+      : DetailPlatforms.fromJson(
+          json['detail_platforms'] as Map<String, dynamic>,
+        ),
+  blockTimeInMinutes: (json['block_time_in_minutes'] as num?)?.toInt(),
+  hashingAlgorithm: json['hashing_algorithm'] as String?,
+  categories: (json['categories'] as List<dynamic>?)
+      ?.map((e) => e as String)
       .toList(),
-  previewListing: json['preview_listing'] as bool,
+  previewListing: json['preview_listing'] as bool?,
   publicNotice: json['public_notice'],
-  additionalNotices: json['additional_notices'] as List<dynamic>,
-  localization: Tion.fromJson(json['localization'] as Map<String, dynamic>),
-  description: Tion.fromJson(json['description'] as Map<String, dynamic>),
-  links: Links.fromJson(json['links'] as Map<String, dynamic>),
-  image: Image.fromJson(json['image'] as Map<String, dynamic>),
-  countryOrigin: json['country_origin'] as String,
-  genesisDate: DateTime.parse(json['genesis_date'] as String),
-  sentimentVotesUpPercentage: (json['sentiment_votes_up_percentage'] as num)
-      .toDouble(),
-  sentimentVotesDownPercentage: (json['sentiment_votes_down_percentage'] as num)
-      .toDouble(),
-  watchlistPortfolioUsers: (json['watchlist_portfolio_users'] as num).toInt(),
-  marketCapRank: (json['market_cap_rank'] as num).toInt(),
-  marketData: MarketData.fromJson(json['market_data'] as Map<String, dynamic>),
-  communityData: CommunityData.fromJson(
-    json['community_data'] as Map<String, dynamic>,
-  ),
-  developerData: DeveloperData.fromJson(
-    json['developer_data'] as Map<String, dynamic>,
-  ),
-  statusUpdates: json['status_updates'] as List<dynamic>,
-  lastUpdated: DateTime.parse(json['last_updated'] as String),
-  tickers: (json['tickers'] as List<dynamic>)
-      .map((e) => Ticker.fromJson(e as Map<String, dynamic>))
+  additionalNotices: json['additional_notices'] as List<dynamic>?,
+  localization: json['localization'] == null
+      ? null
+      : Tion.fromJson(json['localization'] as Map<String, dynamic>),
+  description: json['description'] == null
+      ? null
+      : Tion.fromJson(json['description'] as Map<String, dynamic>),
+  links: json['links'] == null
+      ? null
+      : Links.fromJson(json['links'] as Map<String, dynamic>),
+  image: json['image'] == null
+      ? null
+      : Image.fromJson(json['image'] as Map<String, dynamic>),
+  countryOrigin: json['country_origin'] as String?,
+  genesisDate: json['genesis_date'] == null
+      ? null
+      : DateTime.parse(json['genesis_date'] as String),
+  sentimentVotesUpPercentage: (json['sentiment_votes_up_percentage'] as num?)
+      ?.toDouble(),
+  sentimentVotesDownPercentage:
+      (json['sentiment_votes_down_percentage'] as num?)?.toDouble(),
+  watchlistPortfolioUsers: (json['watchlist_portfolio_users'] as num?)?.toInt(),
+  marketCapRank: (json['market_cap_rank'] as num?)?.toInt(),
+  marketData: json['market_data'] == null
+      ? null
+      : MarketData.fromJson(json['market_data'] as Map<String, dynamic>),
+  communityData: json['community_data'] == null
+      ? null
+      : CommunityData.fromJson(json['community_data'] as Map<String, dynamic>),
+  developerData: json['developer_data'] == null
+      ? null
+      : DeveloperData.fromJson(json['developer_data'] as Map<String, dynamic>),
+  statusUpdates: json['status_updates'] as List<dynamic>?,
+  lastUpdated: json['last_updated'] == null
+      ? null
+      : DateTime.parse(json['last_updated'] as String),
+  tickers: (json['tickers'] as List<dynamic>?)
+      ?.map((e) => Ticker.fromJson(e as Map<String, dynamic>))
       .toList(),
 );
 
 Map<String, dynamic> _$CoinResponseModelToJson(CoinResponseModel instance) =>
     <String, dynamic>{
-      'id': _$IdEnumMap[instance.id]!,
+      'id': instance.id,
       'symbol': instance.symbol,
       'name': instance.name,
-      'web_slug': _$IdEnumMap[instance.webSlug]!,
+      'web_slug': _$IdEnumMap[instance.webSlug],
       'asset_platform_id': instance.assetPlatformId,
       'platforms': instance.platforms,
       'detail_platforms': instance.detailPlatforms,
@@ -72,7 +90,7 @@ Map<String, dynamic> _$CoinResponseModelToJson(CoinResponseModel instance) =>
       'links': instance.links,
       'image': instance.image,
       'country_origin': instance.countryOrigin,
-      'genesis_date': instance.genesisDate.toIso8601String(),
+      'genesis_date': instance.genesisDate?.toIso8601String(),
       'sentiment_votes_up_percentage': instance.sentimentVotesUpPercentage,
       'sentiment_votes_down_percentage': instance.sentimentVotesDownPercentage,
       'watchlist_portfolio_users': instance.watchlistPortfolioUsers,
@@ -81,7 +99,7 @@ Map<String, dynamic> _$CoinResponseModelToJson(CoinResponseModel instance) =>
       'community_data': instance.communityData,
       'developer_data': instance.developerData,
       'status_updates': instance.statusUpdates,
-      'last_updated': instance.lastUpdated.toIso8601String(),
+      'last_updated': instance.lastUpdated?.toIso8601String(),
       'tickers': instance.tickers,
     };
 
@@ -90,17 +108,19 @@ const _$IdEnumMap = {
   Id.BITCOIN: 'bitcoin',
   Id.ETHEREUM: 'ethereum',
   Id.SOLANA: 'solana',
+  Id.TETHER_GOLD: 'tether-gold',
 };
 
 CommunityData _$CommunityDataFromJson(Map<String, dynamic> json) =>
     CommunityData(
       facebookLikes: json['facebook_likes'],
-      redditAveragePosts48H: (json['reddit_average_posts_48h'] as num).toInt(),
-      redditAverageComments48H: (json['reddit_average_comments_48h'] as num)
-          .toInt(),
-      redditSubscribers: (json['reddit_subscribers'] as num).toInt(),
-      redditAccountsActive48H: (json['reddit_accounts_active_48h'] as num)
-          .toInt(),
+      redditAveragePosts48H: (json['reddit_average_posts_48h'] as num?)
+          ?.toInt(),
+      redditAverageComments48H: (json['reddit_average_comments_48h'] as num?)
+          ?.toInt(),
+      redditSubscribers: (json['reddit_subscribers'] as num?)?.toInt(),
+      redditAccountsActive48H: (json['reddit_accounts_active_48h'] as num?)
+          ?.toInt(),
       telegramChannelUserCount: json['telegram_channel_user_count'],
     );
 
@@ -115,40 +135,40 @@ Map<String, dynamic> _$CommunityDataToJson(CommunityData instance) =>
     };
 
 Tion _$TionFromJson(Map<String, dynamic> json) => Tion(
-  en: json['en'] as String,
-  zh: json['zh'] as String,
-  zhTw: json['zh-tw'] as String,
-  de: json['de'] as String,
-  fr: json['fr'] as String,
-  es: json['es'] as String,
-  ja: json['ja'] as String,
-  id: json['id'] as String,
-  ru: json['ru'] as String,
-  ko: json['ko'] as String,
-  ar: json['ar'] as String,
-  th: json['th'] as String,
-  vi: json['vi'] as String,
-  it: json['it'] as String,
-  pl: json['pl'] as String,
-  tr: json['tr'] as String,
-  hu: json['hu'] as String,
-  nl: json['nl'] as String,
-  ro: json['ro'] as String,
-  sv: json['sv'] as String,
-  cs: json['cs'] as String,
-  da: json['da'] as String,
-  el: json['el'] as String,
-  hi: json['hi'] as String,
-  no: json['no'] as String,
-  sk: json['sk'] as String,
-  uk: json['uk'] as String,
-  he: json['he'] as String,
-  fi: json['fi'] as String,
-  bg: json['bg'] as String,
-  hr: json['hr'] as String,
-  lt: json['lt'] as String,
-  sl: json['sl'] as String,
-  pt: json['pt'] as String,
+  en: json['en'] as String?,
+  zh: json['zh'] as String?,
+  zhTw: json['zh-tw'] as String?,
+  de: json['de'] as String?,
+  fr: json['fr'] as String?,
+  es: json['es'] as String?,
+  ja: json['ja'] as String?,
+  id: json['id'] as String?,
+  ru: json['ru'] as String?,
+  ko: json['ko'] as String?,
+  ar: json['ar'] as String?,
+  th: json['th'] as String?,
+  vi: json['vi'] as String?,
+  it: json['it'] as String?,
+  pl: json['pl'] as String?,
+  tr: json['tr'] as String?,
+  hu: json['hu'] as String?,
+  nl: json['nl'] as String?,
+  ro: json['ro'] as String?,
+  sv: json['sv'] as String?,
+  cs: json['cs'] as String?,
+  da: json['da'] as String?,
+  el: json['el'] as String?,
+  hi: json['hi'] as String?,
+  no: json['no'] as String?,
+  sk: json['sk'] as String?,
+  uk: json['uk'] as String?,
+  he: json['he'] as String?,
+  fi: json['fi'] as String?,
+  bg: json['bg'] as String?,
+  hr: json['hr'] as String?,
+  lt: json['lt'] as String?,
+  sl: json['sl'] as String?,
+  pt: json['pt'] as String?,
 );
 
 Map<String, dynamic> _$TionToJson(Tion instance) => <String, dynamic>{
@@ -189,14 +209,18 @@ Map<String, dynamic> _$TionToJson(Tion instance) => <String, dynamic>{
 };
 
 DetailPlatforms _$DetailPlatformsFromJson(Map<String, dynamic> json) =>
-    DetailPlatforms(empty: Empty.fromJson(json[''] as Map<String, dynamic>));
+    DetailPlatforms(
+      empty: json[''] == null
+          ? null
+          : Empty.fromJson(json[''] as Map<String, dynamic>),
+    );
 
 Map<String, dynamic> _$DetailPlatformsToJson(DetailPlatforms instance) =>
     <String, dynamic>{'': instance.empty};
 
 Empty _$EmptyFromJson(Map<String, dynamic> json) => Empty(
   decimalPlace: json['decimal_place'],
-  contractAddress: json['contract_address'] as String,
+  contractAddress: json['contract_address'] as String?,
 );
 
 Map<String, dynamic> _$EmptyToJson(Empty instance) => <String, dynamic>{
@@ -204,23 +228,25 @@ Map<String, dynamic> _$EmptyToJson(Empty instance) => <String, dynamic>{
   'contract_address': instance.contractAddress,
 };
 
-DeveloperData _$DeveloperDataFromJson(Map<String, dynamic> json) =>
-    DeveloperData(
-      forks: (json['forks'] as num).toInt(),
-      stars: (json['stars'] as num).toInt(),
-      subscribers: (json['subscribers'] as num).toInt(),
-      totalIssues: (json['total_issues'] as num).toInt(),
-      closedIssues: (json['closed_issues'] as num).toInt(),
-      pullRequestsMerged: (json['pull_requests_merged'] as num).toInt(),
-      pullRequestContributors: (json['pull_request_contributors'] as num)
-          .toInt(),
-      codeAdditionsDeletions4Weeks: CodeAdditionsDeletions4Weeks.fromJson(
-        json['code_additions_deletions_4_weeks'] as Map<String, dynamic>,
-      ),
-      commitCount4Weeks: (json['commit_count_4_weeks'] as num).toInt(),
-      last4WeeksCommitActivitySeries:
-          json['last_4_weeks_commit_activity_series'] as List<dynamic>,
-    );
+DeveloperData _$DeveloperDataFromJson(
+  Map<String, dynamic> json,
+) => DeveloperData(
+  forks: (json['forks'] as num?)?.toInt(),
+  stars: (json['stars'] as num?)?.toInt(),
+  subscribers: (json['subscribers'] as num?)?.toInt(),
+  totalIssues: (json['total_issues'] as num?)?.toInt(),
+  closedIssues: (json['closed_issues'] as num?)?.toInt(),
+  pullRequestsMerged: (json['pull_requests_merged'] as num?)?.toInt(),
+  pullRequestContributors: (json['pull_request_contributors'] as num?)?.toInt(),
+  codeAdditionsDeletions4Weeks: json['code_additions_deletions_4_weeks'] == null
+      ? null
+      : CodeAdditionsDeletions4Weeks.fromJson(
+          json['code_additions_deletions_4_weeks'] as Map<String, dynamic>,
+        ),
+  commitCount4Weeks: (json['commit_count_4_weeks'] as num?)?.toInt(),
+  last4WeeksCommitActivitySeries:
+      json['last_4_weeks_commit_activity_series'] as List<dynamic>?,
+);
 
 Map<String, dynamic> _$DeveloperDataToJson(DeveloperData instance) =>
     <String, dynamic>{
@@ -240,8 +266,8 @@ Map<String, dynamic> _$DeveloperDataToJson(DeveloperData instance) =>
 CodeAdditionsDeletions4Weeks _$CodeAdditionsDeletions4WeeksFromJson(
   Map<String, dynamic> json,
 ) => CodeAdditionsDeletions4Weeks(
-  additions: (json['additions'] as num).toInt(),
-  deletions: (json['deletions'] as num).toInt(),
+  additions: (json['additions'] as num?)?.toInt(),
+  deletions: (json['deletions'] as num?)?.toInt(),
 );
 
 Map<String, dynamic> _$CodeAdditionsDeletions4WeeksToJson(
@@ -252,9 +278,9 @@ Map<String, dynamic> _$CodeAdditionsDeletions4WeeksToJson(
 };
 
 Image _$ImageFromJson(Map<String, dynamic> json) => Image(
-  thumb: json['thumb'] as String,
-  small: json['small'] as String,
-  large: json['large'] as String,
+  thumb: json['thumb'] as String?,
+  small: json['small'] as String?,
+  large: json['large'] as String?,
 );
 
 Map<String, dynamic> _$ImageToJson(Image instance) => <String, dynamic>{
@@ -264,25 +290,30 @@ Map<String, dynamic> _$ImageToJson(Image instance) => <String, dynamic>{
 };
 
 Links _$LinksFromJson(Map<String, dynamic> json) => Links(
-  homepage: (json['homepage'] as List<dynamic>)
-      .map((e) => e as String)
+  homepage: (json['homepage'] as List<dynamic>?)
+      ?.map((e) => e as String)
       .toList(),
-  whitepaper: json['whitepaper'] as String,
-  blockchainSite: (json['blockchain_site'] as List<dynamic>)
-      .map((e) => e as String)
+  whitepaper: json['whitepaper'] as String?,
+  blockchainSite: (json['blockchain_site'] as List<dynamic>?)
+      ?.map((e) => e as String)
       .toList(),
-  officialForumUrl: (json['official_forum_url'] as List<dynamic>)
-      .map((e) => e as String)
+  officialForumUrl: (json['official_forum_url'] as List<dynamic>?)
+      ?.map((e) => e as String)
       .toList(),
-  chatUrl: json['chat_url'] as List<dynamic>,
-  announcementUrl: json['announcement_url'] as List<dynamic>,
+  chatUrl: json['chat_url'] as List<dynamic>?,
+  announcementUrl: json['announcement_url'] as List<dynamic>?,
   snapshotUrl: json['snapshot_url'],
-  twitterScreenName: $enumDecode(_$IdEnumMap, json['twitter_screen_name']),
-  facebookUsername: json['facebook_username'] as String,
+  twitterScreenName: $enumDecodeNullable(
+    _$IdEnumMap,
+    json['twitter_screen_name'],
+  ),
+  facebookUsername: json['facebook_username'] as String?,
   bitcointalkThreadIdentifier: json['bitcointalk_thread_identifier'],
-  telegramChannelIdentifier: json['telegram_channel_identifier'] as String,
-  subredditUrl: json['subreddit_url'] as String,
-  reposUrl: ReposUrl.fromJson(json['repos_url'] as Map<String, dynamic>),
+  telegramChannelIdentifier: json['telegram_channel_identifier'] as String?,
+  subredditUrl: json['subreddit_url'] as String?,
+  reposUrl: json['repos_url'] == null
+      ? null
+      : ReposUrl.fromJson(json['repos_url'] as Map<String, dynamic>),
 );
 
 Map<String, dynamic> _$LinksToJson(Links instance) => <String, dynamic>{
@@ -293,7 +324,7 @@ Map<String, dynamic> _$LinksToJson(Links instance) => <String, dynamic>{
   'chat_url': instance.chatUrl,
   'announcement_url': instance.announcementUrl,
   'snapshot_url': instance.snapshotUrl,
-  'twitter_screen_name': _$IdEnumMap[instance.twitterScreenName]!,
+  'twitter_screen_name': _$IdEnumMap[instance.twitterScreenName],
   'facebook_username': instance.facebookUsername,
   'bitcointalk_thread_identifier': instance.bitcointalkThreadIdentifier,
   'telegram_channel_identifier': instance.telegramChannelIdentifier,
@@ -302,8 +333,8 @@ Map<String, dynamic> _$LinksToJson(Links instance) => <String, dynamic>{
 };
 
 ReposUrl _$ReposUrlFromJson(Map<String, dynamic> json) => ReposUrl(
-  github: (json['github'] as List<dynamic>).map((e) => e as String).toList(),
-  bitbucket: json['bitbucket'] as List<dynamic>,
+  github: (json['github'] as List<dynamic>?)?.map((e) => e as String).toList(),
+  bitbucket: json['bitbucket'] as List<dynamic>?,
 );
 
 Map<String, dynamic> _$ReposUrlToJson(ReposUrl instance) => <String, dynamic>{
@@ -312,106 +343,109 @@ Map<String, dynamic> _$ReposUrlToJson(ReposUrl instance) => <String, dynamic>{
 };
 
 MarketData _$MarketDataFromJson(Map<String, dynamic> json) => MarketData(
-  currentPrice: (json['current_price'] as Map<String, dynamic>).map(
+  currentPrice: (json['current_price'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, (e as num).toDouble()),
   ),
   totalValueLocked: json['total_value_locked'],
   mcapToTvlRatio: json['mcap_to_tvl_ratio'],
   fdvToTvlRatio: json['fdv_to_tvl_ratio'],
   roi: json['roi'],
-  ath: (json['ath'] as Map<String, dynamic>).map(
+  ath: (json['ath'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, (e as num).toDouble()),
   ),
-  athChangePercentage: (json['ath_change_percentage'] as Map<String, dynamic>)
-      .map((k, e) => MapEntry(k, (e as num).toDouble())),
-  athDate: (json['ath_date'] as Map<String, dynamic>).map(
+  athChangePercentage: (json['ath_change_percentage'] as Map<String, dynamic>?)
+      ?.map((k, e) => MapEntry(k, (e as num).toDouble())),
+  athDate: (json['ath_date'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, DateTime.parse(e as String)),
   ),
-  atl: (json['atl'] as Map<String, dynamic>).map(
+  atl: (json['atl'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, (e as num).toDouble()),
   ),
-  atlChangePercentage: (json['atl_change_percentage'] as Map<String, dynamic>)
-      .map((k, e) => MapEntry(k, (e as num).toDouble())),
-  atlDate: (json['atl_date'] as Map<String, dynamic>).map(
+  atlChangePercentage: (json['atl_change_percentage'] as Map<String, dynamic>?)
+      ?.map((k, e) => MapEntry(k, (e as num).toDouble())),
+  atlDate: (json['atl_date'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, DateTime.parse(e as String)),
   ),
-  marketCap: (json['market_cap'] as Map<String, dynamic>).map(
+  marketCap: (json['market_cap'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, (e as num).toDouble()),
   ),
-  marketCapRank: (json['market_cap_rank'] as num).toInt(),
+  marketCapRank: (json['market_cap_rank'] as num?)?.toInt(),
   fullyDilutedValuation:
-      (json['fully_diluted_valuation'] as Map<String, dynamic>).map(
+      (json['fully_diluted_valuation'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, (e as num).toDouble()),
       ),
-  marketCapFdvRatio: (json['market_cap_fdv_ratio'] as num).toInt(),
-  totalVolume: (json['total_volume'] as Map<String, dynamic>).map(
+  marketCapFdvRatio: (json['market_cap_fdv_ratio'] as num?)?.toInt(),
+  totalVolume: (json['total_volume'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, (e as num).toDouble()),
   ),
-  high24H: (json['high_24h'] as Map<String, dynamic>).map(
+  high24H: (json['high_24h'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, (e as num).toDouble()),
   ),
-  low24H: (json['low_24h'] as Map<String, dynamic>).map(
+  low24H: (json['low_24h'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, (e as num).toDouble()),
   ),
-  priceChange24H: (json['price_change_24h'] as num).toDouble(),
-  priceChangePercentage24H: (json['price_change_percentage_24h'] as num)
-      .toDouble(),
-  priceChangePercentage7D: (json['price_change_percentage_7d'] as num)
-      .toDouble(),
-  priceChangePercentage14D: (json['price_change_percentage_14d'] as num)
-      .toDouble(),
-  priceChangePercentage30D: (json['price_change_percentage_30d'] as num)
-      .toDouble(),
-  priceChangePercentage60D: (json['price_change_percentage_60d'] as num)
-      .toDouble(),
-  priceChangePercentage200D: (json['price_change_percentage_200d'] as num)
-      .toDouble(),
-  priceChangePercentage1Y: (json['price_change_percentage_1y'] as num)
-      .toDouble(),
-  marketCapChange24H: (json['market_cap_change_24h'] as num).toDouble(),
+  priceChange24H: (json['price_change_24h'] as num?)?.toDouble(),
+  priceChangePercentage24H: (json['price_change_percentage_24h'] as num?)
+      ?.toDouble(),
+  priceChangePercentage7D: (json['price_change_percentage_7d'] as num?)
+      ?.toDouble(),
+  priceChangePercentage14D: (json['price_change_percentage_14d'] as num?)
+      ?.toDouble(),
+  priceChangePercentage30D: (json['price_change_percentage_30d'] as num?)
+      ?.toDouble(),
+  priceChangePercentage60D: (json['price_change_percentage_60d'] as num?)
+      ?.toDouble(),
+  priceChangePercentage200D: (json['price_change_percentage_200d'] as num?)
+      ?.toDouble(),
+  priceChangePercentage1Y: (json['price_change_percentage_1y'] as num?)
+      ?.toDouble(),
+  marketCapChange24H: (json['market_cap_change_24h'] as num?)?.toDouble(),
   marketCapChangePercentage24H:
-      (json['market_cap_change_percentage_24h'] as num).toDouble(),
+      (json['market_cap_change_percentage_24h'] as num?)?.toDouble(),
   priceChange24HInCurrency:
-      (json['price_change_24h_in_currency'] as Map<String, dynamic>).map(
+      (json['price_change_24h_in_currency'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, (e as num).toDouble()),
       ),
   priceChangePercentage1HInCurrency:
-      (json['price_change_percentage_1h_in_currency'] as Map<String, dynamic>)
-          .map((k, e) => MapEntry(k, (e as num).toDouble())),
+      (json['price_change_percentage_1h_in_currency'] as Map<String, dynamic>?)
+          ?.map((k, e) => MapEntry(k, (e as num).toDouble())),
   priceChangePercentage24HInCurrency:
-      (json['price_change_percentage_24h_in_currency'] as Map<String, dynamic>)
-          .map((k, e) => MapEntry(k, (e as num).toDouble())),
+      (json['price_change_percentage_24h_in_currency'] as Map<String, dynamic>?)
+          ?.map((k, e) => MapEntry(k, (e as num).toDouble())),
   priceChangePercentage7DInCurrency:
-      (json['price_change_percentage_7d_in_currency'] as Map<String, dynamic>)
-          .map((k, e) => MapEntry(k, (e as num).toDouble())),
+      (json['price_change_percentage_7d_in_currency'] as Map<String, dynamic>?)
+          ?.map((k, e) => MapEntry(k, (e as num).toDouble())),
   priceChangePercentage14DInCurrency:
-      (json['price_change_percentage_14d_in_currency'] as Map<String, dynamic>)
-          .map((k, e) => MapEntry(k, (e as num).toDouble())),
+      (json['price_change_percentage_14d_in_currency'] as Map<String, dynamic>?)
+          ?.map((k, e) => MapEntry(k, (e as num).toDouble())),
   priceChangePercentage30DInCurrency:
-      (json['price_change_percentage_30d_in_currency'] as Map<String, dynamic>)
-          .map((k, e) => MapEntry(k, (e as num).toDouble())),
+      (json['price_change_percentage_30d_in_currency'] as Map<String, dynamic>?)
+          ?.map((k, e) => MapEntry(k, (e as num).toDouble())),
   priceChangePercentage60DInCurrency:
-      (json['price_change_percentage_60d_in_currency'] as Map<String, dynamic>)
-          .map((k, e) => MapEntry(k, (e as num).toDouble())),
+      (json['price_change_percentage_60d_in_currency'] as Map<String, dynamic>?)
+          ?.map((k, e) => MapEntry(k, (e as num).toDouble())),
   priceChangePercentage200DInCurrency:
-      (json['price_change_percentage_200d_in_currency'] as Map<String, dynamic>)
-          .map((k, e) => MapEntry(k, (e as num).toDouble())),
+      (json['price_change_percentage_200d_in_currency']
+              as Map<String, dynamic>?)
+          ?.map((k, e) => MapEntry(k, (e as num).toDouble())),
   priceChangePercentage1YInCurrency:
-      (json['price_change_percentage_1y_in_currency'] as Map<String, dynamic>)
-          .map((k, e) => MapEntry(k, (e as num).toDouble())),
+      (json['price_change_percentage_1y_in_currency'] as Map<String, dynamic>?)
+          ?.map((k, e) => MapEntry(k, (e as num).toDouble())),
   marketCapChange24HInCurrency:
-      (json['market_cap_change_24h_in_currency'] as Map<String, dynamic>).map(
+      (json['market_cap_change_24h_in_currency'] as Map<String, dynamic>?)?.map(
         (k, e) => MapEntry(k, (e as num).toDouble()),
       ),
   marketCapChangePercentage24HInCurrency:
       (json['market_cap_change_percentage_24h_in_currency']
-              as Map<String, dynamic>)
-          .map((k, e) => MapEntry(k, (e as num).toDouble())),
-  totalSupply: (json['total_supply'] as num).toInt(),
-  maxSupply: (json['max_supply'] as num).toInt(),
-  maxSupplyInfinite: json['max_supply_infinite'] as bool,
-  circulatingSupply: (json['circulating_supply'] as num).toInt(),
-  lastUpdated: DateTime.parse(json['last_updated'] as String),
+              as Map<String, dynamic>?)
+          ?.map((k, e) => MapEntry(k, (e as num).toDouble())),
+  totalSupply: (json['total_supply'] as num?)?.toInt(),
+  maxSupply: (json['max_supply'] as num?)?.toInt(),
+  maxSupplyInfinite: json['max_supply_infinite'] as bool?,
+  circulatingSupply: (json['circulating_supply'] as num?)?.toInt(),
+  lastUpdated: json['last_updated'] == null
+      ? null
+      : DateTime.parse(json['last_updated'] as String),
 );
 
 Map<String, dynamic> _$MarketDataToJson(
@@ -424,10 +458,10 @@ Map<String, dynamic> _$MarketDataToJson(
   'roi': instance.roi,
   'ath': instance.ath,
   'ath_change_percentage': instance.athChangePercentage,
-  'ath_date': instance.athDate.map((k, e) => MapEntry(k, e.toIso8601String())),
+  'ath_date': instance.athDate?.map((k, e) => MapEntry(k, e.toIso8601String())),
   'atl': instance.atl,
   'atl_change_percentage': instance.atlChangePercentage,
-  'atl_date': instance.atlDate.map((k, e) => MapEntry(k, e.toIso8601String())),
+  'atl_date': instance.atlDate?.map((k, e) => MapEntry(k, e.toIso8601String())),
   'market_cap': instance.marketCap,
   'market_cap_rank': instance.marketCapRank,
   'fully_diluted_valuation': instance.fullyDilutedValuation,
@@ -469,63 +503,81 @@ Map<String, dynamic> _$MarketDataToJson(
   'max_supply': instance.maxSupply,
   'max_supply_infinite': instance.maxSupplyInfinite,
   'circulating_supply': instance.circulatingSupply,
-  'last_updated': instance.lastUpdated.toIso8601String(),
+  'last_updated': instance.lastUpdated?.toIso8601String(),
 };
 
 Platforms _$PlatformsFromJson(Map<String, dynamic> json) =>
-    Platforms(empty: json[''] as String);
+    Platforms(empty: json[''] as String?);
 
 Map<String, dynamic> _$PlatformsToJson(Platforms instance) => <String, dynamic>{
   '': instance.empty,
 };
 
 Ticker _$TickerFromJson(Map<String, dynamic> json) => Ticker(
-  base: $enumDecode(_$BaseEnumMap, json['base']),
-  target: json['target'] as String,
-  market: Market.fromJson(json['market'] as Map<String, dynamic>),
-  last: (json['last'] as num).toDouble(),
-  volume: (json['volume'] as num).toDouble(),
-  convertedLast: (json['converted_last'] as Map<String, dynamic>).map(
+  base: $enumDecodeNullable(
+    _$BaseEnumMap,
+    json['base'],
+    unknownValue: JsonKey.nullForUndefinedEnumValue,
+  ),
+  target: json['target'] as String?,
+  market: json['market'] == null
+      ? null
+      : Market.fromJson(json['market'] as Map<String, dynamic>),
+  last: (json['last'] as num?)?.toDouble(),
+  volume: (json['volume'] as num?)?.toDouble(),
+  convertedLast: (json['converted_last'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, (e as num).toDouble()),
   ),
-  convertedVolume: (json['converted_volume'] as Map<String, dynamic>).map(
+  convertedVolume: (json['converted_volume'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, (e as num).toDouble()),
   ),
-  trustScore: $enumDecode(_$TrustScoreEnumMap, json['trust_score']),
-  bidAskSpreadPercentage: (json['bid_ask_spread_percentage'] as num).toDouble(),
-  timestamp: DateTime.parse(json['timestamp'] as String),
-  lastTradedAt: DateTime.parse(json['last_traded_at'] as String),
-  lastFetchAt: DateTime.parse(json['last_fetch_at'] as String),
-  isAnomaly: json['is_anomaly'] as bool,
-  isStale: json['is_stale'] as bool,
+  trustScore: $enumDecodeNullable(_$TrustScoreEnumMap, json['trust_score']),
+  bidAskSpreadPercentage: (json['bid_ask_spread_percentage'] as num?)
+      ?.toDouble(),
+  timestamp: json['timestamp'] == null
+      ? null
+      : DateTime.parse(json['timestamp'] as String),
+  lastTradedAt: json['last_traded_at'] == null
+      ? null
+      : DateTime.parse(json['last_traded_at'] as String),
+  lastFetchAt: json['last_fetch_at'] == null
+      ? null
+      : DateTime.parse(json['last_fetch_at'] as String),
+  isAnomaly: json['is_anomaly'] as bool?,
+  isStale: json['is_stale'] as bool?,
   tradeUrl: json['trade_url'] as String?,
   tokenInfoUrl: json['token_info_url'],
-  coinId: $enumDecode(_$IdEnumMap, json['coin_id']),
+  coinId: $enumDecodeNullable(
+    _$IdEnumMap,
+    json['coin_id'],
+    unknownValue: JsonKey.nullForUndefinedEnumValue,
+  ),
   targetCoinId: $enumDecodeNullable(
     _$TargetCoinIdEnumMap,
     json['target_coin_id'],
+    unknownValue: JsonKey.nullForUndefinedEnumValue,
   ),
-  coinMcapUsd: (json['coin_mcap_usd'] as num).toDouble(),
+  coinMcapUsd: (json['coin_mcap_usd'] as num?)?.toDouble(),
 );
 
 Map<String, dynamic> _$TickerToJson(Ticker instance) => <String, dynamic>{
-  'base': _$BaseEnumMap[instance.base]!,
+  'base': _$BaseEnumMap[instance.base],
   'target': instance.target,
   'market': instance.market,
   'last': instance.last,
   'volume': instance.volume,
   'converted_last': instance.convertedLast,
   'converted_volume': instance.convertedVolume,
-  'trust_score': _$TrustScoreEnumMap[instance.trustScore]!,
+  'trust_score': _$TrustScoreEnumMap[instance.trustScore],
   'bid_ask_spread_percentage': instance.bidAskSpreadPercentage,
-  'timestamp': instance.timestamp.toIso8601String(),
-  'last_traded_at': instance.lastTradedAt.toIso8601String(),
-  'last_fetch_at': instance.lastFetchAt.toIso8601String(),
+  'timestamp': instance.timestamp?.toIso8601String(),
+  'last_traded_at': instance.lastTradedAt?.toIso8601String(),
+  'last_fetch_at': instance.lastFetchAt?.toIso8601String(),
   'is_anomaly': instance.isAnomaly,
   'is_stale': instance.isStale,
   'trade_url': instance.tradeUrl,
   'token_info_url': instance.tokenInfoUrl,
-  'coin_id': _$IdEnumMap[instance.coinId]!,
+  'coin_id': _$IdEnumMap[instance.coinId],
   'target_coin_id': _$TargetCoinIdEnumMap[instance.targetCoinId],
   'coin_mcap_usd': instance.coinMcapUsd,
 };
@@ -535,13 +587,16 @@ const _$BaseEnumMap = {
   Base.BTC: 'BTC',
   Base.ETH: 'ETH',
   Base.SOL: 'SOL',
+  Base.XAUT: 'XAUT',
   Base.XBT: 'XBT',
 };
 
 const _$TrustScoreEnumMap = {TrustScore.GREEN: 'green'};
 
 const _$TargetCoinIdEnumMap = {
+  TargetCoinId.AGORA_DOLLAR: 'agora-dollar',
   TargetCoinId.BITCOIN: 'bitcoin',
+  TargetCoinId.FIRST_DIGITAL_USD: 'first-digital-usd',
   TargetCoinId.PAYPAL_USD: 'paypal-usd',
   TargetCoinId.SOCIETE_GENERALE_FORGE_EURCV: 'societe-generale-forge-eurcv',
   TargetCoinId.TETHER: 'tether',
@@ -550,9 +605,9 @@ const _$TargetCoinIdEnumMap = {
 };
 
 Market _$MarketFromJson(Map<String, dynamic> json) => Market(
-  name: json['name'] as String,
-  identifier: json['identifier'] as String,
-  hasTradingIncentive: json['has_trading_incentive'] as bool,
+  name: json['name'] as String?,
+  identifier: json['identifier'] as String?,
+  hasTradingIncentive: json['has_trading_incentive'] as bool?,
 );
 
 Map<String, dynamic> _$MarketToJson(Market instance) => <String, dynamic>{

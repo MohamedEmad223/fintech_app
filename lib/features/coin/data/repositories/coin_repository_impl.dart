@@ -14,12 +14,19 @@ class CoinRepositoryImpl implements CoinRepository {
   @override
   Future<ApiResult<CoinEntity>> getCoinDetails({required String coinId}) async {
     try {
+      print('🔵 Fetching coin details for: $coinId');
       final response = await _coinsRemoteDataSource.getCoinDetails(
         coinId: coinId,
       );
+      print('✅ Response received, type: ${response.runtimeType}');
+      print('🔄 Starting entity mapping...');
       final entity = response.toEntity();
+      print('✅ Entity mapped successfully: ${entity.name}');
       return ApiResult.success(entity);
-    } catch (error) {
+    } catch (error, stackTrace) {
+      print('❌ Error in getCoinDetails: $error');
+      print('❌ Error type: ${error.runtimeType}');
+      print('📋 Stack trace:\n$stackTrace');
       return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }

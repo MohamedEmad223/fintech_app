@@ -1,3 +1,5 @@
+import 'package:fintech_app/features/coin/domain/entity/coin_chart_entity.dart';
+import 'package:fintech_app/features/coin/domain/entity/coin_entity.dart';
 import 'package:fintech_app/features/coin/presentation/widgets/price_info.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -6,7 +8,16 @@ import '../../../../core/utils/spacing.dart';
 import 'coin_chart.dart';
 
 class CoinDetailsChartConfigurations extends StatelessWidget {
-  const CoinDetailsChartConfigurations({super.key});
+  final CoinEntity coin;
+  final CoinChartEntity chartData;
+  final String selectedInterval;
+
+  const CoinDetailsChartConfigurations({
+    super.key,
+    required this.coin,
+    required this.chartData,
+    required this.selectedInterval,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +36,14 @@ class CoinDetailsChartConfigurations extends StatelessWidget {
         ],
       ),
       child: Column(
-        children: [const PriceInfo(), verticalSpace(20), const CoinChart()],
+        children: [
+          PriceInfo(coin: coin),
+          verticalSpace(20),
+          CoinChart(
+            chartData: chartData,
+            selectedInterval: selectedInterval,
+          ),
+        ],
       ),
     );
   }

@@ -5,94 +5,94 @@ part 'coin_response_model.g.dart';
 @JsonSerializable()
 class CoinResponseModel {
   @JsonKey(name: "id")
-  Id id;
+  final String id;
   @JsonKey(name: "symbol")
-  String symbol;
+  final String? symbol;
   @JsonKey(name: "name")
-  String name;
+  final String? name;
   @JsonKey(name: "web_slug")
-  Id webSlug;
+  final Id? webSlug;
   @JsonKey(name: "asset_platform_id")
-  dynamic assetPlatformId;
+  final dynamic assetPlatformId;
   @JsonKey(name: "platforms")
-  Platforms platforms;
+  final Platforms? platforms;
   @JsonKey(name: "detail_platforms")
-  DetailPlatforms detailPlatforms;
+  final DetailPlatforms? detailPlatforms;
   @JsonKey(name: "block_time_in_minutes")
-  int blockTimeInMinutes;
+  final int? blockTimeInMinutes;
   @JsonKey(name: "hashing_algorithm")
-  String hashingAlgorithm;
+  final String? hashingAlgorithm;
   @JsonKey(name: "categories")
-  List<String> categories;
+  final List<String>? categories;
   @JsonKey(name: "preview_listing")
-  bool previewListing;
+  final bool? previewListing;
   @JsonKey(name: "public_notice")
-  dynamic publicNotice;
+  final dynamic publicNotice;
   @JsonKey(name: "additional_notices")
-  List<dynamic> additionalNotices;
+  final List<dynamic>? additionalNotices;
   @JsonKey(name: "localization")
-  Tion localization;
+  final Tion? localization;
   @JsonKey(name: "description")
-  Tion description;
+  final Tion? description;
   @JsonKey(name: "links")
-  Links links;
+  final Links? links;
   @JsonKey(name: "image")
-  Image image;
+  final Image? image;
   @JsonKey(name: "country_origin")
-  String countryOrigin;
+  final String? countryOrigin;
   @JsonKey(name: "genesis_date")
-  DateTime genesisDate;
+  final DateTime? genesisDate;
   @JsonKey(name: "sentiment_votes_up_percentage")
-  double sentimentVotesUpPercentage;
+  final double? sentimentVotesUpPercentage;
   @JsonKey(name: "sentiment_votes_down_percentage")
-  double sentimentVotesDownPercentage;
+  final double? sentimentVotesDownPercentage;
   @JsonKey(name: "watchlist_portfolio_users")
-  int watchlistPortfolioUsers;
+  final int? watchlistPortfolioUsers;
   @JsonKey(name: "market_cap_rank")
-  int marketCapRank;
+  final int? marketCapRank;
   @JsonKey(name: "market_data")
-  MarketData marketData;
+  final MarketData? marketData;
   @JsonKey(name: "community_data")
-  CommunityData communityData;
+  final CommunityData? communityData;
   @JsonKey(name: "developer_data")
-  DeveloperData developerData;
+  final DeveloperData? developerData;
   @JsonKey(name: "status_updates")
-  List<dynamic> statusUpdates;
+  final List<dynamic>? statusUpdates;
   @JsonKey(name: "last_updated")
-  DateTime lastUpdated;
+  final DateTime? lastUpdated;
   @JsonKey(name: "tickers")
-  List<Ticker> tickers;
+  final List<Ticker>? tickers;
 
   CoinResponseModel({
     required this.id,
-    required this.symbol,
-    required this.name,
-    required this.webSlug,
-    required this.assetPlatformId,
-    required this.platforms,
-    required this.detailPlatforms,
-    required this.blockTimeInMinutes,
-    required this.hashingAlgorithm,
-    required this.categories,
-    required this.previewListing,
-    required this.publicNotice,
-    required this.additionalNotices,
-    required this.localization,
-    required this.description,
-    required this.links,
-    required this.image,
-    required this.countryOrigin,
-    required this.genesisDate,
-    required this.sentimentVotesUpPercentage,
-    required this.sentimentVotesDownPercentage,
-    required this.watchlistPortfolioUsers,
-    required this.marketCapRank,
-    required this.marketData,
-    required this.communityData,
-    required this.developerData,
-    required this.statusUpdates,
-    required this.lastUpdated,
-    required this.tickers,
+    this.symbol,
+    this.name,
+    this.webSlug,
+    this.assetPlatformId,
+    this.platforms,
+    this.detailPlatforms,
+    this.blockTimeInMinutes,
+    this.hashingAlgorithm,
+    this.categories,
+    this.previewListing,
+    this.publicNotice,
+    this.additionalNotices,
+    this.localization,
+    this.description,
+    this.links,
+    this.image,
+    this.countryOrigin,
+    this.genesisDate,
+    this.sentimentVotesUpPercentage,
+    this.sentimentVotesDownPercentage,
+    this.watchlistPortfolioUsers,
+    this.marketCapRank,
+    this.marketData,
+    this.communityData,
+    this.developerData,
+    this.statusUpdates,
+    this.lastUpdated,
+    this.tickers,
   });
 
   factory CoinResponseModel.fromJson(Map<String, dynamic> json) => _$CoinResponseModelFromJson(json);
@@ -103,25 +103,25 @@ class CoinResponseModel {
 @JsonSerializable()
 class CommunityData {
   @JsonKey(name: "facebook_likes")
-  dynamic facebookLikes;
+  final dynamic facebookLikes;
   @JsonKey(name: "reddit_average_posts_48h")
-  int redditAveragePosts48H;
+  final int? redditAveragePosts48H;
   @JsonKey(name: "reddit_average_comments_48h")
-  int redditAverageComments48H;
+  final int? redditAverageComments48H;
   @JsonKey(name: "reddit_subscribers")
-  int redditSubscribers;
+  final int? redditSubscribers;
   @JsonKey(name: "reddit_accounts_active_48h")
-  int redditAccountsActive48H;
+  final int? redditAccountsActive48H;
   @JsonKey(name: "telegram_channel_user_count")
-  dynamic telegramChannelUserCount;
+  final dynamic telegramChannelUserCount;
 
   CommunityData({
-    required this.facebookLikes,
-    required this.redditAveragePosts48H,
-    required this.redditAverageComments48H,
-    required this.redditSubscribers,
-    required this.redditAccountsActive48H,
-    required this.telegramChannelUserCount,
+    this.facebookLikes,
+    this.redditAveragePosts48H,
+    this.redditAverageComments48H,
+    this.redditSubscribers,
+    this.redditAccountsActive48H,
+    this.telegramChannelUserCount,
   });
 
   factory CommunityData.fromJson(Map<String, dynamic> json) => _$CommunityDataFromJson(json);
@@ -132,109 +132,109 @@ class CommunityData {
 @JsonSerializable()
 class Tion {
   @JsonKey(name: "en")
-  String en;
+  final String? en;
   @JsonKey(name: "zh")
-  String zh;
+  final String? zh;
   @JsonKey(name: "zh-tw")
-  String zhTw;
+  final String? zhTw;
   @JsonKey(name: "de")
-  String de;
+  final String? de;
   @JsonKey(name: "fr")
-  String fr;
+  final String? fr;
   @JsonKey(name: "es")
-  String es;
+  final String? es;
   @JsonKey(name: "ja")
-  String ja;
+  final String? ja;
   @JsonKey(name: "id")
-  String id;
+  final String? id;
   @JsonKey(name: "ru")
-  String ru;
+  final String? ru;
   @JsonKey(name: "ko")
-  String ko;
+  final String? ko;
   @JsonKey(name: "ar")
-  String ar;
+  final String? ar;
   @JsonKey(name: "th")
-  String th;
+  final String? th;
   @JsonKey(name: "vi")
-  String vi;
+  final String? vi;
   @JsonKey(name: "it")
-  String it;
+  final String? it;
   @JsonKey(name: "pl")
-  String pl;
+  final String? pl;
   @JsonKey(name: "tr")
-  String tr;
+  final String? tr;
   @JsonKey(name: "hu")
-  String hu;
+  final String? hu;
   @JsonKey(name: "nl")
-  String nl;
+  final String? nl;
   @JsonKey(name: "ro")
-  String ro;
+  final String? ro;
   @JsonKey(name: "sv")
-  String sv;
+  final String? sv;
   @JsonKey(name: "cs")
-  String cs;
+  final String? cs;
   @JsonKey(name: "da")
-  String da;
+  final String? da;
   @JsonKey(name: "el")
-  String el;
+  final String? el;
   @JsonKey(name: "hi")
-  String hi;
+  final String? hi;
   @JsonKey(name: "no")
-  String no;
+  final String? no;
   @JsonKey(name: "sk")
-  String sk;
+  final String? sk;
   @JsonKey(name: "uk")
-  String uk;
+  final String? uk;
   @JsonKey(name: "he")
-  String he;
+  final String? he;
   @JsonKey(name: "fi")
-  String fi;
+  final String? fi;
   @JsonKey(name: "bg")
-  String bg;
+  final String? bg;
   @JsonKey(name: "hr")
-  String hr;
+  final String? hr;
   @JsonKey(name: "lt")
-  String lt;
+  final String? lt;
   @JsonKey(name: "sl")
-  String sl;
+  final String? sl;
   @JsonKey(name: "pt")
-  String pt;
+  final String? pt;
 
   Tion({
-    required this.en,
-    required this.zh,
-    required this.zhTw,
-    required this.de,
-    required this.fr,
-    required this.es,
-    required this.ja,
-    required this.id,
-    required this.ru,
-    required this.ko,
-    required this.ar,
-    required this.th,
-    required this.vi,
-    required this.it,
-    required this.pl,
-    required this.tr,
-    required this.hu,
-    required this.nl,
-    required this.ro,
-    required this.sv,
-    required this.cs,
-    required this.da,
-    required this.el,
-    required this.hi,
-    required this.no,
-    required this.sk,
-    required this.uk,
-    required this.he,
-    required this.fi,
-    required this.bg,
-    required this.hr,
-    required this.lt,
-    required this.sl,
-    required this.pt,
+    this.en,
+    this.zh,
+    this.zhTw,
+    this.de,
+    this.fr,
+    this.es,
+    this.ja,
+    this.id,
+    this.ru,
+    this.ko,
+    this.ar,
+    this.th,
+    this.vi,
+    this.it,
+    this.pl,
+    this.tr,
+    this.hu,
+    this.nl,
+    this.ro,
+    this.sv,
+    this.cs,
+    this.da,
+    this.el,
+    this.hi,
+    this.no,
+    this.sk,
+    this.uk,
+    this.he,
+    this.fi,
+    this.bg,
+    this.hr,
+    this.lt,
+    this.sl,
+    this.pt,
   });
 
   factory Tion.fromJson(Map<String, dynamic> json) => _$TionFromJson(json);
@@ -245,10 +245,10 @@ class Tion {
 @JsonSerializable()
 class DetailPlatforms {
   @JsonKey(name: "")
-  Empty empty;
+  final Empty? empty;
 
   DetailPlatforms({
-    required this.empty,
+    this.empty,
   });
 
   factory DetailPlatforms.fromJson(Map<String, dynamic> json) => _$DetailPlatformsFromJson(json);
@@ -259,13 +259,13 @@ class DetailPlatforms {
 @JsonSerializable()
 class Empty {
   @JsonKey(name: "decimal_place")
-  dynamic decimalPlace;
+  final dynamic decimalPlace;
   @JsonKey(name: "contract_address")
-  String contractAddress;
+  final String? contractAddress;
 
   Empty({
-    required this.decimalPlace,
-    required this.contractAddress,
+    this.decimalPlace,
+    this.contractAddress,
   });
 
   factory Empty.fromJson(Map<String, dynamic> json) => _$EmptyFromJson(json);
@@ -276,37 +276,37 @@ class Empty {
 @JsonSerializable()
 class DeveloperData {
   @JsonKey(name: "forks")
-  int forks;
+  final int? forks;
   @JsonKey(name: "stars")
-  int stars;
+  final int? stars;
   @JsonKey(name: "subscribers")
-  int subscribers;
+  final int? subscribers;
   @JsonKey(name: "total_issues")
-  int totalIssues;
+  final int? totalIssues;
   @JsonKey(name: "closed_issues")
-  int closedIssues;
+  final int? closedIssues;
   @JsonKey(name: "pull_requests_merged")
-  int pullRequestsMerged;
+  final int? pullRequestsMerged;
   @JsonKey(name: "pull_request_contributors")
-  int pullRequestContributors;
+  final int? pullRequestContributors;
   @JsonKey(name: "code_additions_deletions_4_weeks")
-  CodeAdditionsDeletions4Weeks codeAdditionsDeletions4Weeks;
+  final CodeAdditionsDeletions4Weeks? codeAdditionsDeletions4Weeks;
   @JsonKey(name: "commit_count_4_weeks")
-  int commitCount4Weeks;
+  final int? commitCount4Weeks;
   @JsonKey(name: "last_4_weeks_commit_activity_series")
-  List<dynamic> last4WeeksCommitActivitySeries;
+  final List<dynamic>? last4WeeksCommitActivitySeries;
 
   DeveloperData({
-    required this.forks,
-    required this.stars,
-    required this.subscribers,
-    required this.totalIssues,
-    required this.closedIssues,
-    required this.pullRequestsMerged,
-    required this.pullRequestContributors,
-    required this.codeAdditionsDeletions4Weeks,
-    required this.commitCount4Weeks,
-    required this.last4WeeksCommitActivitySeries,
+    this.forks,
+    this.stars,
+    this.subscribers,
+    this.totalIssues,
+    this.closedIssues,
+    this.pullRequestsMerged,
+    this.pullRequestContributors,
+    this.codeAdditionsDeletions4Weeks,
+    this.commitCount4Weeks,
+    this.last4WeeksCommitActivitySeries,
   });
 
   factory DeveloperData.fromJson(Map<String, dynamic> json) => _$DeveloperDataFromJson(json);
@@ -317,13 +317,13 @@ class DeveloperData {
 @JsonSerializable()
 class CodeAdditionsDeletions4Weeks {
   @JsonKey(name: "additions")
-  int additions;
+  final int? additions;
   @JsonKey(name: "deletions")
-  int deletions;
+  final int? deletions;
 
   CodeAdditionsDeletions4Weeks({
-    required this.additions,
-    required this.deletions,
+    this.additions,
+    this.deletions,
   });
 
   factory CodeAdditionsDeletions4Weeks.fromJson(Map<String, dynamic> json) => _$CodeAdditionsDeletions4WeeksFromJson(json);
@@ -339,22 +339,24 @@ enum Id {
   @JsonValue("ethereum")
   ETHEREUM,
   @JsonValue("solana")
-  SOLANA
+  SOLANA,
+  @JsonValue("tether-gold")
+  TETHER_GOLD
 }
 
 @JsonSerializable()
 class Image {
   @JsonKey(name: "thumb")
-  String thumb;
+  final String? thumb;
   @JsonKey(name: "small")
-  String small;
+  final String? small;
   @JsonKey(name: "large")
-  String large;
+  final String? large;
 
   Image({
-    required this.thumb,
-    required this.small,
-    required this.large,
+    this.thumb,
+    this.small,
+    this.large,
   });
 
   factory Image.fromJson(Map<String, dynamic> json) => _$ImageFromJson(json);
@@ -365,46 +367,46 @@ class Image {
 @JsonSerializable()
 class Links {
   @JsonKey(name: "homepage")
-  List<String> homepage;
+  final List<String>? homepage;
   @JsonKey(name: "whitepaper")
-  String whitepaper;
+  final String? whitepaper;
   @JsonKey(name: "blockchain_site")
-  List<String> blockchainSite;
+  final List<String>? blockchainSite;
   @JsonKey(name: "official_forum_url")
-  List<String> officialForumUrl;
+  final List<String>? officialForumUrl;
   @JsonKey(name: "chat_url")
-  List<dynamic> chatUrl;
+  final List<dynamic>? chatUrl;
   @JsonKey(name: "announcement_url")
-  List<dynamic> announcementUrl;
+  final List<dynamic>? announcementUrl;
   @JsonKey(name: "snapshot_url")
-  dynamic snapshotUrl;
+  final dynamic snapshotUrl;
   @JsonKey(name: "twitter_screen_name")
-  Id twitterScreenName;
+  final Id? twitterScreenName;
   @JsonKey(name: "facebook_username")
-  String facebookUsername;
+  final String? facebookUsername;
   @JsonKey(name: "bitcointalk_thread_identifier")
-  dynamic bitcointalkThreadIdentifier;
+  final dynamic bitcointalkThreadIdentifier;
   @JsonKey(name: "telegram_channel_identifier")
-  String telegramChannelIdentifier;
+  final String? telegramChannelIdentifier;
   @JsonKey(name: "subreddit_url")
-  String subredditUrl;
+  final String? subredditUrl;
   @JsonKey(name: "repos_url")
-  ReposUrl reposUrl;
+  final ReposUrl? reposUrl;
 
   Links({
-    required this.homepage,
-    required this.whitepaper,
-    required this.blockchainSite,
-    required this.officialForumUrl,
-    required this.chatUrl,
-    required this.announcementUrl,
-    required this.snapshotUrl,
-    required this.twitterScreenName,
-    required this.facebookUsername,
-    required this.bitcointalkThreadIdentifier,
-    required this.telegramChannelIdentifier,
-    required this.subredditUrl,
-    required this.reposUrl,
+    this.homepage,
+    this.whitepaper,
+    this.blockchainSite,
+    this.officialForumUrl,
+    this.chatUrl,
+    this.announcementUrl,
+    this.snapshotUrl,
+    this.twitterScreenName,
+    this.facebookUsername,
+    this.bitcointalkThreadIdentifier,
+    this.telegramChannelIdentifier,
+    this.subredditUrl,
+    this.reposUrl,
   });
 
   factory Links.fromJson(Map<String, dynamic> json) => _$LinksFromJson(json);
@@ -415,13 +417,13 @@ class Links {
 @JsonSerializable()
 class ReposUrl {
   @JsonKey(name: "github")
-  List<String> github;
+  final List<String>? github;
   @JsonKey(name: "bitbucket")
-  List<dynamic> bitbucket;
+  final List<dynamic>? bitbucket;
 
   ReposUrl({
-    required this.github,
-    required this.bitbucket,
+    this.github,
+    this.bitbucket,
   });
 
   factory ReposUrl.fromJson(Map<String, dynamic> json) => _$ReposUrlFromJson(json);
@@ -432,139 +434,139 @@ class ReposUrl {
 @JsonSerializable()
 class MarketData {
   @JsonKey(name: "current_price")
-  Map<String, double> currentPrice;
+  final Map<String, double>? currentPrice;
   @JsonKey(name: "total_value_locked")
-  dynamic totalValueLocked;
+  final dynamic totalValueLocked;
   @JsonKey(name: "mcap_to_tvl_ratio")
-  dynamic mcapToTvlRatio;
+  final dynamic mcapToTvlRatio;
   @JsonKey(name: "fdv_to_tvl_ratio")
-  dynamic fdvToTvlRatio;
+  final dynamic fdvToTvlRatio;
   @JsonKey(name: "roi")
-  dynamic roi;
+  final dynamic roi;
   @JsonKey(name: "ath")
-  Map<String, double> ath;
+  final Map<String, double>? ath;
   @JsonKey(name: "ath_change_percentage")
-  Map<String, double> athChangePercentage;
+  final Map<String, double>? athChangePercentage;
   @JsonKey(name: "ath_date")
-  Map<String, DateTime> athDate;
+  final Map<String, DateTime>? athDate;
   @JsonKey(name: "atl")
-  Map<String, double> atl;
+  final Map<String, double>? atl;
   @JsonKey(name: "atl_change_percentage")
-  Map<String, double> atlChangePercentage;
+  final Map<String, double>? atlChangePercentage;
   @JsonKey(name: "atl_date")
-  Map<String, DateTime> atlDate;
+  final Map<String, DateTime>? atlDate;
   @JsonKey(name: "market_cap")
-  Map<String, double> marketCap;
+  final Map<String, double>? marketCap;
   @JsonKey(name: "market_cap_rank")
-  int marketCapRank;
+  final int? marketCapRank;
   @JsonKey(name: "fully_diluted_valuation")
-  Map<String, double> fullyDilutedValuation;
+  final Map<String, double>? fullyDilutedValuation;
   @JsonKey(name: "market_cap_fdv_ratio")
-  int marketCapFdvRatio;
+  final int? marketCapFdvRatio;
   @JsonKey(name: "total_volume")
-  Map<String, double> totalVolume;
+  final Map<String, double>? totalVolume;
   @JsonKey(name: "high_24h")
-  Map<String, double> high24H;
+  final Map<String, double>? high24H;
   @JsonKey(name: "low_24h")
-  Map<String, double> low24H;
+  final Map<String, double>? low24H;
   @JsonKey(name: "price_change_24h")
-  double priceChange24H;
+  final double? priceChange24H;
   @JsonKey(name: "price_change_percentage_24h")
-  double priceChangePercentage24H;
+  final double? priceChangePercentage24H;
   @JsonKey(name: "price_change_percentage_7d")
-  double priceChangePercentage7D;
+  final double? priceChangePercentage7D;
   @JsonKey(name: "price_change_percentage_14d")
-  double priceChangePercentage14D;
+  final double? priceChangePercentage14D;
   @JsonKey(name: "price_change_percentage_30d")
-  double priceChangePercentage30D;
+  final double? priceChangePercentage30D;
   @JsonKey(name: "price_change_percentage_60d")
-  double priceChangePercentage60D;
+  final double? priceChangePercentage60D;
   @JsonKey(name: "price_change_percentage_200d")
-  double priceChangePercentage200D;
+  final double? priceChangePercentage200D;
   @JsonKey(name: "price_change_percentage_1y")
-  double priceChangePercentage1Y;
+  final double? priceChangePercentage1Y;
   @JsonKey(name: "market_cap_change_24h")
-  double marketCapChange24H;
+  final double? marketCapChange24H;
   @JsonKey(name: "market_cap_change_percentage_24h")
-  double marketCapChangePercentage24H;
+  final double? marketCapChangePercentage24H;
   @JsonKey(name: "price_change_24h_in_currency")
-  Map<String, double> priceChange24HInCurrency;
+  final Map<String, double>? priceChange24HInCurrency;
   @JsonKey(name: "price_change_percentage_1h_in_currency")
-  Map<String, double> priceChangePercentage1HInCurrency;
+  final Map<String, double>? priceChangePercentage1HInCurrency;
   @JsonKey(name: "price_change_percentage_24h_in_currency")
-  Map<String, double> priceChangePercentage24HInCurrency;
+  final Map<String, double>? priceChangePercentage24HInCurrency;
   @JsonKey(name: "price_change_percentage_7d_in_currency")
-  Map<String, double> priceChangePercentage7DInCurrency;
+  final Map<String, double>? priceChangePercentage7DInCurrency;
   @JsonKey(name: "price_change_percentage_14d_in_currency")
-  Map<String, double> priceChangePercentage14DInCurrency;
+  final Map<String, double>? priceChangePercentage14DInCurrency;
   @JsonKey(name: "price_change_percentage_30d_in_currency")
-  Map<String, double> priceChangePercentage30DInCurrency;
+  final Map<String, double>? priceChangePercentage30DInCurrency;
   @JsonKey(name: "price_change_percentage_60d_in_currency")
-  Map<String, double> priceChangePercentage60DInCurrency;
+  final Map<String, double>? priceChangePercentage60DInCurrency;
   @JsonKey(name: "price_change_percentage_200d_in_currency")
-  Map<String, double> priceChangePercentage200DInCurrency;
+  final Map<String, double>? priceChangePercentage200DInCurrency;
   @JsonKey(name: "price_change_percentage_1y_in_currency")
-  Map<String, double> priceChangePercentage1YInCurrency;
+  final Map<String, double>? priceChangePercentage1YInCurrency;
   @JsonKey(name: "market_cap_change_24h_in_currency")
-  Map<String, double> marketCapChange24HInCurrency;
+  final Map<String, double>? marketCapChange24HInCurrency;
   @JsonKey(name: "market_cap_change_percentage_24h_in_currency")
-  Map<String, double> marketCapChangePercentage24HInCurrency;
+  final Map<String, double>? marketCapChangePercentage24HInCurrency;
   @JsonKey(name: "total_supply")
-  int totalSupply;
+  final int? totalSupply;
   @JsonKey(name: "max_supply")
-  int maxSupply;
+  final int? maxSupply;
   @JsonKey(name: "max_supply_infinite")
-  bool maxSupplyInfinite;
+  final bool? maxSupplyInfinite;
   @JsonKey(name: "circulating_supply")
-  int circulatingSupply;
+  final int? circulatingSupply;
   @JsonKey(name: "last_updated")
-  DateTime lastUpdated;
+  final DateTime? lastUpdated;
 
   MarketData({
-    required this.currentPrice,
-    required this.totalValueLocked,
-    required this.mcapToTvlRatio,
-    required this.fdvToTvlRatio,
-    required this.roi,
-    required this.ath,
-    required this.athChangePercentage,
-    required this.athDate,
-    required this.atl,
-    required this.atlChangePercentage,
-    required this.atlDate,
-    required this.marketCap,
-    required this.marketCapRank,
-    required this.fullyDilutedValuation,
-    required this.marketCapFdvRatio,
-    required this.totalVolume,
-    required this.high24H,
-    required this.low24H,
-    required this.priceChange24H,
-    required this.priceChangePercentage24H,
-    required this.priceChangePercentage7D,
-    required this.priceChangePercentage14D,
-    required this.priceChangePercentage30D,
-    required this.priceChangePercentage60D,
-    required this.priceChangePercentage200D,
-    required this.priceChangePercentage1Y,
-    required this.marketCapChange24H,
-    required this.marketCapChangePercentage24H,
-    required this.priceChange24HInCurrency,
-    required this.priceChangePercentage1HInCurrency,
-    required this.priceChangePercentage24HInCurrency,
-    required this.priceChangePercentage7DInCurrency,
-    required this.priceChangePercentage14DInCurrency,
-    required this.priceChangePercentage30DInCurrency,
-    required this.priceChangePercentage60DInCurrency,
-    required this.priceChangePercentage200DInCurrency,
-    required this.priceChangePercentage1YInCurrency,
-    required this.marketCapChange24HInCurrency,
-    required this.marketCapChangePercentage24HInCurrency,
-    required this.totalSupply,
-    required this.maxSupply,
-    required this.maxSupplyInfinite,
-    required this.circulatingSupply,
-    required this.lastUpdated,
+    this.currentPrice,
+    this.totalValueLocked,
+    this.mcapToTvlRatio,
+    this.fdvToTvlRatio,
+    this.roi,
+    this.ath,
+    this.athChangePercentage,
+    this.athDate,
+    this.atl,
+    this.atlChangePercentage,
+    this.atlDate,
+    this.marketCap,
+    this.marketCapRank,
+    this.fullyDilutedValuation,
+    this.marketCapFdvRatio,
+    this.totalVolume,
+    this.high24H,
+    this.low24H,
+    this.priceChange24H,
+    this.priceChangePercentage24H,
+    this.priceChangePercentage7D,
+    this.priceChangePercentage14D,
+    this.priceChangePercentage30D,
+    this.priceChangePercentage60D,
+    this.priceChangePercentage200D,
+    this.priceChangePercentage1Y,
+    this.marketCapChange24H,
+    this.marketCapChangePercentage24H,
+    this.priceChange24HInCurrency,
+    this.priceChangePercentage1HInCurrency,
+    this.priceChangePercentage24HInCurrency,
+    this.priceChangePercentage7DInCurrency,
+    this.priceChangePercentage14DInCurrency,
+    this.priceChangePercentage30DInCurrency,
+    this.priceChangePercentage60DInCurrency,
+    this.priceChangePercentage200DInCurrency,
+    this.priceChangePercentage1YInCurrency,
+    this.marketCapChange24HInCurrency,
+    this.marketCapChangePercentage24HInCurrency,
+    this.totalSupply,
+    this.maxSupply,
+    this.maxSupplyInfinite,
+    this.circulatingSupply,
+    this.lastUpdated,
   });
 
   factory MarketData.fromJson(Map<String, dynamic> json) => _$MarketDataFromJson(json);
@@ -575,10 +577,10 @@ class MarketData {
 @JsonSerializable()
 class Platforms {
   @JsonKey(name: "")
-  String empty;
+  final String? empty;
 
   Platforms({
-    required this.empty,
+    this.empty,
   });
 
   factory Platforms.fromJson(Map<String, dynamic> json) => _$PlatformsFromJson(json);
@@ -588,65 +590,65 @@ class Platforms {
 
 @JsonSerializable()
 class Ticker {
-  @JsonKey(name: "base")
-  Base base;
+  @JsonKey(name: "base", unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  final Base? base;
   @JsonKey(name: "target")
-  String target;
+  final String? target;
   @JsonKey(name: "market")
-  Market market;
+  final Market? market;
   @JsonKey(name: "last")
-  double last;
+  final double? last;
   @JsonKey(name: "volume")
-  double volume;
+  final double? volume;
   @JsonKey(name: "converted_last")
-  Map<String, double> convertedLast;
+  final Map<String, double>? convertedLast;
   @JsonKey(name: "converted_volume")
-  Map<String, double> convertedVolume;
+  final Map<String, double>? convertedVolume;
   @JsonKey(name: "trust_score")
-  TrustScore trustScore;
+  final TrustScore? trustScore;
   @JsonKey(name: "bid_ask_spread_percentage")
-  double bidAskSpreadPercentage;
+  final double? bidAskSpreadPercentage;
   @JsonKey(name: "timestamp")
-  DateTime timestamp;
+  final DateTime? timestamp;
   @JsonKey(name: "last_traded_at")
-  DateTime lastTradedAt;
+  final DateTime? lastTradedAt;
   @JsonKey(name: "last_fetch_at")
-  DateTime lastFetchAt;
+  final DateTime? lastFetchAt;
   @JsonKey(name: "is_anomaly")
-  bool isAnomaly;
+  final bool? isAnomaly;
   @JsonKey(name: "is_stale")
-  bool isStale;
+  final bool? isStale;
   @JsonKey(name: "trade_url")
-  String? tradeUrl;
+  final String? tradeUrl;
   @JsonKey(name: "token_info_url")
-  dynamic tokenInfoUrl;
-  @JsonKey(name: "coin_id")
-  Id coinId;
-  @JsonKey(name: "target_coin_id")
-  TargetCoinId? targetCoinId;
+  final dynamic tokenInfoUrl;
+  @JsonKey(name: "coin_id", unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  final Id? coinId;
+  @JsonKey(name: "target_coin_id", unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  final TargetCoinId? targetCoinId;
   @JsonKey(name: "coin_mcap_usd")
-  double coinMcapUsd;
+  final double? coinMcapUsd;
 
   Ticker({
-    required this.base,
-    required this.target,
-    required this.market,
-    required this.last,
-    required this.volume,
-    required this.convertedLast,
-    required this.convertedVolume,
-    required this.trustScore,
-    required this.bidAskSpreadPercentage,
-    required this.timestamp,
-    required this.lastTradedAt,
-    required this.lastFetchAt,
-    required this.isAnomaly,
-    required this.isStale,
-    required this.tradeUrl,
-    required this.tokenInfoUrl,
-    required this.coinId,
+    this.base,
+    this.target,
+    this.market,
+    this.last,
+    this.volume,
+    this.convertedLast,
+    this.convertedVolume,
+    this.trustScore,
+    this.bidAskSpreadPercentage,
+    this.timestamp,
+    this.lastTradedAt,
+    this.lastFetchAt,
+    this.isAnomaly,
+    this.isStale,
+    this.tradeUrl,
+    this.tokenInfoUrl,
+    this.coinId,
     this.targetCoinId,
-    required this.coinMcapUsd,
+    this.coinMcapUsd,
   });
 
   factory Ticker.fromJson(Map<String, dynamic> json) => _$TickerFromJson(json);
@@ -663,6 +665,8 @@ enum Base {
   ETH,
   @JsonValue("SOL")
   SOL,
+  @JsonValue("XAUT")
+  XAUT,
   @JsonValue("XBT")
   XBT
 }
@@ -670,16 +674,16 @@ enum Base {
 @JsonSerializable()
 class Market {
   @JsonKey(name: "name")
-  String name;
+  final String? name;
   @JsonKey(name: "identifier")
-  String identifier;
+  final String? identifier;
   @JsonKey(name: "has_trading_incentive")
-  bool hasTradingIncentive;
+  final bool? hasTradingIncentive;
 
   Market({
-    required this.name,
-    required this.identifier,
-    required this.hasTradingIncentive,
+    this.name,
+    this.identifier,
+    this.hasTradingIncentive,
   });
 
   factory Market.fromJson(Map<String, dynamic> json) => _$MarketFromJson(json);
@@ -688,8 +692,12 @@ class Market {
 }
 
 enum TargetCoinId {
+  @JsonValue("agora-dollar")
+  AGORA_DOLLAR,
   @JsonValue("bitcoin")
   BITCOIN,
+  @JsonValue("first-digital-usd")
+  FIRST_DIGITAL_USD,
   @JsonValue("paypal-usd")
   PAYPAL_USD,
   @JsonValue("societe-generale-forge-eurcv")

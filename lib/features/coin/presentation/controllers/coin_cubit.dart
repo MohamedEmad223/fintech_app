@@ -14,9 +14,12 @@ class CoinCubit extends Cubit<CoinState> {
   CoinCubit(this._getCoinDetailsUseCase, this._getCoinChartDataUseCase)
     : super(const CoinState.initial());
 
+  String? _currentCoinId;
   String _currentInterval = '1';
+  CoinEntity? _currentCoin;
 
-  Future<void> loadCoinDetails(String coinId, String selectedInterval) async {
+  Future<void> loadCoinDetails(String coinId) async {
+    _currentCoinId = coinId;
     emit(const CoinState.coinDetailsLOADING());
 
     final ApiResult<CoinEntity> coinResult = await _getCoinDetailsUseCase(
@@ -25,8 +28,9 @@ class CoinCubit extends Cubit<CoinState> {
 
     coinResult.when(
       success: (coin) async {
+        _currentCoin = coin;
         emit(CoinState.coinDetailsSuccess(coin: coin));
-        await loadChartData(coinId, selectedInterval);
+        await loadChartData(_currentInterval);
       },
       failure: (error) {
         emit(
@@ -36,13 +40,14 @@ class CoinCubit extends Cubit<CoinState> {
     );
   }
 
-  Future<void> loadChartData(String coinId, String interval) async {
-    _currentInterval = interval;
+  Future<void> loadChartData(String interval) async {
+    if (_currentCoinId == null) return;
 
+    _currentInterval = interval;
     emit(const CoinState.coinChartDataLoading());
 
     final coinChartResult = await _getCoinChartDataUseCase(
-      coinId: coinId,
+      coinId: _currentCoinId!,
       interval: interval,
     );
 
@@ -64,4 +69,6 @@ class CoinCubit extends Cubit<CoinState> {
       },
     );
   }
+
+  CoinEntity? get currentCoin => _currentCoin;
 }

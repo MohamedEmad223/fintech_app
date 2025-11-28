@@ -1,25 +1,57 @@
 import 'package:fl_chart/fl_chart.dart';
+import 'package:fintech_app/features/coin/domain/entity/coin_chart_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/spacing.dart';
+import '../controllers/coin_cubit.dart';
 
 class CoinChart extends StatefulWidget {
-  const CoinChart({super.key});
+  final CoinChartEntity chartData;
+  final String selectedInterval;
+
+  const CoinChart({
+    super.key,
+    required this.chartData,
+    required this.selectedInterval,
+  });
 
   @override
   State<CoinChart> createState() => _CoinChartState();
 }
 
 class _CoinChartState extends State<CoinChart> {
-  //background: linear-gradient(180deg, #1E1F4B 14.99%, rgba(30, 31, 75, 0.1) 95.1%);
   List<Color> gradientColors = [
     const Color(0xFF1E1F4B),
     const Color(0x191E1F4B),
   ];
+  final Map<String, String> _intervalMap = {
+    '1d': '1',
+    '1w': '7',
+    '1m': '30',
+    '1y': '365',
+  };
 
   @override
   Widget build(BuildContext context) {
+    final spots = widget.chartData.prices.asMap().entries.map((entry) {
+      return FlSpot(entry.key.toDouble(), entry.value.price);
+    }).toList();
+
+    if (spots.isEmpty) {
+      return Center(
+        child: Text(
+          'No chart data available',
+          style: TextStyle(fontSize: 14.sp, color: Colors.grey),
+        ),
+      );
+    }
+
+    final minY = spots.map((e) => e.y).reduce((a, b) => a < b ? a : b);
+    final maxY = spots.map((e) => e.y).reduce((a, b) => a > b ? a : b);
+    final range = maxY - minY;
+
     return Column(
       children: [
         SizedBox(
@@ -27,17 +59,11 @@ class _CoinChartState extends State<CoinChart> {
           width: double.infinity,
           child: LineChart(
             LineChartData(
+              minY: minY - (range * 0.1),
+              maxY: maxY + (range * 0.1),
               lineBarsData: [
                 LineChartBarData(
-                  spots: const [
-                    FlSpot(0, 1),
-                    FlSpot(1, 1.5),
-                    FlSpot(2, 1.4),
-                    FlSpot(3, 3.4),
-                    FlSpot(4, 2),
-                    FlSpot(5, 2.2),
-                    FlSpot(6, 1.8),
-                  ],
+                  spots: spots,
                   isCurved: true,
                   gradient: LinearGradient(
                     colors: [
@@ -71,7 +97,10 @@ class _CoinChartState extends State<CoinChart> {
                           );
                     },
                     getDotPainter: (spot, percent, barData, index) =>
-                        FlDotCirclePainter(radius: 6, color: Color(0xffF56C2A)),
+                        FlDotCirclePainter(
+                      radius: 6,
+                      color: const Color(0xffF56C2A),
+                    ),
                   ),
                   belowBarData: BarAreaData(
                     show: true,
@@ -95,10 +124,10 @@ class _CoinChartState extends State<CoinChart> {
               gridData: FlGridData(
                 show: true,
                 drawVerticalLine: false,
-                horizontalInterval: 0.4,
+                horizontalInterval: range > 0 ? range / 5 : 1,
                 drawHorizontalLine: true,
-                getDrawingHorizontalLine: (value) => FlLine(
-                  color: const Color(0xFFBEBEBE),
+                getDrawingHorizontalLine: (value) => const FlLine(
+                  color: Color(0xFFBEBEBE),
                   strokeWidth: 1,
                   dashArray: [10, 5],
                 ),
@@ -106,29 +135,11 @@ class _CoinChartState extends State<CoinChart> {
               titlesData: FlTitlesData(
                 show: true,
                 bottomTitles: AxisTitles(
-                  sideTitles: SideTitles(
-                    showTitles: true,
-                    getTitlesWidget: (value, meta) {
-                      /// Customize bottom titles here
-                      return Text(
-                        value.toStringAsFixed(2),
-                        style: TextStyle(color: Colors.grey, fontSize: 12.sp),
-                      );
-                    },
-                    maxIncluded: true,
-                    interval: 1,
-                    minIncluded: true,
-                  ),
-                ),
-                leftTitles: AxisTitles(
                   sideTitles: SideTitles(showTitles: false),
                 ),
-                rightTitles: AxisTitles(
-                  sideTitles: SideTitles(showTitles: false),
-                ),
-                topTitles: AxisTitles(
-                  sideTitles: SideTitles(showTitles: false),
-                ),
+                leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
               ),
               borderData: FlBorderData(show: false),
             ),
@@ -139,13 +150,15 @@ class _CoinChartState extends State<CoinChart> {
         verticalSpace(20),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
-            _TimeFilterButton(text: '1h', isSelected: false),
-            _TimeFilterButton(text: '1d', isSelected: true),
-            _TimeFilterButton(text: '1w', isSelected: false),
-            _TimeFilterButton(text: '1m', isSelected: false),
-            _TimeFilterButton(text: '1y', isSelected: false),
-          ],
+          children: _intervalMap.keys.map((key) {
+            return _TimeFilterButton(
+              text: key,
+              isSelected: _intervalMap[key] == widget.selectedInterval,
+              onTap: () {
+                context.read<CoinCubit>().loadChartData(_intervalMap[key]!);
+              },
+            );
+          }).toList(),
         ),
       ],
     );
@@ -155,23 +168,31 @@ class _CoinChartState extends State<CoinChart> {
 class _TimeFilterButton extends StatelessWidget {
   final String text;
   final bool isSelected;
+  final VoidCallback onTap;
 
-  const _TimeFilterButton({required this.text, required this.isSelected});
+  const _TimeFilterButton({
+    required this.text,
+    required this.isSelected,
+    required this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
-      decoration: BoxDecoration(
-        color: isSelected ? const Color(0xFF1D3A70) : Colors.transparent,
-        borderRadius: BorderRadius.circular(8.r),
-      ),
-      child: Text(
-        text,
-        style: TextStyle(
-          color: isSelected ? Colors.white : Colors.grey[600],
-          fontSize: 14.sp,
-          fontWeight: FontWeight.w600,
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
+        decoration: BoxDecoration(
+          color: isSelected ? const Color(0xFF1D3A70) : Colors.transparent,
+          borderRadius: BorderRadius.circular(8.r),
+        ),
+        child: Text(
+          text,
+          style: TextStyle(
+            color: isSelected ? Colors.white : Colors.grey[600],
+            fontSize: 14.sp,
+            fontWeight: FontWeight.w600,
+          ),
         ),
       ),
     );

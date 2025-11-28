@@ -6,10 +6,24 @@ class AppRouter {
   static Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.coinDetailsScreen:
-        final String coinId = settings.arguments as String;
+        final args = settings.arguments;
+        String? coinId;
+        if (args is String) {
+          coinId = args;
+        } else if (args is Map<String, dynamic> && args['coinId'] is String) {
+          coinId = args['coinId'] as String;
+        }
+        if (coinId == null) {
+          return MaterialPageRoute(
+            settings: settings,
+            builder: (_) => Scaffold(
+              body: Center(child: Text('No coinId provided')),
+            ),
+          );
+        }
         return MaterialPageRoute(
           settings: settings,
-          builder: (_) => CoinDetailsScreen(coinId: coinId),
+          builder: (_) => CoinDetailsScreen(coinId: coinId!),
         );
       default:
         return null;

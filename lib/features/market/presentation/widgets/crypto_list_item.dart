@@ -23,7 +23,9 @@ class CryptoListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(Routes.coinDetailsScreen, arguments: coin.id);
+        context.pushNamed(Routes.coinDetailsScreen, arguments: {
+          'coinId': coin.id,
+        });
       },
       child: Container(
         padding: EdgeInsets.all(16.w),
