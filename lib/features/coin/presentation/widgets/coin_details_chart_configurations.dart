@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/utils/spacing.dart';
 import 'coin_chart.dart';
+import 'currency_selector.dart';
 
 class CoinDetailsChartConfigurations extends StatelessWidget {
   final CoinEntity coin;
@@ -38,6 +39,8 @@ class CoinDetailsChartConfigurations extends StatelessWidget {
       child: Column(
         children: [
           PriceInfo(coin: coin),
+          verticalSpace(12),
+          const CurrencySelector(),
           verticalSpace(20),
           CoinChart(
             chartData: chartData,

@@ -10,7 +10,12 @@ class GetCoinChartDataUseCase {
   Future<ApiResult<CoinChartEntity>> call({
     required String coinId,
     required String interval,
+    String currency = 'usd',
   }) async {
-    return await _coinRepository.getCoinChartData(coinId: coinId, interval: interval);
+    return await _coinRepository.getCoinChartData(
+      coinId: coinId,
+      interval: interval,
+      currency: currency,
+    );
   }
 }

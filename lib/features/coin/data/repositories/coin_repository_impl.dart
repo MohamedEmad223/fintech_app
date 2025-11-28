@@ -35,16 +35,22 @@ class CoinRepositoryImpl implements CoinRepository {
   Future<ApiResult<CoinChartEntity>> getCoinChartData({
     required String coinId,
     required String interval,
+    String currency = 'usd',
   }) async {
     try {
+      print('🔵 Fetching chart data for: $coinId, interval: $interval, currency: $currency');
       final response = await _coinsRemoteDataSource.getCoinChartData(
         coinId: coinId,
-        vsCurrency: 'usd',
+        vsCurrency: currency,
         days: interval,
       );
+      print('✅ Chart response received successfully');
       final entity = response.toEntity();
+      print('✅ Chart entity mapped with ${entity.prices.length} price points');
       return ApiResult.success(entity);
-    } catch (error) {
+    } catch (error, stackTrace) {
+      print('❌ Error in getCoinChartData: $error');
+      print('📋 Stack trace:\n$stackTrace');
       return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }

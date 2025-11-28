@@ -11,7 +11,7 @@ class CoinResponseModel {
   @JsonKey(name: "name")
   final String? name;
   @JsonKey(name: "web_slug")
-  final Id? webSlug;
+  final String? webSlug;
   @JsonKey(name: "asset_platform_id")
   final dynamic assetPlatformId;
   @JsonKey(name: "platforms")
@@ -331,18 +331,6 @@ class CodeAdditionsDeletions4Weeks {
   Map<String, dynamic> toJson() => _$CodeAdditionsDeletions4WeeksToJson(this);
 }
 
-enum Id {
-  @JsonValue("binancecoin")
-  BINANCECOIN,
-  @JsonValue("bitcoin")
-  BITCOIN,
-  @JsonValue("ethereum")
-  ETHEREUM,
-  @JsonValue("solana")
-  SOLANA,
-  @JsonValue("tether-gold")
-  TETHER_GOLD
-}
 
 @JsonSerializable()
 class Image {
@@ -381,7 +369,7 @@ class Links {
   @JsonKey(name: "snapshot_url")
   final dynamic snapshotUrl;
   @JsonKey(name: "twitter_screen_name")
-  final Id? twitterScreenName;
+  final String? twitterScreenName;
   @JsonKey(name: "facebook_username")
   final String? facebookUsername;
   @JsonKey(name: "bitcointalk_thread_identifier")
@@ -622,8 +610,8 @@ class Ticker {
   final String? tradeUrl;
   @JsonKey(name: "token_info_url")
   final dynamic tokenInfoUrl;
-  @JsonKey(name: "coin_id", unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-  final Id? coinId;
+  @JsonKey(name: "coin_id")
+  final String? coinId;
   @JsonKey(name: "target_coin_id", unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
   final TargetCoinId? targetCoinId;
   @JsonKey(name: "coin_mcap_usd")

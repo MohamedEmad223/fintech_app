@@ -21,7 +21,12 @@ class CoinCubit extends Cubit<CoinState> {
 
   String? _currentCoinId;
   String _currentInterval = '1';
+  String _currentCurrency = 'usd';
   CoinEntity? _currentCoin;
+  List<String> _supportedCurrencies = [];
+
+  String get currentCurrency => _currentCurrency;
+  List<String> get supportedCurrencies => _supportedCurrencies;
 
   Future<void> loadCoinDetails(String coinId) async {
     _currentCoinId = coinId;
@@ -45,15 +50,20 @@ class CoinCubit extends Cubit<CoinState> {
     );
   }
 
-  Future<void> loadChartData(String interval) async {
+  Future<void> loadChartData(String interval, {String? currency}) async {
     if (_currentCoinId == null) return;
 
     _currentInterval = interval;
+    if (currency != null) {
+      _currentCurrency = currency;
+    }
+
     emit(const CoinState.coinChartDataLoading());
 
-    final coinChartResult = await _getCoinChartDataUseCase(
+    final coinChartResult = await _getCoinChartDataUseCase.call(
       coinId: _currentCoinId!,
       interval: interval,
+      currency: _currentCurrency,
     );
 
     coinChartResult.when(
@@ -75,23 +85,20 @@ class CoinCubit extends Cubit<CoinState> {
     );
   }
 
-  Future<void> loadSupportedVsCurrencies() async {
-    emit(const CoinState.supportedVsCurrenciesLoading());
+  void changeCurrency(String currency) {
+    _currentCurrency = currency;
+    loadChartData(_currentInterval, currency: currency);
+  }
 
+  Future<void> loadSupportedVsCurrencies() async {
     final result = await _getSupportedCurrenciesUseCasen();
 
     result.when(
       success: (List<String> vsCurrencies) {
-        emit(
-          CoinState.supportedVsCurrenciesSuccess(vsCurrencies: vsCurrencies),
-        );
+        _supportedCurrencies = vsCurrencies;
       },
       failure: (error) {
-        emit(
-          CoinState.supportedVsCurrenciesFailure(
-            error: error.message ?? 'Unknown Error',
-          ),
-        );
+        _supportedCurrencies = ['usd', 'eur', 'gbp', 'jpy', 'btc', 'eth'];
       },
     );
   }

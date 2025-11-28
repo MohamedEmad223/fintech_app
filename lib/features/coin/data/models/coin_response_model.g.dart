@@ -12,7 +12,7 @@ CoinResponseModel _$CoinResponseModelFromJson(
   id: json['id'] as String,
   symbol: json['symbol'] as String?,
   name: json['name'] as String?,
-  webSlug: $enumDecodeNullable(_$IdEnumMap, json['web_slug']),
+  webSlug: json['web_slug'] as String?,
   assetPlatformId: json['asset_platform_id'],
   platforms: json['platforms'] == null
       ? null
@@ -75,7 +75,7 @@ Map<String, dynamic> _$CoinResponseModelToJson(CoinResponseModel instance) =>
       'id': instance.id,
       'symbol': instance.symbol,
       'name': instance.name,
-      'web_slug': _$IdEnumMap[instance.webSlug],
+      'web_slug': instance.webSlug,
       'asset_platform_id': instance.assetPlatformId,
       'platforms': instance.platforms,
       'detail_platforms': instance.detailPlatforms,
@@ -102,14 +102,6 @@ Map<String, dynamic> _$CoinResponseModelToJson(CoinResponseModel instance) =>
       'last_updated': instance.lastUpdated?.toIso8601String(),
       'tickers': instance.tickers,
     };
-
-const _$IdEnumMap = {
-  Id.BINANCECOIN: 'binancecoin',
-  Id.BITCOIN: 'bitcoin',
-  Id.ETHEREUM: 'ethereum',
-  Id.SOLANA: 'solana',
-  Id.TETHER_GOLD: 'tether-gold',
-};
 
 CommunityData _$CommunityDataFromJson(Map<String, dynamic> json) =>
     CommunityData(
@@ -303,10 +295,7 @@ Links _$LinksFromJson(Map<String, dynamic> json) => Links(
   chatUrl: json['chat_url'] as List<dynamic>?,
   announcementUrl: json['announcement_url'] as List<dynamic>?,
   snapshotUrl: json['snapshot_url'],
-  twitterScreenName: $enumDecodeNullable(
-    _$IdEnumMap,
-    json['twitter_screen_name'],
-  ),
+  twitterScreenName: json['twitter_screen_name'] as String?,
   facebookUsername: json['facebook_username'] as String?,
   bitcointalkThreadIdentifier: json['bitcointalk_thread_identifier'],
   telegramChannelIdentifier: json['telegram_channel_identifier'] as String?,
@@ -324,7 +313,7 @@ Map<String, dynamic> _$LinksToJson(Links instance) => <String, dynamic>{
   'chat_url': instance.chatUrl,
   'announcement_url': instance.announcementUrl,
   'snapshot_url': instance.snapshotUrl,
-  'twitter_screen_name': _$IdEnumMap[instance.twitterScreenName],
+  'twitter_screen_name': instance.twitterScreenName,
   'facebook_username': instance.facebookUsername,
   'bitcointalk_thread_identifier': instance.bitcointalkThreadIdentifier,
   'telegram_channel_identifier': instance.telegramChannelIdentifier,
@@ -547,11 +536,7 @@ Ticker _$TickerFromJson(Map<String, dynamic> json) => Ticker(
   isStale: json['is_stale'] as bool?,
   tradeUrl: json['trade_url'] as String?,
   tokenInfoUrl: json['token_info_url'],
-  coinId: $enumDecodeNullable(
-    _$IdEnumMap,
-    json['coin_id'],
-    unknownValue: JsonKey.nullForUndefinedEnumValue,
-  ),
+  coinId: json['coin_id'] as String?,
   targetCoinId: $enumDecodeNullable(
     _$TargetCoinIdEnumMap,
     json['target_coin_id'],
@@ -577,7 +562,7 @@ Map<String, dynamic> _$TickerToJson(Ticker instance) => <String, dynamic>{
   'is_stale': instance.isStale,
   'trade_url': instance.tradeUrl,
   'token_info_url': instance.tokenInfoUrl,
-  'coin_id': _$IdEnumMap[instance.coinId],
+  'coin_id': instance.coinId,
   'target_coin_id': _$TargetCoinIdEnumMap[instance.targetCoinId],
   'coin_mcap_usd': instance.coinMcapUsd,
 };

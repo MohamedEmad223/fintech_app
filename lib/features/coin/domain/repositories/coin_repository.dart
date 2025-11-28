@@ -8,6 +8,7 @@ abstract class CoinRepository {
   Future<ApiResult<CoinChartEntity>> getCoinChartData({
     required String coinId,
     required String interval,
+    String currency = 'usd',
   });
 
   Future<ApiResult<List<String>>> getSupportedVsCurrencies();
