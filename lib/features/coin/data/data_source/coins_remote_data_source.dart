@@ -24,4 +24,7 @@ abstract class CoinsRemoteDataSource {
     @Query('vs_currency') required String vsCurrency,
     @Query('days') required String days,
   });
+
+  @GET('/simple/supported_vs_currencies')
+  Future<List<String>> getSupportedVsCurrencies();
 }

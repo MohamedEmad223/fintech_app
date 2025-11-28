@@ -22,22 +22,26 @@ class CoinDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => sl<CoinCubit>()..loadCoinDetails(coinId),
+      create: (_) => sl<CoinCubit>()
+        ..loadCoinDetails(coinId)
+        ..loadSupportedVsCurrencies(),
       child: Scaffold(
         backgroundColor: AppColors.background,
         appBar: const CoinDetailsAppBar(),
         body: BlocBuilder<CoinCubit, CoinState>(
           builder: (context, state) {
-            return state.when(
+            return state.maybeWhen(
               initial: () => const Center(child: CircularProgressIndicator()),
-              coinDetailsLOADING: () => const Center(child: CircularProgressIndicator()),
+              coinDetailsLOADING: () =>
+                  const Center(child: CircularProgressIndicator()),
               coinDetailsSuccess: (coin) {
                 return CoinDetailsContent(coin: coin);
               },
               coinDetailsFailure: (error) {
                 return CoinDetailsErrorWidget(
                   error: error,
-                  onRetry: () => context.read<CoinCubit>().loadCoinDetails(coinId),
+                  onRetry: () =>
+                      context.read<CoinCubit>().loadCoinDetails(coinId),
                 );
               },
               coinChartDataLoading: () {
@@ -50,7 +54,9 @@ class CoinDetailsScreen extends StatelessWidget {
               coinChartDataSuccess: (chartData, selectedInterval) {
                 final coin = context.read<CoinCubit>().currentCoin;
                 if (coin == null) {
-                  return const Center(child: Text('Error: Coin data not available'));
+                  return const Center(
+                    child: Text('Error: Coin data not available'),
+                  );
                 }
                 return CoinDetailsContent(
                   coin: coin,
@@ -66,7 +72,8 @@ class CoinDetailsScreen extends StatelessWidget {
                 if (coin == null) {
                   return CoinDetailsErrorWidget(
                     error: error,
-                    onRetry: () => context.read<CoinCubit>().loadCoinDetails(coinId),
+                    onRetry: () =>
+                        context.read<CoinCubit>().loadCoinDetails(coinId),
                   );
                 }
                 return CoinDetailsContent(
@@ -77,6 +84,7 @@ class CoinDetailsScreen extends StatelessWidget {
                   ),
                 );
               },
+              orElse: () => SizedBox.shrink(),
             );
           },
         ),
@@ -116,6 +124,7 @@ class CoinDetailsAppBar extends StatelessWidget implements PreferredSizeWidget {
 class CoinDetailsContent extends StatelessWidget {
   final CoinEntity coin;
   final Widget? chartWidget;
+
   const CoinDetailsContent({super.key, required this.coin, this.chartWidget});
 
   @override
@@ -148,6 +157,7 @@ class CoinDetailsContent extends StatelessWidget {
 
 class ChartLoadingPlaceholder extends StatelessWidget {
   const ChartLoadingPlaceholder({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -165,7 +175,13 @@ class ChartLoadingPlaceholder extends StatelessWidget {
 class ChartErrorWidget extends StatelessWidget {
   final String error;
   final VoidCallback onRetry;
-  const ChartErrorWidget({super.key, required this.error, required this.onRetry});
+
+  const ChartErrorWidget({
+    super.key,
+    required this.error,
+    required this.onRetry,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -182,10 +198,7 @@ class ChartErrorWidget extends StatelessWidget {
           verticalSpace(12),
           Text(
             'Failed to load chart',
-            style: TextStyle(
-              fontSize: 16.sp,
-              fontWeight: FontWeight.w600,
-            ),
+            style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.w600),
           ),
           verticalSpace(8),
           Text(
@@ -194,10 +207,7 @@ class ChartErrorWidget extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           verticalSpace(12),
-          ElevatedButton(
-            onPressed: onRetry,
-            child: const Text('Retry Chart'),
-          ),
+          ElevatedButton(onPressed: onRetry, child: const Text('Retry Chart')),
         ],
       ),
     );
@@ -207,7 +217,13 @@ class ChartErrorWidget extends StatelessWidget {
 class CoinDetailsErrorWidget extends StatelessWidget {
   final String error;
   final VoidCallback onRetry;
-  const CoinDetailsErrorWidget({super.key, required this.error, required this.onRetry});
+
+  const CoinDetailsErrorWidget({
+    super.key,
+    required this.error,
+    required this.onRetry,
+  });
+
   @override
   Widget build(BuildContext context) {
     return Center(

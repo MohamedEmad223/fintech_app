@@ -27,4 +27,16 @@ class CoinState with _$CoinState {
 
   const factory CoinState.coinChartDataFailure({required String error}) =
       CoinChartDataFailure;
+
+  /// Supported Vs Currencies
+  const factory CoinState.supportedVsCurrenciesLoading() =
+      SupportedVsCurrenciesLoading;
+
+  const factory CoinState.supportedVsCurrenciesSuccess({
+    required List<String> vsCurrencies,
+  }) = SupportedVsCurrenciesSuccess;
+
+  const factory CoinState.supportedVsCurrenciesFailure({
+    required String error,
+  }) = SupportedVsCurrenciesFailure;
 }

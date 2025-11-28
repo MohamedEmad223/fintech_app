@@ -9,4 +9,6 @@ abstract class CoinRepository {
     required String coinId,
     required String interval,
   });
+
+  Future<ApiResult<List<String>>> getSupportedVsCurrencies();
 }
