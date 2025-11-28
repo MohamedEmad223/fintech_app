@@ -98,9 +98,9 @@ class _CoinChartState extends State<CoinChart> {
                     },
                     getDotPainter: (spot, percent, barData, index) =>
                         FlDotCirclePainter(
-                      radius: 6,
-                      color: const Color(0xffF56C2A),
-                    ),
+                          radius: 6,
+                          color: const Color(0xffF56C2A),
+                        ),
                   ),
                   belowBarData: BarAreaData(
                     show: true,
@@ -137,9 +137,15 @@ class _CoinChartState extends State<CoinChart> {
                 bottomTitles: AxisTitles(
                   sideTitles: SideTitles(showTitles: false),
                 ),
-                leftTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                rightTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
-                topTitles: AxisTitles(sideTitles: SideTitles(showTitles: false)),
+                leftTitles: AxisTitles(
+                  sideTitles: SideTitles(showTitles: false),
+                ),
+                rightTitles: AxisTitles(
+                  sideTitles: SideTitles(showTitles: false),
+                ),
+                topTitles: AxisTitles(
+                  sideTitles: SideTitles(showTitles: false),
+                ),
               ),
               borderData: FlBorderData(show: false),
             ),

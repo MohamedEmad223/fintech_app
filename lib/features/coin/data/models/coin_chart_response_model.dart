@@ -17,7 +17,8 @@ class CoinChartResponseModel {
     required this.totalVolumes,
   });
 
-  factory CoinChartResponseModel.fromJson(Map<String, dynamic> json) => _$CoinChartResponseModelFromJson(json);
+  factory CoinChartResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$CoinChartResponseModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$CoinChartResponseModelToJson(this);
 }

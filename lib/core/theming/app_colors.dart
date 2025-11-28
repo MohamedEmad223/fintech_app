@@ -13,6 +13,7 @@ abstract class AppColors {
   static const redError = Color(0xFFD90429);
   static const chipSelected = Color(0xFF1A1F3D);
   static const chipUnselected = Color(0xFFFFFFFF);
+
   ///Initial now
   static const primary = Color(0xFF1D3A70);
   static const secondary = Color(0xFFF56C2A);

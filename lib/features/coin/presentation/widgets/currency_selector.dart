@@ -60,7 +60,10 @@ class CurrencySelector extends StatelessWidget {
                   }
                 },
                 child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 8.h),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 14.w,
+                    vertical: 8.h,
+                  ),
                   decoration: BoxDecoration(
                     color: isSelected
                         ? const Color(0xFF1D3A70)
@@ -104,4 +107,3 @@ class CurrencySelector extends StatelessWidget {
     );
   }
 }
-

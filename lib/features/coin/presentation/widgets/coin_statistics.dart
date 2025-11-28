@@ -33,12 +33,21 @@ class CoinStatistics extends StatelessWidget {
           ),
         ),
         verticalSpace(16),
-        _StatItem(label: 'Current Price', value: _formatCurrency(coin.currentPrice)),
+        _StatItem(
+          label: 'Current Price',
+          value: _formatCurrency(coin.currentPrice),
+        ),
         _StatItem(label: 'Market Cap', value: _formatCurrency(coin.marketCap)),
-        _StatItem(label: 'Volume 24h', value: _formatCurrency(coin.totalVolume)),
+        _StatItem(
+          label: 'Volume 24h',
+          value: _formatCurrency(coin.totalVolume),
+        ),
         _StatItem(label: 'High 24h', value: _formatCurrency(coin.high24h)),
         _StatItem(label: 'Low 24h', value: _formatCurrency(coin.low24h)),
-        _StatItem(label: 'Circulating Supply', value: _formatNumber(coin.circulatingSupply)),
+        _StatItem(
+          label: 'Circulating Supply',
+          value: _formatNumber(coin.circulatingSupply),
+        ),
         if (coin.maxSupply != null)
           _StatItem(label: 'Max Supply', value: _formatNumber(coin.maxSupply!)),
       ],

@@ -95,7 +95,8 @@ class CoinResponseModel {
     this.tickers,
   });
 
-  factory CoinResponseModel.fromJson(Map<String, dynamic> json) => _$CoinResponseModelFromJson(json);
+  factory CoinResponseModel.fromJson(Map<String, dynamic> json) =>
+      _$CoinResponseModelFromJson(json);
 
   Map<String, dynamic> toJson() => _$CoinResponseModelToJson(this);
 }
@@ -124,7 +125,8 @@ class CommunityData {
     this.telegramChannelUserCount,
   });
 
-  factory CommunityData.fromJson(Map<String, dynamic> json) => _$CommunityDataFromJson(json);
+  factory CommunityData.fromJson(Map<String, dynamic> json) =>
+      _$CommunityDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$CommunityDataToJson(this);
 }
@@ -247,11 +249,10 @@ class DetailPlatforms {
   @JsonKey(name: "")
   final Empty? empty;
 
-  DetailPlatforms({
-    this.empty,
-  });
+  DetailPlatforms({this.empty});
 
-  factory DetailPlatforms.fromJson(Map<String, dynamic> json) => _$DetailPlatformsFromJson(json);
+  factory DetailPlatforms.fromJson(Map<String, dynamic> json) =>
+      _$DetailPlatformsFromJson(json);
 
   Map<String, dynamic> toJson() => _$DetailPlatformsToJson(this);
 }
@@ -263,10 +264,7 @@ class Empty {
   @JsonKey(name: "contract_address")
   final String? contractAddress;
 
-  Empty({
-    this.decimalPlace,
-    this.contractAddress,
-  });
+  Empty({this.decimalPlace, this.contractAddress});
 
   factory Empty.fromJson(Map<String, dynamic> json) => _$EmptyFromJson(json);
 
@@ -309,7 +307,8 @@ class DeveloperData {
     this.last4WeeksCommitActivitySeries,
   });
 
-  factory DeveloperData.fromJson(Map<String, dynamic> json) => _$DeveloperDataFromJson(json);
+  factory DeveloperData.fromJson(Map<String, dynamic> json) =>
+      _$DeveloperDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$DeveloperDataToJson(this);
 }
@@ -321,16 +320,13 @@ class CodeAdditionsDeletions4Weeks {
   @JsonKey(name: "deletions")
   final int? deletions;
 
-  CodeAdditionsDeletions4Weeks({
-    this.additions,
-    this.deletions,
-  });
+  CodeAdditionsDeletions4Weeks({this.additions, this.deletions});
 
-  factory CodeAdditionsDeletions4Weeks.fromJson(Map<String, dynamic> json) => _$CodeAdditionsDeletions4WeeksFromJson(json);
+  factory CodeAdditionsDeletions4Weeks.fromJson(Map<String, dynamic> json) =>
+      _$CodeAdditionsDeletions4WeeksFromJson(json);
 
   Map<String, dynamic> toJson() => _$CodeAdditionsDeletions4WeeksToJson(this);
 }
-
 
 @JsonSerializable()
 class Image {
@@ -341,11 +337,7 @@ class Image {
   @JsonKey(name: "large")
   final String? large;
 
-  Image({
-    this.thumb,
-    this.small,
-    this.large,
-  });
+  Image({this.thumb, this.small, this.large});
 
   factory Image.fromJson(Map<String, dynamic> json) => _$ImageFromJson(json);
 
@@ -409,12 +401,10 @@ class ReposUrl {
   @JsonKey(name: "bitbucket")
   final List<dynamic>? bitbucket;
 
-  ReposUrl({
-    this.github,
-    this.bitbucket,
-  });
+  ReposUrl({this.github, this.bitbucket});
 
-  factory ReposUrl.fromJson(Map<String, dynamic> json) => _$ReposUrlFromJson(json);
+  factory ReposUrl.fromJson(Map<String, dynamic> json) =>
+      _$ReposUrlFromJson(json);
 
   Map<String, dynamic> toJson() => _$ReposUrlToJson(this);
 }
@@ -557,7 +547,8 @@ class MarketData {
     this.lastUpdated,
   });
 
-  factory MarketData.fromJson(Map<String, dynamic> json) => _$MarketDataFromJson(json);
+  factory MarketData.fromJson(Map<String, dynamic> json) =>
+      _$MarketDataFromJson(json);
 
   Map<String, dynamic> toJson() => _$MarketDataToJson(this);
 }
@@ -567,11 +558,10 @@ class Platforms {
   @JsonKey(name: "")
   final String? empty;
 
-  Platforms({
-    this.empty,
-  });
+  Platforms({this.empty});
 
-  factory Platforms.fromJson(Map<String, dynamic> json) => _$PlatformsFromJson(json);
+  factory Platforms.fromJson(Map<String, dynamic> json) =>
+      _$PlatformsFromJson(json);
 
   Map<String, dynamic> toJson() => _$PlatformsToJson(this);
 }
@@ -612,7 +602,10 @@ class Ticker {
   final dynamic tokenInfoUrl;
   @JsonKey(name: "coin_id")
   final String? coinId;
-  @JsonKey(name: "target_coin_id", unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  @JsonKey(
+    name: "target_coin_id",
+    unknownEnumValue: JsonKey.nullForUndefinedEnumValue,
+  )
   final TargetCoinId? targetCoinId;
   @JsonKey(name: "coin_mcap_usd")
   final double? coinMcapUsd;
@@ -656,7 +649,7 @@ enum Base {
   @JsonValue("XAUT")
   XAUT,
   @JsonValue("XBT")
-  XBT
+  XBT,
 }
 
 @JsonSerializable()
@@ -668,11 +661,7 @@ class Market {
   @JsonKey(name: "has_trading_incentive")
   final bool? hasTradingIncentive;
 
-  Market({
-    this.name,
-    this.identifier,
-    this.hasTradingIncentive,
-  });
+  Market({this.name, this.identifier, this.hasTradingIncentive});
 
   factory Market.fromJson(Map<String, dynamic> json) => _$MarketFromJson(json);
 
@@ -695,10 +684,10 @@ enum TargetCoinId {
   @JsonValue("usd1-wlfi")
   USD1_WLFI,
   @JsonValue("usd-coin")
-  USD_COIN
+  USD_COIN,
 }
 
 enum TrustScore {
   @JsonValue("green")
-  GREEN
+  GREEN,
 }

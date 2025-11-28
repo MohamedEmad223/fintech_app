@@ -64,7 +64,6 @@ class AppStyles {
     fontWeight: FontWeightHelper.bold,
   );
 
-
   static TextStyle font20PrimaryBold = TextStyle(
     fontSize: 20.sp,
     fontWeight: FontWeightHelper.bold,
@@ -145,7 +144,6 @@ class AppStyles {
     fontWeight: FontWeightHelper.medium,
     color: AppColors.bitcoinOrange,
   );
-
 
   static TextStyle font20BlackPrimary = TextStyle(
     fontSize: 20.sp,

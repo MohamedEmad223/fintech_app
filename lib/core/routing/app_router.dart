@@ -18,9 +18,8 @@ class AppRouter {
         if (coinId == null) {
           return MaterialPageRoute(
             settings: settings,
-            builder: (_) => Scaffold(
-              body: Center(child: Text('No coinId provided')),
-            ),
+            builder: (_) =>
+                Scaffold(body: Center(child: Text('No coinId provided'))),
           );
         }
         return MaterialPageRoute(

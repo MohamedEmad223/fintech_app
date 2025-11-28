@@ -42,10 +42,7 @@ class CoinDetailsChartConfigurations extends StatelessWidget {
           verticalSpace(12),
           const CurrencySelector(),
           verticalSpace(20),
-          CoinChart(
-            chartData: chartData,
-            selectedInterval: selectedInterval,
-          ),
+          CoinChart(chartData: chartData, selectedInterval: selectedInterval),
         ],
       ),
     );

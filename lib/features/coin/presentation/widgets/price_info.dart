@@ -36,7 +36,9 @@ class PriceInfo extends StatelessWidget {
             Container(
               padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
               decoration: BoxDecoration(
-                color: isPositive ? const Color(0xFF10B981) : const Color(0xFFEF4444),
+                color: isPositive
+                    ? const Color(0xFF10B981)
+                    : const Color(0xFFEF4444),
                 borderRadius: BorderRadius.circular(8.r),
               ),
               child: Row(

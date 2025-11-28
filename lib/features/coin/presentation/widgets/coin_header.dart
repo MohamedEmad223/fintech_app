@@ -12,11 +12,7 @@ class CoinHeader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
-        FancyNetworkImage(
-          imagePath: coin.image,
-          width: 40.w,
-          height: 40.h,
-        ),
+        FancyNetworkImage(imagePath: coin.image, width: 40.w, height: 40.h),
         SizedBox(width: 12.w),
         Text(
           coin.name,
