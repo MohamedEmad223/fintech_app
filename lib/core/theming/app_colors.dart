@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 abstract class AppColors {
   static const whiteColor = Color(0xFFFFFFFF);
   static const blackColor = Color(0xFF000000);
-  static const primary = Color(0xFF1D3A70);
 
   // Market Screen Colors
   static const background = Color(0xFFF8F9FC);

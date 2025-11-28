@@ -28,7 +28,6 @@ class FintechApp extends StatelessWidget {
             onGenerateRoute: AppRouter.onGenerateRoute,
             navigatorObservers: [RouteObserver<PageRoute>()],
             home: const MarketScreen(),
-            onGenerateRoute: appRouter.generateRoute,
             initialRoute: Routes.portfolioScreen,
           );
         },

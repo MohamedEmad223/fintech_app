@@ -5,15 +5,65 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AppStyles {
+  static TextStyle font24DarkBlueBold = TextStyle(
+    fontSize: 24.sp,
+    color: AppColors.darkBlue,
+    fontWeight: FontWeightHelper.bold,
+  );
+
+  static TextStyle font16GreyMedium = TextStyle(
+    fontSize: 16.sp,
+    color: AppColors.greyText,
+    fontWeight: FontWeightHelper.medium,
+  );
+
+  static TextStyle font14DarkBlueBold = TextStyle(
+    fontSize: 14.sp,
+    color: AppColors.darkBlue,
+    fontWeight: FontWeightHelper.bold,
+  );
+
+  static TextStyle font14GreyRegular = TextStyle(
+    fontSize: 14.sp,
+    color: AppColors.greyText,
+    fontWeight: FontWeightHelper.regular,
+  );
+
+  static TextStyle font16DarkBlueBold = TextStyle(
+    fontSize: 16.sp,
+    color: AppColors.darkBlue,
+    fontWeight: FontWeightHelper.bold,
+  );
+
+  static TextStyle font12GreenMedium = TextStyle(
+    fontSize: 12.sp,
+    color: AppColors.greenSuccess,
+    fontWeight: FontWeightHelper.medium,
+  );
+
+  static TextStyle font12RedMedium = TextStyle(
+    fontSize: 12.sp,
+    color: AppColors.redError,
+    fontWeight: FontWeightHelper.medium,
+  );
+
+  static TextStyle font14WhiteMedium = TextStyle(
+    fontSize: 14.sp,
+    color: AppColors.whiteColor,
+    fontWeight: FontWeightHelper.medium,
+  );
+
+  static TextStyle font14DarkBlueMedium = TextStyle(
+    fontSize: 14.sp,
+    color: AppColors.darkBlue,
+    fontWeight: FontWeightHelper.medium,
+  );
+
   static TextStyle font32WhiteBold = TextStyle(
     fontSize: 32.sp,
     fontWeight: FontWeightHelper.bold,
   );
 
-  static TextStyle font14WhiteMedium = TextStyle(
-    fontSize: 14.sp,
-    fontWeight: FontWeightHelper.medium,
-  );
 
   static TextStyle font20PrimaryBold = TextStyle(
     fontSize: 20.sp,
@@ -96,11 +146,6 @@ class AppStyles {
     color: AppColors.bitcoinOrange,
   );
 
-  static TextStyle font12RedMedium = TextStyle(
-    fontSize: 12.sp,
-    fontWeight: FontWeightHelper.medium,
-    color: AppColors.errorRed,
-  );
 
   static TextStyle font20BlackPrimary = TextStyle(
     fontSize: 20.sp,

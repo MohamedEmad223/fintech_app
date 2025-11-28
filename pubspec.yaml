@@ -64,7 +64,6 @@ dependencies:
   #Svgs for images
   flutter_svg: ^2.2.3
 
->>>>>> develop
 
   cupertino_icons: ^1.0.8
 
@@ -125,5 +124,3 @@ flutter:
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
-
-
