@@ -1,0 +1,48 @@
+name: Release Build & Deploy
+
+on:
+  push:
+    branches:
+      - develop
+      - feature/**
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Dart
+        uses: dart-lang/setup-dart@v1
+        with:
+          sdk: '3.1.0'   
+
+      - name: Setup FVM & Flutter
+        run: |
+          dart pub global activate fvm
+          fvm install 3.35.7
+          fvm use 3.35.7
+
+      - name: Flutter Pub Get
+        run: fvm flutter pub get
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2.2'
+          bundler-cache: true
+
+      - name: Install Fastlane Gems
+        run: |
+          cd android
+          bundle install
+
+      - name: Set Firebase Token
+        run: echo "FIREBASE_CLI_TOKEN=${{ secrets.FIREBASE_CLI_TOKEN }}" >> $GITHUB_ENV
+
+      - name: Run Fastlane Release
+        run: |
+          cd android
+          bundle exec fastlane firebase_distribution

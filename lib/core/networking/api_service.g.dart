@@ -15,6 +15,7 @@ class _ApiService implements ApiService {
     baseUrl ??= 'https://api.coingecko.com/api/v3';
   }
 
+  // ignore: unused_field
   final Dio _dio;
 
   String? baseUrl;
