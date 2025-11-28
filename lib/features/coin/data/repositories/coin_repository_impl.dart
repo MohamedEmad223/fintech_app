@@ -27,13 +27,13 @@ class CoinRepositoryImpl implements CoinRepository {
   @override
   Future<ApiResult<CoinChartEntity>> getCoinChartData({
     required String coinId,
-    required String days,
+    required String interval,
   }) async {
     try {
       final response = await _coinsRemoteDataSource.getCoinChartData(
         coinId: coinId,
         vsCurrency: 'usd',
-        days: days,
+        days: interval,
       );
       final entity = response.toEntity();
       return ApiResult.success(entity);

@@ -55,15 +55,17 @@ extension CoinStatePatterns on CoinState {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( CoinInitial value)?  initial,TResult Function( CoinLoading value)?  loading,TResult Function( CoinSuccess value)?  success,TResult Function( CoinError value)?  error,TResult Function( CoinChartLoading value)?  chartLoading,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( CoinInitial value)?  initial,TResult Function( CoinDetailsLoading value)?  coinDetailsLOADING,TResult Function( CoinDetailsSuccess value)?  coinDetailsSuccess,TResult Function( CoinDetailsFailure value)?  coinDetailsFailure,TResult Function( CoinChartDataLoading value)?  coinChartDataLoading,TResult Function( CoinChartDataSuccess value)?  coinChartDataSuccess,TResult Function( CoinChartDataFailure value)?  coinChartDataFailure,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case CoinInitial() when initial != null:
-return initial(_that);case CoinLoading() when loading != null:
-return loading(_that);case CoinSuccess() when success != null:
-return success(_that);case CoinError() when error != null:
-return error(_that);case CoinChartLoading() when chartLoading != null:
-return chartLoading(_that);case _:
+return initial(_that);case CoinDetailsLoading() when coinDetailsLOADING != null:
+return coinDetailsLOADING(_that);case CoinDetailsSuccess() when coinDetailsSuccess != null:
+return coinDetailsSuccess(_that);case CoinDetailsFailure() when coinDetailsFailure != null:
+return coinDetailsFailure(_that);case CoinChartDataLoading() when coinChartDataLoading != null:
+return coinChartDataLoading(_that);case CoinChartDataSuccess() when coinChartDataSuccess != null:
+return coinChartDataSuccess(_that);case CoinChartDataFailure() when coinChartDataFailure != null:
+return coinChartDataFailure(_that);case _:
   return orElse();
 
 }
@@ -81,15 +83,17 @@ return chartLoading(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( CoinInitial value)  initial,required TResult Function( CoinLoading value)  loading,required TResult Function( CoinSuccess value)  success,required TResult Function( CoinError value)  error,required TResult Function( CoinChartLoading value)  chartLoading,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( CoinInitial value)  initial,required TResult Function( CoinDetailsLoading value)  coinDetailsLOADING,required TResult Function( CoinDetailsSuccess value)  coinDetailsSuccess,required TResult Function( CoinDetailsFailure value)  coinDetailsFailure,required TResult Function( CoinChartDataLoading value)  coinChartDataLoading,required TResult Function( CoinChartDataSuccess value)  coinChartDataSuccess,required TResult Function( CoinChartDataFailure value)  coinChartDataFailure,}){
 final _that = this;
 switch (_that) {
 case CoinInitial():
-return initial(_that);case CoinLoading():
-return loading(_that);case CoinSuccess():
-return success(_that);case CoinError():
-return error(_that);case CoinChartLoading():
-return chartLoading(_that);case _:
+return initial(_that);case CoinDetailsLoading():
+return coinDetailsLOADING(_that);case CoinDetailsSuccess():
+return coinDetailsSuccess(_that);case CoinDetailsFailure():
+return coinDetailsFailure(_that);case CoinChartDataLoading():
+return coinChartDataLoading(_that);case CoinChartDataSuccess():
+return coinChartDataSuccess(_that);case CoinChartDataFailure():
+return coinChartDataFailure(_that);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -106,15 +110,17 @@ return chartLoading(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( CoinInitial value)?  initial,TResult? Function( CoinLoading value)?  loading,TResult? Function( CoinSuccess value)?  success,TResult? Function( CoinError value)?  error,TResult? Function( CoinChartLoading value)?  chartLoading,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( CoinInitial value)?  initial,TResult? Function( CoinDetailsLoading value)?  coinDetailsLOADING,TResult? Function( CoinDetailsSuccess value)?  coinDetailsSuccess,TResult? Function( CoinDetailsFailure value)?  coinDetailsFailure,TResult? Function( CoinChartDataLoading value)?  coinChartDataLoading,TResult? Function( CoinChartDataSuccess value)?  coinChartDataSuccess,TResult? Function( CoinChartDataFailure value)?  coinChartDataFailure,}){
 final _that = this;
 switch (_that) {
 case CoinInitial() when initial != null:
-return initial(_that);case CoinLoading() when loading != null:
-return loading(_that);case CoinSuccess() when success != null:
-return success(_that);case CoinError() when error != null:
-return error(_that);case CoinChartLoading() when chartLoading != null:
-return chartLoading(_that);case _:
+return initial(_that);case CoinDetailsLoading() when coinDetailsLOADING != null:
+return coinDetailsLOADING(_that);case CoinDetailsSuccess() when coinDetailsSuccess != null:
+return coinDetailsSuccess(_that);case CoinDetailsFailure() when coinDetailsFailure != null:
+return coinDetailsFailure(_that);case CoinChartDataLoading() when coinChartDataLoading != null:
+return coinChartDataLoading(_that);case CoinChartDataSuccess() when coinChartDataSuccess != null:
+return coinChartDataSuccess(_that);case CoinChartDataFailure() when coinChartDataFailure != null:
+return coinChartDataFailure(_that);case _:
   return null;
 
 }
@@ -131,14 +137,16 @@ return chartLoading(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( CoinEntity coin,  CoinChartEntity chartData,  String selectedTimePeriod)?  success,TResult Function( ApiErrorModel error)?  error,TResult Function( CoinEntity coin,  CoinChartEntity chartData,  String selectedTimePeriod)?  chartLoading,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  coinDetailsLOADING,TResult Function( CoinEntity coin)?  coinDetailsSuccess,TResult Function( String error)?  coinDetailsFailure,TResult Function()?  coinChartDataLoading,TResult Function( CoinChartEntity coinChartData,  String selectedInterval)?  coinChartDataSuccess,TResult Function( String error)?  coinChartDataFailure,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case CoinInitial() when initial != null:
-return initial();case CoinLoading() when loading != null:
-return loading();case CoinSuccess() when success != null:
-return success(_that.coin,_that.chartData,_that.selectedTimePeriod);case CoinError() when error != null:
-return error(_that.error);case CoinChartLoading() when chartLoading != null:
-return chartLoading(_that.coin,_that.chartData,_that.selectedTimePeriod);case _:
+return initial();case CoinDetailsLoading() when coinDetailsLOADING != null:
+return coinDetailsLOADING();case CoinDetailsSuccess() when coinDetailsSuccess != null:
+return coinDetailsSuccess(_that.coin);case CoinDetailsFailure() when coinDetailsFailure != null:
+return coinDetailsFailure(_that.error);case CoinChartDataLoading() when coinChartDataLoading != null:
+return coinChartDataLoading();case CoinChartDataSuccess() when coinChartDataSuccess != null:
+return coinChartDataSuccess(_that.coinChartData,_that.selectedInterval);case CoinChartDataFailure() when coinChartDataFailure != null:
+return coinChartDataFailure(_that.error);case _:
   return orElse();
 
 }
@@ -156,14 +164,16 @@ return chartLoading(_that.coin,_that.chartData,_that.selectedTimePeriod);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( CoinEntity coin,  CoinChartEntity chartData,  String selectedTimePeriod)  success,required TResult Function( ApiErrorModel error)  error,required TResult Function( CoinEntity coin,  CoinChartEntity chartData,  String selectedTimePeriod)  chartLoading,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  coinDetailsLOADING,required TResult Function( CoinEntity coin)  coinDetailsSuccess,required TResult Function( String error)  coinDetailsFailure,required TResult Function()  coinChartDataLoading,required TResult Function( CoinChartEntity coinChartData,  String selectedInterval)  coinChartDataSuccess,required TResult Function( String error)  coinChartDataFailure,}) {final _that = this;
 switch (_that) {
 case CoinInitial():
-return initial();case CoinLoading():
-return loading();case CoinSuccess():
-return success(_that.coin,_that.chartData,_that.selectedTimePeriod);case CoinError():
-return error(_that.error);case CoinChartLoading():
-return chartLoading(_that.coin,_that.chartData,_that.selectedTimePeriod);case _:
+return initial();case CoinDetailsLoading():
+return coinDetailsLOADING();case CoinDetailsSuccess():
+return coinDetailsSuccess(_that.coin);case CoinDetailsFailure():
+return coinDetailsFailure(_that.error);case CoinChartDataLoading():
+return coinChartDataLoading();case CoinChartDataSuccess():
+return coinChartDataSuccess(_that.coinChartData,_that.selectedInterval);case CoinChartDataFailure():
+return coinChartDataFailure(_that.error);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -180,14 +190,16 @@ return chartLoading(_that.coin,_that.chartData,_that.selectedTimePeriod);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( CoinEntity coin,  CoinChartEntity chartData,  String selectedTimePeriod)?  success,TResult? Function( ApiErrorModel error)?  error,TResult? Function( CoinEntity coin,  CoinChartEntity chartData,  String selectedTimePeriod)?  chartLoading,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  coinDetailsLOADING,TResult? Function( CoinEntity coin)?  coinDetailsSuccess,TResult? Function( String error)?  coinDetailsFailure,TResult? Function()?  coinChartDataLoading,TResult? Function( CoinChartEntity coinChartData,  String selectedInterval)?  coinChartDataSuccess,TResult? Function( String error)?  coinChartDataFailure,}) {final _that = this;
 switch (_that) {
 case CoinInitial() when initial != null:
-return initial();case CoinLoading() when loading != null:
-return loading();case CoinSuccess() when success != null:
-return success(_that.coin,_that.chartData,_that.selectedTimePeriod);case CoinError() when error != null:
-return error(_that.error);case CoinChartLoading() when chartLoading != null:
-return chartLoading(_that.coin,_that.chartData,_that.selectedTimePeriod);case _:
+return initial();case CoinDetailsLoading() when coinDetailsLOADING != null:
+return coinDetailsLOADING();case CoinDetailsSuccess() when coinDetailsSuccess != null:
+return coinDetailsSuccess(_that.coin);case CoinDetailsFailure() when coinDetailsFailure != null:
+return coinDetailsFailure(_that.error);case CoinChartDataLoading() when coinChartDataLoading != null:
+return coinChartDataLoading();case CoinChartDataSuccess() when coinChartDataSuccess != null:
+return coinChartDataSuccess(_that.coinChartData,_that.selectedInterval);case CoinChartDataFailure() when coinChartDataFailure != null:
+return coinChartDataFailure(_that.error);case _:
   return null;
 
 }
@@ -230,8 +242,8 @@ String toString() {
 /// @nodoc
 
 
-class CoinLoading implements CoinState {
-  const CoinLoading();
+class CoinDetailsLoading implements CoinState {
+  const CoinDetailsLoading();
   
 
 
@@ -241,7 +253,7 @@ class CoinLoading implements CoinState {
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CoinLoading);
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CoinDetailsLoading);
 }
 
 
@@ -250,7 +262,7 @@ int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'CoinState.loading()';
+  return 'CoinState.coinDetailsLOADING()';
 }
 
 
@@ -262,45 +274,43 @@ String toString() {
 /// @nodoc
 
 
-class CoinSuccess implements CoinState {
-  const CoinSuccess({required this.coin, required this.chartData, required this.selectedTimePeriod});
+class CoinDetailsSuccess implements CoinState {
+  const CoinDetailsSuccess({required this.coin});
   
 
  final  CoinEntity coin;
- final  CoinChartEntity chartData;
- final  String selectedTimePeriod;
 
 /// Create a copy of CoinState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$CoinSuccessCopyWith<CoinSuccess> get copyWith => _$CoinSuccessCopyWithImpl<CoinSuccess>(this, _$identity);
+$CoinDetailsSuccessCopyWith<CoinDetailsSuccess> get copyWith => _$CoinDetailsSuccessCopyWithImpl<CoinDetailsSuccess>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CoinSuccess&&(identical(other.coin, coin) || other.coin == coin)&&(identical(other.chartData, chartData) || other.chartData == chartData)&&(identical(other.selectedTimePeriod, selectedTimePeriod) || other.selectedTimePeriod == selectedTimePeriod));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CoinDetailsSuccess&&(identical(other.coin, coin) || other.coin == coin));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,coin,chartData,selectedTimePeriod);
+int get hashCode => Object.hash(runtimeType,coin);
 
 @override
 String toString() {
-  return 'CoinState.success(coin: $coin, chartData: $chartData, selectedTimePeriod: $selectedTimePeriod)';
+  return 'CoinState.coinDetailsSuccess(coin: $coin)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $CoinSuccessCopyWith<$Res> implements $CoinStateCopyWith<$Res> {
-  factory $CoinSuccessCopyWith(CoinSuccess value, $Res Function(CoinSuccess) _then) = _$CoinSuccessCopyWithImpl;
+abstract mixin class $CoinDetailsSuccessCopyWith<$Res> implements $CoinStateCopyWith<$Res> {
+  factory $CoinDetailsSuccessCopyWith(CoinDetailsSuccess value, $Res Function(CoinDetailsSuccess) _then) = _$CoinDetailsSuccessCopyWithImpl;
 @useResult
 $Res call({
- CoinEntity coin, CoinChartEntity chartData, String selectedTimePeriod
+ CoinEntity coin
 });
 
 
@@ -308,20 +318,84 @@ $Res call({
 
 }
 /// @nodoc
-class _$CoinSuccessCopyWithImpl<$Res>
-    implements $CoinSuccessCopyWith<$Res> {
-  _$CoinSuccessCopyWithImpl(this._self, this._then);
+class _$CoinDetailsSuccessCopyWithImpl<$Res>
+    implements $CoinDetailsSuccessCopyWith<$Res> {
+  _$CoinDetailsSuccessCopyWithImpl(this._self, this._then);
 
-  final CoinSuccess _self;
-  final $Res Function(CoinSuccess) _then;
+  final CoinDetailsSuccess _self;
+  final $Res Function(CoinDetailsSuccess) _then;
 
 /// Create a copy of CoinState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? coin = null,Object? chartData = null,Object? selectedTimePeriod = null,}) {
-  return _then(CoinSuccess(
+@pragma('vm:prefer-inline') $Res call({Object? coin = null,}) {
+  return _then(CoinDetailsSuccess(
 coin: null == coin ? _self.coin : coin // ignore: cast_nullable_to_non_nullable
-as CoinEntity,chartData: null == chartData ? _self.chartData : chartData // ignore: cast_nullable_to_non_nullable
-as CoinChartEntity,selectedTimePeriod: null == selectedTimePeriod ? _self.selectedTimePeriod : selectedTimePeriod // ignore: cast_nullable_to_non_nullable
+as CoinEntity,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
+class CoinDetailsFailure implements CoinState {
+  const CoinDetailsFailure({required this.error});
+  
+
+ final  String error;
+
+/// Create a copy of CoinState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CoinDetailsFailureCopyWith<CoinDetailsFailure> get copyWith => _$CoinDetailsFailureCopyWithImpl<CoinDetailsFailure>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CoinDetailsFailure&&(identical(other.error, error) || other.error == error));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,error);
+
+@override
+String toString() {
+  return 'CoinState.coinDetailsFailure(error: $error)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $CoinDetailsFailureCopyWith<$Res> implements $CoinStateCopyWith<$Res> {
+  factory $CoinDetailsFailureCopyWith(CoinDetailsFailure value, $Res Function(CoinDetailsFailure) _then) = _$CoinDetailsFailureCopyWithImpl;
+@useResult
+$Res call({
+ String error
+});
+
+
+
+
+}
+/// @nodoc
+class _$CoinDetailsFailureCopyWithImpl<$Res>
+    implements $CoinDetailsFailureCopyWith<$Res> {
+  _$CoinDetailsFailureCopyWithImpl(this._self, this._then);
+
+  final CoinDetailsFailure _self;
+  final $Res Function(CoinDetailsFailure) _then;
+
+/// Create a copy of CoinState
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? error = null,}) {
+  return _then(CoinDetailsFailure(
+error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }
@@ -332,43 +406,76 @@ as String,
 /// @nodoc
 
 
-class CoinError implements CoinState {
-  const CoinError(this.error);
+class CoinChartDataLoading implements CoinState {
+  const CoinChartDataLoading();
   
 
- final  ApiErrorModel error;
 
-/// Create a copy of CoinState
-/// with the given fields replaced by the non-null parameter values.
-@JsonKey(includeFromJson: false, includeToJson: false)
-@pragma('vm:prefer-inline')
-$CoinErrorCopyWith<CoinError> get copyWith => _$CoinErrorCopyWithImpl<CoinError>(this, _$identity);
+
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CoinError&&(identical(other.error, error) || other.error == error));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CoinChartDataLoading);
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,error);
+int get hashCode => runtimeType.hashCode;
 
 @override
 String toString() {
-  return 'CoinState.error(error: $error)';
+  return 'CoinState.coinChartDataLoading()';
+}
+
+
+}
+
+
+
+
+/// @nodoc
+
+
+class CoinChartDataSuccess implements CoinState {
+  const CoinChartDataSuccess({required this.coinChartData, required this.selectedInterval});
+  
+
+ final  CoinChartEntity coinChartData;
+ final  String selectedInterval;
+
+/// Create a copy of CoinState
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$CoinChartDataSuccessCopyWith<CoinChartDataSuccess> get copyWith => _$CoinChartDataSuccessCopyWithImpl<CoinChartDataSuccess>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CoinChartDataSuccess&&(identical(other.coinChartData, coinChartData) || other.coinChartData == coinChartData)&&(identical(other.selectedInterval, selectedInterval) || other.selectedInterval == selectedInterval));
+}
+
+
+@override
+int get hashCode => Object.hash(runtimeType,coinChartData,selectedInterval);
+
+@override
+String toString() {
+  return 'CoinState.coinChartDataSuccess(coinChartData: $coinChartData, selectedInterval: $selectedInterval)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $CoinErrorCopyWith<$Res> implements $CoinStateCopyWith<$Res> {
-  factory $CoinErrorCopyWith(CoinError value, $Res Function(CoinError) _then) = _$CoinErrorCopyWithImpl;
+abstract mixin class $CoinChartDataSuccessCopyWith<$Res> implements $CoinStateCopyWith<$Res> {
+  factory $CoinChartDataSuccessCopyWith(CoinChartDataSuccess value, $Res Function(CoinChartDataSuccess) _then) = _$CoinChartDataSuccessCopyWithImpl;
 @useResult
 $Res call({
- ApiErrorModel error
+ CoinChartEntity coinChartData, String selectedInterval
 });
 
 
@@ -376,19 +483,20 @@ $Res call({
 
 }
 /// @nodoc
-class _$CoinErrorCopyWithImpl<$Res>
-    implements $CoinErrorCopyWith<$Res> {
-  _$CoinErrorCopyWithImpl(this._self, this._then);
+class _$CoinChartDataSuccessCopyWithImpl<$Res>
+    implements $CoinChartDataSuccessCopyWith<$Res> {
+  _$CoinChartDataSuccessCopyWithImpl(this._self, this._then);
 
-  final CoinError _self;
-  final $Res Function(CoinError) _then;
+  final CoinChartDataSuccess _self;
+  final $Res Function(CoinChartDataSuccess) _then;
 
 /// Create a copy of CoinState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? error = null,}) {
-  return _then(CoinError(
-null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
-as ApiErrorModel,
+@pragma('vm:prefer-inline') $Res call({Object? coinChartData = null,Object? selectedInterval = null,}) {
+  return _then(CoinChartDataSuccess(
+coinChartData: null == coinChartData ? _self.coinChartData : coinChartData // ignore: cast_nullable_to_non_nullable
+as CoinChartEntity,selectedInterval: null == selectedInterval ? _self.selectedInterval : selectedInterval // ignore: cast_nullable_to_non_nullable
+as String,
   ));
 }
 
@@ -398,45 +506,43 @@ as ApiErrorModel,
 /// @nodoc
 
 
-class CoinChartLoading implements CoinState {
-  const CoinChartLoading({required this.coin, required this.chartData, required this.selectedTimePeriod});
+class CoinChartDataFailure implements CoinState {
+  const CoinChartDataFailure({required this.error});
   
 
- final  CoinEntity coin;
- final  CoinChartEntity chartData;
- final  String selectedTimePeriod;
+ final  String error;
 
 /// Create a copy of CoinState
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
 @pragma('vm:prefer-inline')
-$CoinChartLoadingCopyWith<CoinChartLoading> get copyWith => _$CoinChartLoadingCopyWithImpl<CoinChartLoading>(this, _$identity);
+$CoinChartDataFailureCopyWith<CoinChartDataFailure> get copyWith => _$CoinChartDataFailureCopyWithImpl<CoinChartDataFailure>(this, _$identity);
 
 
 
 @override
 bool operator ==(Object other) {
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CoinChartLoading&&(identical(other.coin, coin) || other.coin == coin)&&(identical(other.chartData, chartData) || other.chartData == chartData)&&(identical(other.selectedTimePeriod, selectedTimePeriod) || other.selectedTimePeriod == selectedTimePeriod));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CoinChartDataFailure&&(identical(other.error, error) || other.error == error));
 }
 
 
 @override
-int get hashCode => Object.hash(runtimeType,coin,chartData,selectedTimePeriod);
+int get hashCode => Object.hash(runtimeType,error);
 
 @override
 String toString() {
-  return 'CoinState.chartLoading(coin: $coin, chartData: $chartData, selectedTimePeriod: $selectedTimePeriod)';
+  return 'CoinState.coinChartDataFailure(error: $error)';
 }
 
 
 }
 
 /// @nodoc
-abstract mixin class $CoinChartLoadingCopyWith<$Res> implements $CoinStateCopyWith<$Res> {
-  factory $CoinChartLoadingCopyWith(CoinChartLoading value, $Res Function(CoinChartLoading) _then) = _$CoinChartLoadingCopyWithImpl;
+abstract mixin class $CoinChartDataFailureCopyWith<$Res> implements $CoinStateCopyWith<$Res> {
+  factory $CoinChartDataFailureCopyWith(CoinChartDataFailure value, $Res Function(CoinChartDataFailure) _then) = _$CoinChartDataFailureCopyWithImpl;
 @useResult
 $Res call({
- CoinEntity coin, CoinChartEntity chartData, String selectedTimePeriod
+ String error
 });
 
 
@@ -444,20 +550,18 @@ $Res call({
 
 }
 /// @nodoc
-class _$CoinChartLoadingCopyWithImpl<$Res>
-    implements $CoinChartLoadingCopyWith<$Res> {
-  _$CoinChartLoadingCopyWithImpl(this._self, this._then);
+class _$CoinChartDataFailureCopyWithImpl<$Res>
+    implements $CoinChartDataFailureCopyWith<$Res> {
+  _$CoinChartDataFailureCopyWithImpl(this._self, this._then);
 
-  final CoinChartLoading _self;
-  final $Res Function(CoinChartLoading) _then;
+  final CoinChartDataFailure _self;
+  final $Res Function(CoinChartDataFailure) _then;
 
 /// Create a copy of CoinState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? coin = null,Object? chartData = null,Object? selectedTimePeriod = null,}) {
-  return _then(CoinChartLoading(
-coin: null == coin ? _self.coin : coin // ignore: cast_nullable_to_non_nullable
-as CoinEntity,chartData: null == chartData ? _self.chartData : chartData // ignore: cast_nullable_to_non_nullable
-as CoinChartEntity,selectedTimePeriod: null == selectedTimePeriod ? _self.selectedTimePeriod : selectedTimePeriod // ignore: cast_nullable_to_non_nullable
+@pragma('vm:prefer-inline') $Res call({Object? error = null,}) {
+  return _then(CoinChartDataFailure(
+error: null == error ? _self.error : error // ignore: cast_nullable_to_non_nullable
 as String,
   ));
 }

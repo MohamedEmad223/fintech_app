@@ -7,6 +7,6 @@ abstract class CoinRepository {
 
   Future<ApiResult<CoinChartEntity>> getCoinChartData({
     required String coinId,
-    required String days,
+    required String interval,
   });
 }

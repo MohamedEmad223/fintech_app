@@ -6,9 +6,10 @@ class AppRouter {
   static Route? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.coinDetailsScreen:
+        final String coinId = settings.arguments as String;
         return MaterialPageRoute(
           settings: settings,
-          builder: (_) => const CoinDetailsScreen(),
+          builder: (_) => CoinDetailsScreen(coinId: coinId),
         );
       default:
         return null;

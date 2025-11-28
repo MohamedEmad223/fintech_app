@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/utils/spacing.dart';
 import '../widgets/about_section.dart';
 import '../widgets/action_buttons.dart';
+import '../widgets/coin_details_chart_configurations.dart';
 import '../widgets/coin_header.dart';
-import '../widgets/price_info.dart';
-import '../widgets/coin_chart.dart';
 import '../widgets/coin_statistics.dart';
 
-
 class CoinDetailsScreen extends StatelessWidget {
-  const CoinDetailsScreen({super.key});
+  final String coinId;
+
+  const CoinDetailsScreen({super.key, required this.coinId});
 
   @override
   Widget build(BuildContext context) {
@@ -44,28 +45,7 @@ class CoinDetailsScreen extends StatelessWidget {
                 verticalSpace(20),
                 const CoinHeader(),
                 verticalSpace(20),
-                Container(
-                  padding: EdgeInsets.all(16.w),
-                  decoration: BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.circular(16.r),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withValues(alpha: 0.1),
-                        spreadRadius: 1,
-                        blurRadius: 10,
-                        offset: const Offset(0, 1),
-                      ),
-                    ],
-                  ),
-                  child: Column(
-                    children: [
-                      const PriceInfo(),
-                      verticalSpace(20),
-                      const CoinChart(),
-                    ],
-                  ),
-                ),
+                CoinDetailsChartConfigurations(),
                 verticalSpace(20),
                 const CoinStatistics(),
                 verticalSpace(20),

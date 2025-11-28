@@ -1,35 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
+import '../../../../core/extensions/navigation_extension.dart';
+import '../../../../core/routing/routes.dart';
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_styles.dart';
 import '../../../../core/utils/spacing.dart';
 import '../../../../core/widgets/fancy_network_image.dart';
-import '../../../../core/routing/routes.dart';
-import '../../../../core/extensions/navigation_extension.dart';
+import '../../domain/entity/market_coin_entity.dart';
 
 class CryptoListItem extends StatelessWidget {
-  final String name;
-  final String symbol; // e.g., "Rank #1" or ticker
-  final String price;
-  final String change;
+  final MarketCoinEntity coin;
   final bool isPositive;
-  final String iconUrl;
 
   const CryptoListItem({
     super.key,
-    required this.name,
-    required this.symbol,
-    required this.price,
-    required this.change,
+    required this.coin,
     required this.isPositive,
-    required this.iconUrl,
   });
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.pushNamed(Routes.coinDetailsScreen);
+        context.pushNamed(Routes.coinDetailsScreen, arguments: coin.id);
       },
       child: Container(
         padding: EdgeInsets.all(16.w),
@@ -38,7 +32,7 @@ class CryptoListItem extends StatelessWidget {
           borderRadius: BorderRadius.circular(16.r),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.05),
+              color: Colors.black.withValues(alpha: 0.05),
               blurRadius: 10,
               offset: const Offset(0, 5),
             ),
@@ -51,7 +45,7 @@ class CryptoListItem extends StatelessWidget {
               height: 48.h,
               decoration: const BoxDecoration(shape: BoxShape.circle),
               child: FancyNetworkImage(
-                imagePath: iconUrl,
+                imagePath: coin.image,
                 width: 48.w,
                 height: 48.h,
                 borderRadiusGeometry: BorderRadius.circular(24.r),
@@ -62,16 +56,19 @@ class CryptoListItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(name, style: AppStyles.font16DarkBlueBold),
+                  Text(coin.name, style: AppStyles.font16DarkBlueBold),
                   verticalSpace(4),
-                  Text(symbol, style: AppStyles.font14GreyRegular),
+                  Text(coin.symbol, style: AppStyles.font14GreyRegular),
                 ],
               ),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Text(price, style: AppStyles.font16DarkBlueBold),
+                Text(
+                  coin.currentPrice.toString(),
+                  style: AppStyles.font16DarkBlueBold,
+                ),
                 verticalSpace(4),
                 Container(
                   padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 4.h),
@@ -91,7 +88,7 @@ class CryptoListItem extends StatelessWidget {
                       ),
                       horizontalSpace(4),
                       Text(
-                        change,
+                        coin.priceChangePercentage24h.toString(),
                         style: AppStyles.font12GreenMedium.copyWith(
                           color: AppColors.whiteColor,
                         ),
