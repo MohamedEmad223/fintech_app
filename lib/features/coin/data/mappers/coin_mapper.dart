@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:fintech_app/features/coin/data/models/coin_chart_response_model.dart';
 import 'package:fintech_app/features/coin/data/models/coin_response_model.dart';
 import 'package:fintech_app/features/coin/domain/entity/coin_chart_entity.dart';
@@ -6,7 +8,7 @@ import 'package:fintech_app/features/coin/domain/entity/coin_entity.dart';
 extension CoinResponseModelExtension on CoinResponseModel {
   CoinEntity toEntity() {
     try {
-      print('🔄 Mapping coin response: id=$id, symbol=$symbol, name=$name');
+      log('🔄 Mapping coin response: id=$id, symbol=$symbol, name=$name');
 
       final entity = CoinEntity(
         id: id,
@@ -27,11 +29,11 @@ extension CoinResponseModelExtension on CoinResponseModel {
         categories: categories ?? [],
       );
 
-      print('✅ Coin entity mapped successfully');
+      log('✅ Coin entity mapped successfully');
       return entity;
     } catch (e, stackTrace) {
-      print('❌ Error in toEntity mapper: $e');
-      print('📋 Stack trace:\n$stackTrace');
+      log('❌ Error in toEntity mapper: $e');
+      log('📋 Stack trace:\n$stackTrace');
       rethrow;
     }
   }
