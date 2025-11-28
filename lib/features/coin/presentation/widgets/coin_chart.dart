@@ -1,46 +1,153 @@
+import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import '../../../../core/utils/spacing.dart';
 
-class CoinChart extends StatelessWidget {
+class CoinChart extends StatefulWidget {
   const CoinChart({super.key});
 
   @override
+  State<CoinChart> createState() => _CoinChartState();
+}
+
+class _CoinChartState extends State<CoinChart> {
+  //background: linear-gradient(180deg, #1E1F4B 14.99%, rgba(30, 31, 75, 0.1) 95.1%);
+  List<Color> gradientColors = [
+    const Color(0xFF1E1F4B),
+    const Color(0x191E1F4B),
+  ];
+
+  @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(16.w),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16.r),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withOpacity(0.1),
-            spreadRadius: 1,
-            blurRadius: 10,
-            offset: const Offset(0, 1),
+    return Column(
+      children: [
+        SizedBox(
+          height: 200.h,
+          width: double.infinity,
+          child: LineChart(
+            LineChartData(
+              lineBarsData: [
+                LineChartBarData(
+                  spots: const [
+                    FlSpot(0, 1),
+                    FlSpot(1, 1.5),
+                    FlSpot(2, 1.4),
+                    FlSpot(3, 3.4),
+                    FlSpot(4, 2),
+                    FlSpot(5, 2.2),
+                    FlSpot(6, 1.8),
+                  ],
+                  isCurved: true,
+                  gradient: LinearGradient(
+                    colors: [
+                      ColorTween(
+                        begin: gradientColors[0],
+                        end: gradientColors[1],
+                      ).lerp(0.2)!,
+                      ColorTween(
+                        begin: gradientColors[0],
+                        end: gradientColors[1],
+                      ).lerp(0.2)!,
+                    ],
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                  ),
+                  barWidth: 3,
+                  preventCurveOverShooting: true,
+                  dotData: FlDotData(
+                    show: true,
+                    checkToShowDot: (spot, barData) {
+                      return barData.spots.indexOf(spot) ==
+                          barData.spots.indexWhere(
+                            (s) =>
+                                s.y ==
+                                barData.spots
+                                    .map((e) => e.y)
+                                    .reduce(
+                                      (value, element) =>
+                                          value > element ? value : element,
+                                    ),
+                          );
+                    },
+                    getDotPainter: (spot, percent, barData, index) =>
+                        FlDotCirclePainter(radius: 6, color: Color(0xffF56C2A)),
+                  ),
+                  belowBarData: BarAreaData(
+                    show: true,
+                    gradient: LinearGradient(
+                      colors: [
+                        ColorTween(
+                          begin: gradientColors[0],
+                          end: gradientColors[1],
+                        ).lerp(0.2)!.withValues(alpha: 0.8),
+                        ColorTween(
+                          begin: gradientColors[0],
+                          end: gradientColors[1],
+                        ).lerp(0.2)!.withValues(alpha: 0.0),
+                      ],
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                    ),
+                  ),
+                ),
+              ],
+              gridData: FlGridData(
+                show: true,
+                drawVerticalLine: false,
+                horizontalInterval: 0.4,
+                drawHorizontalLine: true,
+                getDrawingHorizontalLine: (value) => FlLine(
+                  color: const Color(0xFFBEBEBE),
+                  strokeWidth: 1,
+                  dashArray: [10, 5],
+                ),
+              ),
+              titlesData: FlTitlesData(
+                show: true,
+                bottomTitles: AxisTitles(
+                  sideTitles: SideTitles(
+                    showTitles: true,
+                    getTitlesWidget: (value, meta) {
+                      /// Customize bottom titles here
+                      return Text(
+                        value.toStringAsFixed(2),
+                        style: TextStyle(color: Colors.grey, fontSize: 12.sp),
+                      );
+                    },
+                    maxIncluded: true,
+                    interval: 1,
+                    minIncluded: true,
+                  ),
+                ),
+                leftTitles: AxisTitles(
+                  sideTitles: SideTitles(showTitles: false),
+                ),
+                rightTitles: AxisTitles(
+                  sideTitles: SideTitles(showTitles: false),
+                ),
+                topTitles: AxisTitles(
+                  sideTitles: SideTitles(showTitles: false),
+                ),
+              ),
+              borderData: FlBorderData(show: false),
+            ),
+            curve: Curves.easeInOut,
+            duration: const Duration(milliseconds: 500),
           ),
-        ],
-      ),
-      child: Column(
-        children: [
-          SizedBox(
-            height: 200.h,
-            width: double.infinity,
-            child: CustomPaint(painter: ChartPainter()),
-          ),
-          verticalSpace(20),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: const [
-              _TimeFilterButton(text: '1h', isSelected: false),
-              _TimeFilterButton(text: '1d', isSelected: true),
-              _TimeFilterButton(text: '1w', isSelected: false),
-              _TimeFilterButton(text: '1m', isSelected: false),
-              _TimeFilterButton(text: '1y', isSelected: false),
-            ],
-          ),
-        ],
-      ),
+        ),
+        verticalSpace(20),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: const [
+            _TimeFilterButton(text: '1h', isSelected: false),
+            _TimeFilterButton(text: '1d', isSelected: true),
+            _TimeFilterButton(text: '1w', isSelected: false),
+            _TimeFilterButton(text: '1m', isSelected: false),
+            _TimeFilterButton(text: '1y', isSelected: false),
+          ],
+        ),
+      ],
     );
   }
 }
@@ -69,85 +176,4 @@ class _TimeFilterButton extends StatelessWidget {
       ),
     );
   }
-}
-
-class ChartPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = const Color(0xFF1D3A70)
-      ..strokeWidth = 2
-      ..style = PaintingStyle.stroke;
-
-    final path = Path();
-    path.moveTo(0, size.height * 0.8);
-    path.quadraticBezierTo(
-      size.width * 0.1,
-      size.height * 0.5,
-      size.width * 0.2,
-      size.height * 0.6,
-    );
-    path.quadraticBezierTo(
-      size.width * 0.3,
-      size.height * 0.8,
-      size.width * 0.4,
-      size.height * 0.6,
-    );
-    path.quadraticBezierTo(
-      size.width * 0.5,
-      size.height * 0.4,
-      size.width * 0.6,
-      size.height * 0.7,
-    );
-    path.quadraticBezierTo(
-      size.width * 0.7,
-      size.height * 0.9,
-      size.width * 0.8,
-      size.height * 0.3,
-    );
-    path.quadraticBezierTo(
-      size.width * 0.9,
-      size.height * 0.5,
-      size.width,
-      size.height * 0.4,
-    );
-
-    canvas.drawPath(path, paint);
-
-    // Fill gradient
-    final fillPath = Path.from(path);
-    fillPath.lineTo(size.width, size.height);
-    fillPath.lineTo(0, size.height);
-    fillPath.close();
-
-    final gradient = LinearGradient(
-      begin: Alignment.topCenter,
-      end: Alignment.bottomCenter,
-      colors: [
-        const Color(0xFF1D3A70).withOpacity(0.3),
-        const Color(0xFF1D3A70).withOpacity(0.0),
-      ],
-    );
-
-    final fillPaint = Paint()
-      ..shader = gradient.createShader(
-        Rect.fromLTWH(0, 0, size.width, size.height),
-      )
-      ..style = PaintingStyle.fill;
-
-    canvas.drawPath(fillPath, fillPaint);
-
-    // Draw dot at peak
-    canvas.drawCircle(
-      Offset(size.width * 0.8, size.height * 0.3),
-      4,
-      Paint()..color = Colors.orange,
-    );
-
-    // Draw price tag
-    // Simplified for now
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

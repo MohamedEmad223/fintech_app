@@ -4,7 +4,7 @@ class CoinChartEntity {
   const CoinChartEntity({required this.prices});
 }
 
-class ChartPoint {
+class ChartPoint{
   final DateTime timestamp;
   final double price;
 
