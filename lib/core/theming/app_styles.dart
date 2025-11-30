@@ -122,4 +122,11 @@ class AppStyles {
     color: AppColors.primary,
     fontFamily: FontFamily.fontName,
   );
+
+  static TextStyle font18BlackPrimary = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: AppColors.black,
+    fontFamily: FontFamily.fontName,
+  );
 }
