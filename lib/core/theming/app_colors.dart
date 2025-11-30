@@ -44,4 +44,7 @@ abstract class AppColors {
 
   // Bitcoin color
   static const bitcoinOrange = Color(0xFFF7931A);
+
+  ///Gray Colors
+  static const greyLightColor = Color(0xFFF2F2F2);
 }

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "470699096354",
+    "project_id": "finetech-app",
+    "storage_bucket": "finetech-app.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470699096354:android:536cd79e4854b08aa48d7b",
+        "android_client_info": {
+          "package_name": "com.example.fintech_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANsBHnxIvMV2nDacVYxAEgYGIWYQ2dVzc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

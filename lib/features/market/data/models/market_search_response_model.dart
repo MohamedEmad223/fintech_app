@@ -82,8 +82,8 @@ class Exchange {
   String id;
   @JsonKey(name: "name")
   String name;
-  @JsonKey(name: "market_type")
-  MarketType marketType;
+  // @JsonKey(name: "market_type")
+  // MarketType marketType;
   @JsonKey(name: "thumb")
   String thumb;
   @JsonKey(name: "large")
@@ -92,7 +92,7 @@ class Exchange {
   Exchange({
     required this.id,
     required this.name,
-    required this.marketType,
+    // required this.marketType,
     required this.thumb,
     required this.large,
   });
@@ -103,10 +103,10 @@ class Exchange {
   Map<String, dynamic> toJson() => _$ExchangeToJson(this);
 }
 
-enum MarketType {
-  @JsonValue("spot")
-  SPOT,
-}
+// enum MarketType {
+//   @JsonValue("spot")
+//   SPOT,
+// }
 
 @JsonSerializable()
 class Nft {

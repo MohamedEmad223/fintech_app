@@ -65,7 +65,6 @@ Map<String, dynamic> _$CoinToJson(Coin instance) => <String, dynamic>{
 Exchange _$ExchangeFromJson(Map<String, dynamic> json) => Exchange(
   id: json['id'] as String,
   name: json['name'] as String,
-  marketType: $enumDecode(_$MarketTypeEnumMap, json['market_type']),
   thumb: json['thumb'] as String,
   large: json['large'] as String,
 );
@@ -73,12 +72,9 @@ Exchange _$ExchangeFromJson(Map<String, dynamic> json) => Exchange(
 Map<String, dynamic> _$ExchangeToJson(Exchange instance) => <String, dynamic>{
   'id': instance.id,
   'name': instance.name,
-  'market_type': _$MarketTypeEnumMap[instance.marketType]!,
   'thumb': instance.thumb,
   'large': instance.large,
 };
-
-const _$MarketTypeEnumMap = {MarketType.SPOT: 'spot'};
 
 Nft _$NftFromJson(Map<String, dynamic> json) => Nft(
   id: json['id'] as String,

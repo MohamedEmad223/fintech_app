@@ -568,8 +568,8 @@ class Platforms {
 
 @JsonSerializable()
 class Ticker {
-  @JsonKey(name: "base", unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
-  final Base? base;
+  // @JsonKey(name: "base", unknownEnumValue: JsonKey.nullForUndefinedEnumValue)
+  // final Base? base;
   @JsonKey(name: "target")
   final String? target;
   @JsonKey(name: "market")
@@ -582,8 +582,8 @@ class Ticker {
   final Map<String, double>? convertedLast;
   @JsonKey(name: "converted_volume")
   final Map<String, double>? convertedVolume;
-  @JsonKey(name: "trust_score")
-  final TrustScore? trustScore;
+  // @JsonKey(name: "trust_score")
+  // final TrustScore? trustScore;
   @JsonKey(name: "bid_ask_spread_percentage")
   final double? bidAskSpreadPercentage;
   @JsonKey(name: "timestamp")
@@ -602,23 +602,23 @@ class Ticker {
   final dynamic tokenInfoUrl;
   @JsonKey(name: "coin_id")
   final String? coinId;
-  @JsonKey(
-    name: "target_coin_id",
-    unknownEnumValue: JsonKey.nullForUndefinedEnumValue,
-  )
-  final TargetCoinId? targetCoinId;
+  // @JsonKey(
+  //   name: "target_coin_id",
+  //   unknownEnumValue: JsonKey.nullForUndefinedEnumValue,
+  // )
+  // final TargetCoinId? targetCoinId;
   @JsonKey(name: "coin_mcap_usd")
   final double? coinMcapUsd;
 
   Ticker({
-    this.base,
+    // this.base,
     this.target,
     this.market,
     this.last,
     this.volume,
     this.convertedLast,
     this.convertedVolume,
-    this.trustScore,
+    // this.trustScore,
     this.bidAskSpreadPercentage,
     this.timestamp,
     this.lastTradedAt,
@@ -628,7 +628,7 @@ class Ticker {
     this.tradeUrl,
     this.tokenInfoUrl,
     this.coinId,
-    this.targetCoinId,
+    // this.targetCoinId,
     this.coinMcapUsd,
   });
 
@@ -637,20 +637,20 @@ class Ticker {
   Map<String, dynamic> toJson() => _$TickerToJson(this);
 }
 
-enum Base {
-  @JsonValue("BNB")
-  BNB,
-  @JsonValue("BTC")
-  BTC,
-  @JsonValue("ETH")
-  ETH,
-  @JsonValue("SOL")
-  SOL,
-  @JsonValue("XAUT")
-  XAUT,
-  @JsonValue("XBT")
-  XBT,
-}
+// enum Base {
+//   @JsonValue("BNB")
+//   BNB,
+//   @JsonValue("BTC")
+//   BTC,
+//   @JsonValue("ETH")
+//   ETH,
+//   @JsonValue("SOL")
+//   SOL,
+//   @JsonValue("XAUT")
+//   XAUT,
+//   @JsonValue("XBT")
+//   XBT,
+// }
 
 @JsonSerializable()
 class Market {
@@ -668,26 +668,26 @@ class Market {
   Map<String, dynamic> toJson() => _$MarketToJson(this);
 }
 
-enum TargetCoinId {
-  @JsonValue("agora-dollar")
-  AGORA_DOLLAR,
-  @JsonValue("bitcoin")
-  BITCOIN,
-  @JsonValue("first-digital-usd")
-  FIRST_DIGITAL_USD,
-  @JsonValue("paypal-usd")
-  PAYPAL_USD,
-  @JsonValue("societe-generale-forge-eurcv")
-  SOCIETE_GENERALE_FORGE_EURCV,
-  @JsonValue("tether")
-  TETHER,
-  @JsonValue("usd1-wlfi")
-  USD1_WLFI,
-  @JsonValue("usd-coin")
-  USD_COIN,
-}
-
-enum TrustScore {
-  @JsonValue("green")
-  GREEN,
-}
+// enum TargetCoinId {
+//   @JsonValue("agora-dollar")
+//   AGORA_DOLLAR,
+//   @JsonValue("bitcoin")
+//   BITCOIN,
+//   @JsonValue("first-digital-usd")
+//   FIRST_DIGITAL_USD,
+//   @JsonValue("paypal-usd")
+//   PAYPAL_USD,
+//   @JsonValue("societe-generale-forge-eurcv")
+//   SOCIETE_GENERALE_FORGE_EURCV,
+//   @JsonValue("tether")
+//   TETHER,
+//   @JsonValue("usd1-wlfi")
+//   USD1_WLFI,
+//   @JsonValue("usd-coin")
+//   USD_COIN,
+// }
+//
+// enum TrustScore {
+//   @JsonValue("green")
+//   GREEN,
+// }

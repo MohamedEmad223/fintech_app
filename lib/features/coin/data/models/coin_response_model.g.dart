@@ -503,11 +503,6 @@ Map<String, dynamic> _$PlatformsToJson(Platforms instance) => <String, dynamic>{
 };
 
 Ticker _$TickerFromJson(Map<String, dynamic> json) => Ticker(
-  base: $enumDecodeNullable(
-    _$BaseEnumMap,
-    json['base'],
-    unknownValue: JsonKey.nullForUndefinedEnumValue,
-  ),
   target: json['target'] as String?,
   market: json['market'] == null
       ? null
@@ -520,7 +515,6 @@ Ticker _$TickerFromJson(Map<String, dynamic> json) => Ticker(
   convertedVolume: (json['converted_volume'] as Map<String, dynamic>?)?.map(
     (k, e) => MapEntry(k, (e as num).toDouble()),
   ),
-  trustScore: $enumDecodeNullable(_$TrustScoreEnumMap, json['trust_score']),
   bidAskSpreadPercentage: (json['bid_ask_spread_percentage'] as num?)
       ?.toDouble(),
   timestamp: json['timestamp'] == null
@@ -537,23 +531,16 @@ Ticker _$TickerFromJson(Map<String, dynamic> json) => Ticker(
   tradeUrl: json['trade_url'] as String?,
   tokenInfoUrl: json['token_info_url'],
   coinId: json['coin_id'] as String?,
-  targetCoinId: $enumDecodeNullable(
-    _$TargetCoinIdEnumMap,
-    json['target_coin_id'],
-    unknownValue: JsonKey.nullForUndefinedEnumValue,
-  ),
   coinMcapUsd: (json['coin_mcap_usd'] as num?)?.toDouble(),
 );
 
 Map<String, dynamic> _$TickerToJson(Ticker instance) => <String, dynamic>{
-  'base': _$BaseEnumMap[instance.base],
   'target': instance.target,
   'market': instance.market,
   'last': instance.last,
   'volume': instance.volume,
   'converted_last': instance.convertedLast,
   'converted_volume': instance.convertedVolume,
-  'trust_score': _$TrustScoreEnumMap[instance.trustScore],
   'bid_ask_spread_percentage': instance.bidAskSpreadPercentage,
   'timestamp': instance.timestamp?.toIso8601String(),
   'last_traded_at': instance.lastTradedAt?.toIso8601String(),
@@ -563,30 +550,7 @@ Map<String, dynamic> _$TickerToJson(Ticker instance) => <String, dynamic>{
   'trade_url': instance.tradeUrl,
   'token_info_url': instance.tokenInfoUrl,
   'coin_id': instance.coinId,
-  'target_coin_id': _$TargetCoinIdEnumMap[instance.targetCoinId],
   'coin_mcap_usd': instance.coinMcapUsd,
-};
-
-const _$BaseEnumMap = {
-  Base.BNB: 'BNB',
-  Base.BTC: 'BTC',
-  Base.ETH: 'ETH',
-  Base.SOL: 'SOL',
-  Base.XAUT: 'XAUT',
-  Base.XBT: 'XBT',
-};
-
-const _$TrustScoreEnumMap = {TrustScore.GREEN: 'green'};
-
-const _$TargetCoinIdEnumMap = {
-  TargetCoinId.AGORA_DOLLAR: 'agora-dollar',
-  TargetCoinId.BITCOIN: 'bitcoin',
-  TargetCoinId.FIRST_DIGITAL_USD: 'first-digital-usd',
-  TargetCoinId.PAYPAL_USD: 'paypal-usd',
-  TargetCoinId.SOCIETE_GENERALE_FORGE_EURCV: 'societe-generale-forge-eurcv',
-  TargetCoinId.TETHER: 'tether',
-  TargetCoinId.USD1_WLFI: 'usd1-wlfi',
-  TargetCoinId.USD_COIN: 'usd-coin',
 };
 
 Market _$MarketFromJson(Map<String, dynamic> json) => Market(

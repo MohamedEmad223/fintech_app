@@ -14,7 +14,7 @@ class MarketCubit extends Cubit<MarketState> {
 
   int _currentPage = 1;
   List<MarketCoinEntity> _allCoins = [];
-  bool _isPaginationLoading = false;
+  bool isPaginationLoading = false;
 
   Future<void> getMarketCoins({bool isRefresh = false}) async {
     if (isRefresh) {
@@ -24,7 +24,7 @@ class MarketCubit extends Cubit<MarketState> {
     } else if (_currentPage == 1) {
       emit(const MarketState.loading());
     } else {
-      _isPaginationLoading = true;
+      isPaginationLoading = true;
       emit(MarketState.paginationLoading(_allCoins));
     }
 
@@ -38,13 +38,13 @@ class MarketCubit extends Cubit<MarketState> {
           _allCoins.addAll(coins);
         }
         _currentPage++;
-        _isPaginationLoading = false;
+        isPaginationLoading = false;
         emit(MarketState.success(_allCoins));
       case Failure(apiErrorModel: final error):
         if (_currentPage == 1) {
           emit(MarketState.error(error));
         } else {
-          _isPaginationLoading = false;
+          isPaginationLoading = false;
           emit(MarketState.paginationError(_allCoins, error));
         }
     }
