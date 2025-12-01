@@ -70,7 +70,7 @@ dev_dependencies:
     sdk: flutter
   #Code generator (mainly used with cubit & retrofit)
   json_serializable: ^6.11.1
-  build_runner: ^2.8.0
+  build_runner: ^2.10.4
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
