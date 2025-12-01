@@ -11,7 +11,6 @@ class FintechApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final appRouter = AppRouter();
 
     return ScreenUtilInit(
       designSize: const Size(375, 827),
@@ -23,7 +22,7 @@ class FintechApp extends StatelessWidget {
             debugShowCheckedModeBanner: false,
             title: 'Fintech App',
             theme: themeState.themeData,
-            onGenerateRoute: appRouter.generateRoute,
+            onGenerateRoute: AppRouter().generateRoute,
             initialRoute: Routes.homeScreen,
           );
         },
