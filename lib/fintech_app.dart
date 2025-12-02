@@ -1,8 +1,10 @@
 import 'package:fintech_app/core/routing/app_router.dart';
+
 import 'package:fintech_app/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'features/market/presentation/screens/market_screen.dart';
 import 'core/theming/theme/theme_cubit.dart';
 import 'core/theming/theme/theme_state.dart';
 

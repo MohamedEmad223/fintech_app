@@ -1,5 +1,5 @@
 class ApiConstants {
-  static const String apiBaseUrl = "https://api.example.com/";
+  static const String apiBaseUrl = "https://api.coingecko.com/api/v3";
 }
 
 class ApiErrors {
