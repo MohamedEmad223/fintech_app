@@ -2,7 +2,7 @@ name: fintech_app
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -55,8 +55,12 @@ dependencies:
   flutter_screenutil: ^5.9.3
   #Styled Toast
   flutter_styled_toast: ^2.2.1
-  #Chart library for portfolio
-  fl_chart: ^0.69.2
+  #Fancy Network Image
+  fancy_shimmer_image: ^2.0.3
+  #Equatable
+  equatable: ^2.0.7
+  #Chart library
+  fl_chart: ^1.1.1
   #Svgs for images
   flutter_svg: ^2.2.3
 
@@ -70,7 +74,11 @@ dev_dependencies:
     sdk: flutter
   #Code generator (mainly used with cubit & retrofit)
   json_serializable: ^6.11.1
-  build_runner: ^2.8.0
+  build_runner: ^2.4.0
+  #testing
+  bloc_test: ^10.0.0
+  integration_test:
+    sdk: flutter
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -84,7 +92,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -117,5 +124,3 @@ flutter:
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/to/font-from-package
-
-
