@@ -71,6 +71,13 @@ class AppStyles {
     fontFamily: FontFamily.fontName,
   );
 
+  static TextStyle font18PrimaryBold = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: AppColors.primary,
+    fontFamily: FontFamily.fontName,
+  );
+
   static TextStyle font16PrimaryBold = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.bold,
@@ -98,6 +105,13 @@ class AppStyles {
     color: AppColors.primary,
     fontFamily: FontFamily.fontName,
   );
+
+  static TextStyle font14PrimaryMedium = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: AppColors.primary,
+    fontFamily: FontFamily.fontName,
+  );
   static TextStyle font14BlackMedium = TextStyle(
     fontSize: 14.sp,
     fontWeight: FontWeightHelper.medium,
@@ -106,6 +120,13 @@ class AppStyles {
 
   static TextStyle font12GreyRegular = TextStyle(
     fontSize: 12.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: AppColors.textTertiary,
+    fontFamily: FontFamily.fontName,
+  );
+
+  static TextStyle font14PrimaryRegular = TextStyle(
+    fontSize: 14.sp,
     fontWeight: FontWeightHelper.regular,
     color: AppColors.textTertiary,
     fontFamily: FontFamily.fontName,
@@ -163,6 +184,33 @@ class AppStyles {
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.bold,
     color: AppColors.primary,
+    fontFamily: FontFamily.fontName,
+  );
+
+  static TextStyle font18BlackPrimary = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.bold,
+    color: AppColors.black,
+    fontFamily: FontFamily.fontName,
+  );
+
+  static TextStyle font14regularWhite = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: Colors.white,
+    fontFamily: FontFamily.fontName,
+  );
+  static TextStyle font16mediumPrimary = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: AppColors.primary,
+    fontFamily: FontFamily.fontName,
+  );
+
+  static TextStyle font14mediumPrimary = TextStyle(
+    fontSize: 14.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: AppColors.blue,
     fontFamily: FontFamily.fontName,
   );
 }

@@ -18,6 +18,7 @@ abstract class AppColors {
   static const primary = Color(0xFF1D3A70);
   static const secondary = Color(0xFFF56C2A);
   static const blue = Color(0xff4766F9);
+  static const black = Color(0xff1F1F1F);
 
   // Portfolio Colors
   // Gradient colors for portfolio card

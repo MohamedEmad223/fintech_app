@@ -1,7 +1,7 @@
 import 'package:fintech_app/core/widgets/custom_app_bar.dart';
 import 'package:fintech_app/core/theming/app_colors.dart';
 import 'package:fintech_app/features/portfolio/presentation/widgets/build_month_selector_widget.dart';
-import 'package:fintech_app/features/portfolio/presentation/widgets/lable_text_widget.dart';
+import 'package:fintech_app/core/widgets/lable_text_widget.dart';
 import 'package:fintech_app/features/portfolio/presentation/widgets/my_holding_widget.dart';
 import 'package:fintech_app/features/portfolio/presentation/widgets/portfolio_chart_value_widget.dart';
 import 'package:fintech_app/features/portfolio/presentation/widgets/recent_transactions_widget.dart';
