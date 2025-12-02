@@ -1,3 +1,4 @@
+import 'package:fintech_app/core/theming/app_assets.dart';
 import 'package:fintech_app/features/home/data/trending_model.dart';
 import 'package:fintech_app/features/home/presentation/widgets/trending_now.dart';
 import 'package:flutter/material.dart';
@@ -12,21 +13,21 @@ class TrendingNowListView extends StatelessWidget {
       symbol: 'BTC',
       value: '1,132,151',
       percent: '12%',
-      icon: 'assets/svgs/bitcoin.svg',
+      icon: AppAssets.bitcoinSvg,
     ),
     TrendingModel(
       name: 'Ethereum',
       symbol: 'ETH',
       value: '1,132,151',
       percent: '12%',
-      icon: 'assets/svgs/ethereum.svg',
+      icon: AppAssets.ethereumSvg,
     ),
     TrendingModel(
       name: 'Litecoin',
       symbol: 'LTC',
       value: '1,132,151',
       percent: '12%',
-      icon: 'assets/svgs/lc.svg',
+      icon: AppAssets.litecoinSvg,
     ),
   ];
 
