@@ -1,3 +1,4 @@
+import 'package:fintech_app/core/theming/app_assets.dart';
 import 'package:fintech_app/core/theming/app_colors.dart';
 import 'package:fintech_app/core/theming/app_styles.dart';
 import 'package:fintech_app/features/home/data/top_gainer_model.dart';
@@ -29,7 +30,7 @@ class TopGainerCard extends StatelessWidget {
           CircleAvatar(
             radius: 25.r,
             backgroundColor: AppColors.backgroundColor,
-            child: SvgPicture.asset('assets/svgs/bitcoin.svg'),
+            child: SvgPicture.asset(AppAssets.bitcoinSvg),
           ),
           SizedBox(width: 12.w),
           Expanded(
