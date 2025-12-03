@@ -1,6 +1,6 @@
 import 'package:fintech_app/core/di/dependency_injection.dart';
 import 'package:fintech_app/core/routing/routes.dart';
-import 'package:fintech_app/features/home/presentation/screens/home_screen.dart';
+import 'package:fintech_app/features/home/presentation/home_screen.dart';
 import 'package:fintech_app/features/home/presentation/logic/global_crypto/global_crypto_cubit.dart';
 import 'package:fintech_app/features/home/presentation/logic/home_coin/home_coin_cubit.dart';
 import 'package:fintech_app/features/home/presentation/logic/trending_cubit/trending_cubit.dart';

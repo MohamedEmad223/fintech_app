@@ -1,36 +1,37 @@
-name: PR Checks
+name: PR Check & Analyze
 
 on:
   pull_request:
     branches:
       - develop
-      - feature/**
 
 jobs:
-  pr_checks:
+  analyze:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Setup Dart & FVM
+      - name: Setup Dart
         uses: dart-lang/setup-dart@v1
         with:
-          sdk: '3.1.0' 
+          sdk: '3.1.0'   
 
-      - name: Install FVM & Flutter
+      - name: Setup FVM & Flutter
         run: |
           dart pub global activate fvm
           fvm install 3.35.7
           fvm use 3.35.7
 
-      - name: Install Dependencies
+      - name: Flutter Pub Get
         run: fvm flutter pub get
 
-      - name: Run Analyzer 
+      - name: Generate code files
+        run: fvm flutter pub run build_runner build --delete-conflicting-outputs
+
+      - name: Run Flutter Analyze
         run: fvm flutter analyze .
 
-
-      - name: Check Formatting
-        run: fvm dart format .
+      - name: Run Flutter Tests
+        run: fvm flutter test
