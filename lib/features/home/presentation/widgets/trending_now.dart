@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fintech_app/core/theming/app_colors.dart';
 import 'package:fintech_app/core/theming/app_styles.dart';
+import 'package:fintech_app/core/widgets/fancy_network_image.dart';
 import 'package:fintech_app/features/home/domain/entity/trending_coin_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -56,7 +57,11 @@ class TrendingNow extends StatelessWidget {
                 width: 36.w,
                 height: 36.h,
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
-                    CircularProgressIndicator(value: downloadProgress.progress),
+                    FancyNetworkImage(
+                height: 36,
+                width: 36,
+                imagePath: item.imageUrl,
+              ),
                 errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ],

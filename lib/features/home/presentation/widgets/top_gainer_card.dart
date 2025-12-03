@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fintech_app/core/theming/app_colors.dart';
 import 'package:fintech_app/core/theming/app_styles.dart';
+import 'package:fintech_app/core/widgets/fancy_network_image.dart';
 import 'package:fintech_app/features/home/domain/entity/home_coin_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -42,8 +43,11 @@ class TopGainerCard extends StatelessWidget {
                   ),
                 ),
               ),
-              placeholder: (context, url) =>
-                  const Center(child: CircularProgressIndicator()),
+              placeholder: (context, url) => FancyNetworkImage(
+                height: 36,
+                width: 36,
+                imagePath: topGainerModel.image,
+              ),
               errorWidget: (context, url, error) => const Icon(Icons.error),
             ),
           ),
