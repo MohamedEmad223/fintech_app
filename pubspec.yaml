@@ -63,6 +63,9 @@ dependencies:
   fl_chart: ^1.1.1
   #Svgs for images
   flutter_svg: ^2.2.3
+  cached_network_image: ^3.4.1
+  #Shimmer
+  shimmer: ^3.0.0
 
 
   cupertino_icons: ^1.0.8
@@ -74,7 +77,7 @@ dev_dependencies:
     sdk: flutter
   #Code generator (mainly used with cubit & retrofit)
   json_serializable: ^6.11.1
-  build_runner: ^2.10.4
+  build_runner: ^2.7.1
   #testing
   bloc_test: ^10.0.0
   integration_test:
