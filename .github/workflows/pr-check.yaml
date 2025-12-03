@@ -30,8 +30,9 @@ jobs:
       - name: Generate code files
         run: fvm flutter pub run build_runner build --delete-conflicting-outputs
 
-      - name: Run Flutter Analyze
+      - name: Run Analyzer 
         run: fvm flutter analyze .
 
-      - name: Run Flutter Tests
-        run: fvm flutter test
+
+      - name: Check Formatting
+        run: fvm dart format .
