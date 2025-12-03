@@ -1,15 +1,10 @@
-import 'package:fintech_app/features/home/data/card_item_model.dart';
+import 'package:fintech_app/features/home/domain/entity/home_coin_entity.dart';
 import 'package:fintech_app/features/home/presentation/widgets/market_card.dart';
 import 'package:flutter/material.dart';
 
 class MarketOverviewGridViewWidget extends StatelessWidget {
-  MarketOverviewGridViewWidget({super.key});
-  final List<CardItemModel> items = [
-    CardItemModel(title: "Market Cap", value: "\$2.1T", percent: "2,35%"),
-    CardItemModel(title: "24h Volume", value: "\$85.5B", percent: "2,35%"),
-    CardItemModel(title: "BTC Dominance", value: "48.5%"),
-    CardItemModel(title: "Active Coins", value: "19.417"),
-  ];
+  const MarketOverviewGridViewWidget({super.key, required this.items});
+  final List<HomeCoinEntity> items;
   @override
   Widget build(BuildContext context) {
     return GridView.builder(
@@ -21,9 +16,10 @@ class MarketOverviewGridViewWidget extends StatelessWidget {
         crossAxisSpacing: 10,
         childAspectRatio: 1.6,
       ),
-      itemCount: items.length,
+      itemCount: 4,
       itemBuilder: (context, index) {
-        return MarketCard(item: items[index]);
+        final item = items[index];
+        return MarketCard(item: item);
       },
     );
   }

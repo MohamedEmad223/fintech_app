@@ -1,14 +1,30 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:fintech_app/core/theming/app_colors.dart';
 import 'package:fintech_app/core/theming/app_styles.dart';
-import 'package:fintech_app/features/home/data/trending_model.dart';
+import 'package:fintech_app/features/home/domain/entity/trending_coin_entity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 
 class TrendingNow extends StatelessWidget {
-  final TrendingModel item;
-
   const TrendingNow({super.key, required this.item});
+  final TrendingCoinEntity item;
+
+  String formatNumber(double value) {
+    List<String> parts = value.toString().split('.');
+
+    String before = parts[0];
+    String after = parts.length > 1 ? parts[1] : "0";
+
+    if (before.length > 2) {
+      before = before.substring(0, 2);
+    }
+
+    if (after.length > 2) {
+      after = after.substring(0, 2);
+    }
+
+    return "$before.$after";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,23 +41,53 @@ class TrendingNow extends StatelessWidget {
         children: [
           Row(
             children: [
-              Text(item.name, style: AppStyles.font16PrimaryBold),
+              Expanded(
+                child: Text(
+                  item.name,
+                  style: AppStyles.font16PrimaryBold,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: false,
+                ),
+              ),
               Spacer(),
-              SvgPicture.asset(item.icon),
+              CachedNetworkImage(
+                imageUrl: item.imageUrl,
+                width: 36.w,
+                height: 36.h,
+                progressIndicatorBuilder: (context, url, downloadProgress) =>
+                    CircularProgressIndicator(value: downloadProgress.progress),
+                errorWidget: (context, url, error) => Icon(Icons.error),
+              ),
             ],
           ),
 
           SizedBox(height: 5.h),
 
-          Text(item.symbol, style: AppStyles.font14PrimaryRegular),
+          Text(
+            item.symbol,
+            overflow: TextOverflow.ellipsis,
+            maxLines: 2,
+            softWrap: false,
+            style: AppStyles.font14PrimaryRegular,
+          ),
 
           SizedBox(height: 5.h),
 
           Row(
             children: [
-              Text(item.value, style: AppStyles.font16PrimaryBold),
+              Text(
+                formatNumber(item.price),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                softWrap: false,
+                style: AppStyles.font16PrimaryBold,
+              ),
               Spacer(),
-              Text(item.percent, style: AppStyles.font14mediumPrimary),
+              Text(
+                formatNumber(item.priceChangePercentage24h),
+                style: AppStyles.font14mediumPrimary,
+              ),
               Icon(Icons.arrow_drop_up, size: 25.sp, color: AppColors.blue),
             ],
           ),

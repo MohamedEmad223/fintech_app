@@ -3,7 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class WeekleyProfitWidget extends StatelessWidget {
-  const WeekleyProfitWidget({super.key});
+  const WeekleyProfitWidget({super.key, required this.profit});
+  final String profit;
+
+  String formatPercentage(num value) {
+    final formatted = value.toStringAsFixed(2);
+    if (value > 0) return "+$formatted%";
+    if (value < 0) return "-$formatted%";
+    return "$formatted%";
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +29,18 @@ class WeekleyProfitWidget extends StatelessWidget {
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Text('2.35%', style: AppStyles.font14regularWhite),
+              Text(
+                formatPercentage(double.parse(profit)),
+                style: AppStyles.font14regularWhite,
+              ),
               SizedBox(width: 4.w),
-              Icon(Icons.arrow_drop_up, color: Colors.white, size: 20.r),
+              Icon(
+                double.parse(profit) > 0
+                    ? Icons.arrow_drop_up
+                    : Icons.arrow_drop_down,
+                color: Colors.white,
+                size: 20.r,
+              ),
             ],
           ),
         ),

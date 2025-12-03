@@ -1,11 +1,14 @@
 import 'package:fintech_app/core/theming/app_colors.dart';
+import 'package:fintech_app/features/home/presentation/logic/trending_cubit/trending_cubit.dart';
+import 'package:fintech_app/features/home/presentation/screens/trending_coins_screen.dart';
+import 'package:fintech_app/features/home/presentation/widgets/bloc_builder_for_home_title_value_card.dart';
+import 'package:fintech_app/features/home/presentation/widgets/bloc_builder_for_market_over_view.dart';
+import 'package:fintech_app/features/home/presentation/widgets/bloc_builder_for_top_gainer.dart';
+import 'package:fintech_app/features/home/presentation/widgets/bloc_bulider_for_trending_now.dart';
 import 'package:fintech_app/features/home/presentation/widgets/header_of_home_widget.dart';
-import 'package:fintech_app/features/home/presentation/widgets/home_total_value_card.dart';
-import 'package:fintech_app/features/home/presentation/widgets/market_overview_widget.dart';
-import 'package:fintech_app/features/home/presentation/widgets/top_gainer_list_view.dart';
-import 'package:fintech_app/features/home/presentation/widgets/trending_now_list_view.dart';
 import 'package:fintech_app/core/widgets/lable_text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -24,19 +27,33 @@ class HomeScreen extends StatelessWidget {
               SizedBox(height: 10.h),
               HeaderOfHomeWidget(),
               SizedBox(height: 30.h),
-              HomeTotalValueCard(),
+              BlocBuilderForHomeTitleValueCard(),
               SizedBox(height: 14.h),
               LableTextWidget(text: 'Market Overview'),
               SizedBox(height: 10.h),
-              MarketOverviewGridViewWidget(),
+              BlocBuilderForMarketOverView(),
               SizedBox(height: 14.h),
-              LableTextWidget(text: 'Trending Now', viewAll: 'View All'),
+              LableTextWidget(
+                text: 'Trending Now',
+                viewAll: 'View All',
+                onViewAllTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (_) => BlocProvider.value(
+                        value: context.read<TrendingCubit>(),
+                        child: const TrendingCoinsScreen(),
+                      ),
+                    ),
+                  );
+                },
+              ),
               SizedBox(height: 10.h),
-              TrendingNowListView(),
+              BlocBuliderForTrendingNow(),
               SizedBox(height: 14.h),
               LableTextWidget(text: 'Top Gainers'),
               SizedBox(height: 10.h),
-              TopGainerListView(),
+              BlocBuilderForTopGainer(),
             ],
           ),
         ),
