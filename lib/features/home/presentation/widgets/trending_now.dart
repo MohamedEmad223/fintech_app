@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:fintech_app/core/helpers/helper_methods.dart';
 import 'package:fintech_app/core/theming/app_colors.dart';
 import 'package:fintech_app/core/theming/app_styles.dart';
 import 'package:fintech_app/core/widgets/fancy_network_image.dart';
@@ -9,23 +10,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class TrendingNow extends StatelessWidget {
   const TrendingNow({super.key, required this.item});
   final TrendingCoinEntity item;
-
-  String formatNumber(double value) {
-    List<String> parts = value.toString().split('.');
-
-    String before = parts[0];
-    String after = parts.length > 1 ? parts[1] : "0";
-
-    if (before.length > 2) {
-      before = before.substring(0, 2);
-    }
-
-    if (after.length > 2) {
-      after = after.substring(0, 2);
-    }
-
-    return "$before.$after";
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -58,17 +42,15 @@ class TrendingNow extends StatelessWidget {
                 height: 36.h,
                 progressIndicatorBuilder: (context, url, downloadProgress) =>
                     FancyNetworkImage(
-                height: 36,
-                width: 36,
-                imagePath: item.imageUrl,
-              ),
+                      height: 36,
+                      width: 36,
+                      imagePath: item.imageUrl,
+                    ),
                 errorWidget: (context, url, error) => Icon(Icons.error),
               ),
             ],
           ),
-
           SizedBox(height: 5.h),
-
           Text(
             item.symbol,
             overflow: TextOverflow.ellipsis,
@@ -76,13 +58,11 @@ class TrendingNow extends StatelessWidget {
             softWrap: false,
             style: AppStyles.font14PrimaryRegular,
           ),
-
           SizedBox(height: 5.h),
-
           Row(
             children: [
               Text(
-                formatNumber(item.price),
+                HelperMethods.formatNumber(item.price),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 softWrap: false,
@@ -90,7 +70,7 @@ class TrendingNow extends StatelessWidget {
               ),
               Spacer(),
               Text(
-                formatNumber(item.priceChangePercentage24h),
+                HelperMethods.formatNumber(item.priceChangePercentage24h),
                 style: AppStyles.font14mediumPrimary,
               ),
               Icon(Icons.arrow_drop_up, size: 25.sp, color: AppColors.blue),

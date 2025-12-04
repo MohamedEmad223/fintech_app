@@ -34,9 +34,7 @@ class TopGainerShimmer extends StatelessWidget {
                       shape: BoxShape.circle,
                     ),
                   ),
-
                   SizedBox(width: 12.w),
-
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -56,9 +54,7 @@ class TopGainerShimmer extends StatelessWidget {
                       ],
                     ),
                   ),
-
                   SizedBox(width: 12.w),
-
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [

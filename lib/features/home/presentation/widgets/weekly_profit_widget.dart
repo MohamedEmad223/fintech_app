@@ -1,3 +1,4 @@
+import 'package:fintech_app/core/helpers/helper_methods.dart';
 import 'package:fintech_app/core/theming/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,13 +6,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class WeekleyProfitWidget extends StatelessWidget {
   const WeekleyProfitWidget({super.key, required this.profit});
   final String profit;
-
-  String formatPercentage(num value) {
-    final formatted = value.toStringAsFixed(2);
-    if (value > 0) return "+$formatted%";
-    if (value < 0) return "-$formatted%";
-    return "$formatted%";
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +24,7 @@ class WeekleyProfitWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                formatPercentage(double.parse(profit)),
+                HelperMethods.formatPercentage(double.parse(profit)),
                 style: AppStyles.font14regularWhite,
               ),
               SizedBox(width: 4.w),

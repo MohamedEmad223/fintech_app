@@ -1,3 +1,4 @@
+import 'package:fintech_app/core/helpers/helper_methods.dart';
 import 'package:fintech_app/core/theming/app_colors.dart';
 import 'package:fintech_app/core/theming/app_styles.dart';
 import 'package:fintech_app/features/home/domain/entity/home_coin_entity.dart';
@@ -11,19 +12,7 @@ class HomeTotalValueCard extends StatelessWidget {
 
   final List<HomeCoinEntity> items;
 
-  String formatBigNumber(num number) {
-    if (number >= 1e12) {
-      return "${(number / 1e12).toStringAsFixed(1)}T";
-    } else if (number >= 1e9) {
-      return "${(number / 1e9).toStringAsFixed(1)}B";
-    } else if (number >= 1e6) {
-      return "${(number / 1e6).toStringAsFixed(1)}M";
-    } else if (number >= 1e3) {
-      return "${(number / 1e3).toStringAsFixed(1)}K";
-    } else {
-      return number.toString();
-    }
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -87,7 +76,7 @@ class HomeTotalValueCard extends StatelessWidget {
                 Text('Current Balance', style: AppStyles.font20grayebold),
                 SizedBox(height: 16.h),
                 Text(
-                  '\$${formatBigNumber(items.first.marketCap!)}',
+                  '\$${HelperMethods.formatBigNumber(items.first.marketCap!)}',
                   style: AppStyles.font28WhiteMedium,
                 ),
                 SizedBox(height: 16.h),
