@@ -1,5 +1,5 @@
-class HelperMethods {
-  HelperMethods._();
+class NumberFormatter {
+  NumberFormatter._();
   static  String formatBigNumber(num number) {
     if (number >= 1e12) {
       return "${(number / 1e12).toStringAsFixed(1)}T";

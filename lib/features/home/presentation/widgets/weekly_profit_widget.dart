@@ -1,4 +1,4 @@
-import 'package:fintech_app/core/helpers/helper_methods.dart';
+import 'package:fintech_app/core/helpers/number_formatter.dart';
 import 'package:fintech_app/core/theming/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +24,7 @@ class WeekleyProfitWidget extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                HelperMethods.formatPercentage(double.parse(profit)),
+                NumberFormatter.formatPercentage(double.parse(profit)),
                 style: AppStyles.font14regularWhite,
               ),
               SizedBox(width: 4.w),

@@ -1,4 +1,4 @@
-import 'package:fintech_app/core/helpers/helper_methods.dart';
+import 'package:fintech_app/core/helpers/number_formatter.dart';
 import 'package:fintech_app/core/theming/app_colors.dart';
 import 'package:fintech_app/core/theming/app_styles.dart';
 import 'package:fintech_app/features/home/domain/entity/home_coin_entity.dart';
@@ -76,7 +76,7 @@ class HomeTotalValueCard extends StatelessWidget {
                 Text('Current Balance', style: AppStyles.font20grayebold),
                 SizedBox(height: 16.h),
                 Text(
-                  '\$${HelperMethods.formatBigNumber(items.first.marketCap!)}',
+                  '\$${NumberFormatter.formatBigNumber(items.first.marketCap!)}',
                   style: AppStyles.font28WhiteMedium,
                 ),
                 SizedBox(height: 16.h),

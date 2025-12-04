@@ -1,5 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:fintech_app/core/helpers/helper_methods.dart';
+import 'package:fintech_app/core/helpers/number_formatter.dart';
 import 'package:fintech_app/core/theming/app_colors.dart';
 import 'package:fintech_app/core/theming/app_styles.dart';
 import 'package:fintech_app/core/widgets/fancy_network_image.dart';
@@ -62,7 +62,7 @@ class TrendingNow extends StatelessWidget {
           Row(
             children: [
               Text(
-                HelperMethods.formatNumber(item.price),
+                NumberFormatter.formatNumber(item.price),
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 softWrap: false,
@@ -70,7 +70,7 @@ class TrendingNow extends StatelessWidget {
               ),
               Spacer(),
               Text(
-                HelperMethods.formatNumber(item.priceChangePercentage24h),
+                NumberFormatter.formatNumber(item.priceChangePercentage24h),
                 style: AppStyles.font14mediumPrimary,
               ),
               Icon(Icons.arrow_drop_up, size: 25.sp, color: AppColors.blue),
