@@ -12,14 +12,14 @@ part 'home_data_source.g.dart';
 abstract class HomeDataSource {
   factory HomeDataSource(Dio dio, {String baseUrl}) = _HomeDataSource;
 
-  @GET("/coins/markets")
+  @GET(ApiConstants.coinsMarkets)
   Future<List<CoinHomeResponseModel>> getCoinsMarkets({
     @Query('vs_currency') required String vsCurrency,
   });
 
-  @GET("/global")
+  @GET(ApiConstants.globalCrypto)
   Future<GlobalCryptoResponseModel> getGlobalCryptoRequest();
 
-  @GET("/search/trending")
+  @GET(ApiConstants.trendingCoins)
   Future<TrendingCoinsResponseModel> getTrendingCoinsRequest();
 }
