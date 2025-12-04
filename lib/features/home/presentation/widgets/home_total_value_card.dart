@@ -1,12 +1,18 @@
+import 'package:fintech_app/core/helpers/number_formatter.dart';
 import 'package:fintech_app/core/theming/app_colors.dart';
 import 'package:fintech_app/core/theming/app_styles.dart';
+import 'package:fintech_app/features/home/domain/entity/home_coin_entity.dart';
 import 'package:fintech_app/features/home/presentation/widgets/weekly_profit_widget.dart';
 import 'package:fintech_app/features/portfolio/presentation/widgets/positioned_container_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomeTotalValueCard extends StatelessWidget {
-  const HomeTotalValueCard({super.key});
+  const HomeTotalValueCard({super.key, required this.items});
+
+  final List<HomeCoinEntity> items;
+
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -69,9 +75,14 @@ class HomeTotalValueCard extends StatelessWidget {
               children: [
                 Text('Current Balance', style: AppStyles.font20grayebold),
                 SizedBox(height: 16.h),
-                Text('\$143,421.20', style: AppStyles.font28WhiteMedium),
+                Text(
+                  '\$${NumberFormatter.formatBigNumber(items.first.marketCap!)}',
+                  style: AppStyles.font28WhiteMedium,
+                ),
                 SizedBox(height: 16.h),
-                WeekleyProfitWidget(),
+                WeekleyProfitWidget(
+                  profit: items.first.priceChangePercentage24h.toString(),
+                ),
               ],
             ),
           ),

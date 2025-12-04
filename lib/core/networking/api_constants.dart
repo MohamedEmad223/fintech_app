@@ -1,5 +1,8 @@
 class ApiConstants {
   static const String apiBaseUrl = "https://api.coingecko.com/api/v3";
+  static const String coinsMarkets = "/coins/markets";
+  static const String globalCrypto = "/global";
+  static const String trendingCoins = "/search/trending";
 }
 
 class ApiErrors {

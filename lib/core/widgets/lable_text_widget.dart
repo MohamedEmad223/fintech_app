@@ -5,11 +5,14 @@ class LableTextWidget extends StatelessWidget {
   final String text;
   final String? viewAll;
   final double? fontSize;
+  final VoidCallback? onViewAllTap;
+
   const LableTextWidget({
     super.key,
     required this.text,
     this.fontSize,
     this.viewAll,
+    this.onViewAllTap,
   });
 
   @override
@@ -22,7 +25,10 @@ class LableTextWidget extends StatelessWidget {
         ),
         const Spacer(),
         if (viewAll != null)
-          Text(viewAll!, style: AppStyles.font16mediumPrimary),
+          GestureDetector(
+            onTap: onViewAllTap,
+            child: Text(viewAll!, style: AppStyles.font16mediumPrimary),
+          ),
       ],
     );
   }
