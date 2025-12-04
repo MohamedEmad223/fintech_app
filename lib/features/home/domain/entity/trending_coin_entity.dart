@@ -1,21 +1,18 @@
-class TrendingCoinEntity {
-  final String id;
-  final String name;
-  final String symbol;
-  final int marketCapRank;
-  final String imageUrl;
-  final double price;
-  final double priceChangePercentage24h;
-  final String sparkline;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  TrendingCoinEntity({
-    required this.id,
-    required this.name,
-    required this.symbol,
-    required this.marketCapRank,
-    required this.imageUrl,
-    required this.price,
-    required this.priceChangePercentage24h,
-    required this.sparkline,
-  });
+part 'trending_coin_entity.freezed.dart';
+
+@freezed
+abstract class TrendingCoinEntity with _$TrendingCoinEntity {
+  const factory TrendingCoinEntity({
+    required String id,
+    required String name,
+    required String symbol,
+    required int marketCapRank,
+    required String imageUrl,
+    required double price,
+    required double priceChangePercentage24h,
+    required String sparkline,
+  }) = _TrendingCoinEntity;
 }
+

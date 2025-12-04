@@ -1,23 +1,18 @@
-class HomeCoinEntity {
-  final String id;
-  final String symbol;
-  final String name;
-  final String image;
-  final double? currentPrice;
-  final double? marketCap;
-  final int? marketCapRank;
-  final double? priceChange24h;
-  final double? priceChangePercentage24h;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  HomeCoinEntity({
-    required this.id,
-    required this.symbol,
-    required this.name,
-    required this.image,
-    this.currentPrice,
-    this.marketCap,
-    this.marketCapRank,
-    this.priceChange24h,
-    this.priceChangePercentage24h,
-  });
+part 'home_coin_entity.freezed.dart';
+
+@freezed
+abstract class HomeCoinEntity with _$HomeCoinEntity {
+  const factory HomeCoinEntity({
+    required String id,
+    required String symbol,
+    required String name,
+    required String image,
+    double? currentPrice,
+    double? marketCap,
+    int? marketCapRank,
+    double? priceChange24h,
+    double? priceChangePercentage24h,
+  }) = _HomeCoinEntity;
 }

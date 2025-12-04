@@ -1,26 +1,16 @@
-class CryptoGlobalEntity {
-  // Market Overview Stats
-  final int activeCryptocurrencies;
-  final int markets;
+import 'package:freezed_annotation/freezed_annotation.dart';
 
-  // Total Market Data (USD)
-  final double totalMarketCapUsd;
-  final double totalVolumeUsd;
+part 'crypto_global_entity.freezed.dart';
 
-  // Market Dominance (top coins)
-  final double btcDominance;
-  final double ethDominance;
-
-  // 24h Change
-  final double marketCapChangePercentage24h;
-
-  CryptoGlobalEntity({
-    required this.activeCryptocurrencies,
-    required this.markets,
-    required this.totalMarketCapUsd,
-    required this.totalVolumeUsd,
-    required this.btcDominance,
-    required this.ethDominance,
-    required this.marketCapChangePercentage24h,
-  });
+@freezed
+abstract class CryptoGlobalEntity with _$CryptoGlobalEntity {
+  const factory CryptoGlobalEntity({
+    required int activeCryptocurrencies,
+    required int markets,
+    required double totalMarketCapUsd,
+    required double totalVolumeUsd,
+    required double btcDominance,
+    required double ethDominance,
+    required double marketCapChangePercentage24h,
+  }) = _CryptoGlobalEntity;
 }
