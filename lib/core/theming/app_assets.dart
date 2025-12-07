@@ -8,4 +8,18 @@ class AppAssets {
   static const String bitcoinSvg = 'assets/svgs/bitcoin.svg';
   static const String ethereumSvg = 'assets/svgs/ethereum.svg';
   static const String litecoinSvg = 'assets/svgs/lc.svg';
+  static const String discovery = 'assets/images/discovery.png';
+  static const String profile = 'assets/images/userprofile.png';
+  static const String wallet = 'assets/images/wallet.png';
+  static const String moon = 'assets/images/moon.png';
+  static const String support = 'assets/images/support.png';
+  static const String arrow = 'assets/svgs/arrow.svg';
+  static const String home = 'assets/svgs/home.svg';
+  static const String homeUnselected = 'assets/svgs/homeUnselected.svg';
+  static const String market = 'assets/svgs/market.svg';
+  static const String marketUnselected = 'assets/svgs/marketUnselected.svg';
+  static const String portfolio = 'assets/svgs/portofolio.svg';
+  static const String portfolioUnselected = 'assets/svgs/portofolioUnselected.svg';
+  static const String settings = 'assets/svgs/setting.svg';
+  static const String settingsUnselected = 'assets/svgs/settingUnselected.svg';
 }
