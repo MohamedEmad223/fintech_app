@@ -24,7 +24,7 @@ class FintechApp extends StatelessWidget {
             title: 'Fintech App',
             theme: themeState.themeData,
             onGenerateRoute: AppRouter().generateRoute,
-            initialRoute: Routes.settingsScreen,
+            initialRoute: Routes.botnavbar,
           );
         },
       ),
