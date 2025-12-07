@@ -32,7 +32,7 @@ class SettingsItem extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: Divider(height: 1.h, color: AppColors.graytwo),
+          child: Divider(height: 1.h, color: AppColors.titleGray ),
         ),
       ],
     );

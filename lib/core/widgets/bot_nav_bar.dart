@@ -73,7 +73,7 @@ class BottomNav extends StatelessWidget {
                 ],
                 currentIndex: botNavCubit.currentIndex,
                 selectedItemColor: AppColors.primary,
-                unselectedItemColor: AppColors.graytwo,
+                unselectedItemColor: AppColors.titleGray,
                 unselectedLabelStyle: AppStyles.font12GreyMedium,
                 selectedLabelStyle: AppStyles.font12PrimaryMedium,
                 onTap: (value) {
