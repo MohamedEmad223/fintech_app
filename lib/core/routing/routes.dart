@@ -4,4 +4,5 @@ class Routes {
   static const String portfolioScreen = 'portfolioScreen';
   static const String homeScreen = 'homeScreen';
   static const String coinDetailsScreen = 'coinDetailsScreen';
+  static const String settingsScreen = 'settingsScreen';
 }

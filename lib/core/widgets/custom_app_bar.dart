@@ -27,6 +27,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     final isDarkMode = Theme.of(context).brightness == Brightness.dark;
 
     return AppBar(
+      surfaceTintColor: Colors.transparent,
       backgroundColor:
           backgroundColor ??
           (isDarkMode ? Colors.black : AppColors.backgroundColor),
@@ -40,7 +41,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
             TextStyle(
               fontSize: 24.sp,
               fontWeight: FontWeight.bold,
-              color: isDarkMode ? Colors.white : AppColors.textPrimary,
+              color: isDarkMode ? Colors.white : AppColors.primary,
             ),
       ),
       actions: actions,

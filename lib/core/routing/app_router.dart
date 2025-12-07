@@ -5,6 +5,7 @@ import 'package:fintech_app/features/home/presentation/logic/global_crypto/globa
 import 'package:fintech_app/features/home/presentation/logic/home_coin/home_coin_cubit.dart';
 import 'package:fintech_app/features/home/presentation/logic/trending_cubit/trending_cubit.dart';
 import 'package:fintech_app/features/portfolio/presentation/portfolio_screen.dart';
+import 'package:fintech_app/features/settings/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:fintech_app/features/coin/presentation/screens/coin_details_screen.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,20 +14,24 @@ class AppRouter {
   Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case Routes.homeScreen:
-        return MaterialPageRoute(builder: (_) => MultiBlocProvider(
-          providers: [
-            BlocProvider(
-              create: (context) => sl<HomeCoinCubit>()..getHomeCoinsRequest(),
-            ),
-            BlocProvider(
-              create: (context) => sl<GlobalCryptoCubit>()..getGlobalCryptoRequest(),
-            ),
-            BlocProvider(
-              create: (context) => sl<TrendingCubit>()..getTrendingCoinsRequest(),
-            ),
-          ],
-          child: const HomeScreen(),
-        ));
+        return MaterialPageRoute(
+          builder: (_) => MultiBlocProvider(
+            providers: [
+              BlocProvider(
+                create: (context) => sl<HomeCoinCubit>()..getHomeCoinsRequest(),
+              ),
+              BlocProvider(
+                create: (context) =>
+                    sl<GlobalCryptoCubit>()..getGlobalCryptoRequest(),
+              ),
+              BlocProvider(
+                create: (context) =>
+                    sl<TrendingCubit>()..getTrendingCoinsRequest(),
+              ),
+            ],
+            child: const HomeScreen(),
+          ),
+        );
       case Routes.portfolioScreen:
         return MaterialPageRoute(builder: (_) => const PortfolioScreen());
       case Routes.coinDetailsScreen:
@@ -48,6 +53,8 @@ class AppRouter {
           settings: settings,
           builder: (_) => CoinDetailsScreen(coinId: coinId!),
         );
+      case Routes.settingsScreen:
+        return MaterialPageRoute(builder: (_) => const SettingsScreen());
       default:
         return MaterialPageRoute(
           builder: (_) =>
@@ -56,4 +63,3 @@ class AppRouter {
     }
   }
 }
-

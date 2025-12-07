@@ -78,6 +78,13 @@ class AppStyles {
     fontFamily: FontFamily.fontName,
   );
 
+  static TextStyle font16PrimaryMedium = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.medium,
+    color: AppColors.primary,
+    fontFamily: FontFamily.fontName,
+  );
+
   static TextStyle font16PrimaryBold = TextStyle(
     fontSize: 16.sp,
     fontWeight: FontWeightHelper.bold,
