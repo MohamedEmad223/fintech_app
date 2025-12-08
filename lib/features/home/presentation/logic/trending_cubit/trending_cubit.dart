@@ -10,9 +10,9 @@ part 'trending_cubit.freezed.dart';
 
 class TrendingCubit extends Cubit<TrendingState> {
   TrendingCubit(this._getTrendingCoinsUseCase) : super(TrendingState.initial());
- final GetTrendingCoinsUseCase _getTrendingCoinsUseCase;
+  final GetTrendingCoinsUseCase _getTrendingCoinsUseCase;
 
- Future<void> getTrendingCoinsRequest() async {
+  Future<void> getTrendingCoinsRequest() async {
     emit(const TrendingState.loadingTrendingCoins());
     final result = await _getTrendingCoinsUseCase();
 

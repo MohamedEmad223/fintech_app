@@ -53,7 +53,6 @@ class AppStyles {
     fontWeight: FontWeightHelper.medium,
   );
 
-
   static TextStyle font12RedMedium = TextStyle(
     fontSize: 12.sp,
     color: AppColors.redError,

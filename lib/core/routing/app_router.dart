@@ -36,9 +36,7 @@ class AppRouter {
       case Routes.botnavbar:
         return MaterialPageRoute(
           builder: (_) => MultiBlocProvider(
-            providers: [
-              BlocProvider(create: (context) => BotnavbarCubit()),
-            ],
+            providers: [BlocProvider(create: (context) => BotnavbarCubit())],
             child: const BottomNav(),
           ),
         );

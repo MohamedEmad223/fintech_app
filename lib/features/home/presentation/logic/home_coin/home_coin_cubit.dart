@@ -10,9 +10,9 @@ part 'home_coin_cubit.freezed.dart';
 
 class HomeCoinCubit extends Cubit<HomeCoinState> {
   HomeCoinCubit(this._getHomeCoinsUseCase) : super(HomeCoinState.initial());
- final GetHomeCoinsUseCase _getHomeCoinsUseCase;
+  final GetHomeCoinsUseCase _getHomeCoinsUseCase;
 
- Future<void> getHomeCoinsRequest() async {
+  Future<void> getHomeCoinsRequest() async {
     emit(const HomeCoinState.loadingCoinHome());
     final result = await _getHomeCoinsUseCase();
 

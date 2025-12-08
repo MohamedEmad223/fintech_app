@@ -5,6 +5,4 @@ abstract class HomeCoinRepo {
   Future<ApiResult<List<HomeCoinEntity>>> getCoinsMarkets({
     required String vsCurrency,
   });
-
-
 }

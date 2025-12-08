@@ -23,23 +23,11 @@ class HomeTotalValueCardShimmer extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              width: 120.w,
-              height: 18.h,
-              color: Colors.white,
-            ),
+            Container(width: 120.w, height: 18.h, color: Colors.white),
             SizedBox(height: 16.h),
-            Container(
-              width: 180.w,
-              height: 28.h,
-              color: Colors.white,
-            ),
+            Container(width: 180.w, height: 28.h, color: Colors.white),
             SizedBox(height: 16.h),
-            Container(
-              width: 140.w,
-              height: 20.h,
-              color: Colors.white,
-            ),
+            Container(width: 140.w, height: 20.h, color: Colors.white),
           ],
         ),
       ),

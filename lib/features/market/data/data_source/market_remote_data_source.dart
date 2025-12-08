@@ -1,7 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:fintech_app/features/market/data/models/market_response_model.dart';
 import 'package:fintech_app/features/market/data/models/market_search_response_model.dart';
-import 'package:retrofit/error_logger.dart';
 import 'package:retrofit/http.dart';
 
 import '../../../../core/networking/api_constants.dart';

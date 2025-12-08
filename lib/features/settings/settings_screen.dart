@@ -27,10 +27,7 @@ class SettingsScreen extends StatelessWidget {
               SizedBox(height: 20.h),
               const CircleAvatar(radius: 45),
               SizedBox(height: 12.h),
-              Text(
-                "Sophia Isabella",
-                style: AppStyles.font18PrimaryBold,
-              ),
+              Text("Sophia Isabella", style: AppStyles.font18PrimaryBold),
               SizedBox(height: 25.h),
               LableTextWidget(text: "General"),
               SettingsItem(

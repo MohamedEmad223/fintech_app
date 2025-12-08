@@ -15,4 +15,3 @@ abstract class TrendingCoinEntity with _$TrendingCoinEntity {
     required String sparkline,
   }) = _TrendingCoinEntity;
 }
-

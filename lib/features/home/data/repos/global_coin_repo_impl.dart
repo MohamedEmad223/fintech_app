@@ -20,4 +20,3 @@ class GlobalCoinRepoImpl implements GetGlobalCoinRepo {
     }
   }
 }
-  

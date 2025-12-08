@@ -19,7 +19,8 @@ class AppAssets {
   static const String market = 'assets/svgs/market.svg';
   static const String marketUnselected = 'assets/svgs/marketUnselected.svg';
   static const String portfolio = 'assets/svgs/portofolio.svg';
-  static const String portfolioUnselected = 'assets/svgs/portofolioUnselected.svg';
+  static const String portfolioUnselected =
+      'assets/svgs/portofolioUnselected.svg';
   static const String settings = 'assets/svgs/setting.svg';
   static const String settingsUnselected = 'assets/svgs/settingUnselected.svg';
 }

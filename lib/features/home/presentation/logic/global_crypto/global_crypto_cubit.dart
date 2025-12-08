@@ -9,10 +9,11 @@ part 'global_crypto_state.dart';
 part 'global_crypto_cubit.freezed.dart';
 
 class GlobalCryptoCubit extends Cubit<GlobalCryptoState> {
-  GlobalCryptoCubit(this._getGlobalCoinUseCase) : super(GlobalCryptoState.initial());
- final GetGlobalCoinUseCase _getGlobalCoinUseCase;
+  GlobalCryptoCubit(this._getGlobalCoinUseCase)
+    : super(GlobalCryptoState.initial());
+  final GetGlobalCoinUseCase _getGlobalCoinUseCase;
 
- Future<void> getGlobalCryptoRequest() async {
+  Future<void> getGlobalCryptoRequest() async {
     emit(const GlobalCryptoState.loadingGlobalCryptoRequest());
     final result = await _getGlobalCoinUseCase();
 
@@ -27,5 +28,4 @@ class GlobalCryptoCubit extends Cubit<GlobalCryptoState> {
         );
     }
   }
-
 }

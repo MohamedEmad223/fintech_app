@@ -25,8 +25,4 @@ class HomeCoinRepoImpl implements HomeCoinRepo {
       return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }
-
-  
-
-  
 }
