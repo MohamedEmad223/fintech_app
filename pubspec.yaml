@@ -68,8 +68,8 @@ dependencies:
   shimmer: ^3.0.0
   #Switch
   flutter_switch: ^0.3.2
-
-
+  #Splash screen
+  flutter_native_splash: ^2.4.7
   cupertino_icons: ^1.0.8
 
   shared_preferences: any
