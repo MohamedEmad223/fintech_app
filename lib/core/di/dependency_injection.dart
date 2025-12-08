@@ -4,6 +4,7 @@ import 'package:fintech_app/features/coin/data/repositories/coin_repository_impl
 import 'package:fintech_app/features/coin/domain/repositories/coin_repository.dart';
 import 'package:fintech_app/features/coin/domain/use_cases/get_coin_chart_data_use_case.dart';
 import 'package:fintech_app/features/coin/domain/use_cases/get_coin_details_use_case.dart';
+import 'package:fintech_app/features/coin/domain/use_cases/get_supported_currencies_use_case.dart';
 import 'package:fintech_app/features/coin/presentation/controllers/coin_cubit.dart';
 import 'package:fintech_app/features/home/data/data_source/home_data_source.dart';
 import 'package:fintech_app/features/home/data/repos/global_coin_repo_impl.dart';
@@ -56,6 +57,9 @@ Future<void> setupGetIt() async {
   );
   sl.registerLazySingleton<GetCoinChartDataUseCase>(
     () => GetCoinChartDataUseCase(sl()),
+  );
+  sl.registerLazySingleton<GetSupportedCurrenciesUseCase>(
+    () => GetSupportedCurrenciesUseCase(sl()),
   );
   sl.registerFactory<CoinCubit>(() => CoinCubit(sl(), sl(), sl()));
 

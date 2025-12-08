@@ -11,6 +11,12 @@ class AppStyles {
     fontWeight: FontWeightHelper.bold,
   );
 
+  static TextStyle font28BlackBold = TextStyle(
+    fontSize: 28.sp,
+    color: AppColors.black,
+    fontWeight: FontWeightHelper.bold,
+  );
+
   static TextStyle font16GreyMedium = TextStyle(
     fontSize: 16.sp,
     color: AppColors.greyText,
@@ -40,6 +46,25 @@ class AppStyles {
     color: AppColors.greenSuccess,
     fontWeight: FontWeightHelper.medium,
   );
+
+  static TextStyle font12PrimaryMedium = TextStyle(
+    fontSize: 12.sp,
+    color: AppColors.primary,
+    fontWeight: FontWeightHelper.medium,
+  );
+
+  static TextStyle font19PrimaryMedium = TextStyle(
+    fontSize: 19.sp,
+    color: AppColors.primary,
+    fontWeight: FontWeightHelper.medium,
+  );
+
+  static TextStyle font12GreyMedium = TextStyle(
+    fontSize: 12.sp,
+    color: AppColors.greyText,
+    fontWeight: FontWeightHelper.medium,
+  );
+
 
   static TextStyle font12RedMedium = TextStyle(
     fontSize: 12.sp,
@@ -74,6 +99,13 @@ class AppStyles {
   static TextStyle font18PrimaryBold = TextStyle(
     fontSize: 18.sp,
     fontWeight: FontWeightHelper.bold,
+    color: AppColors.primary,
+    fontFamily: FontFamily.fontName,
+  );
+
+  static TextStyle font16PrimaryMedium = TextStyle(
+    fontSize: 16.sp,
+    fontWeight: FontWeightHelper.medium,
     color: AppColors.primary,
     fontFamily: FontFamily.fontName,
   );
