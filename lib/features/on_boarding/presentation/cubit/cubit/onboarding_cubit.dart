@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:fintech_app/core/theming/app_assets.dart';
 import 'package:fintech_app/features/on_boarding/data/model/on_boarding_model.dart';
 import 'package:fintech_app/features/on_boarding/presentation/cubit/cubit/onboarding_state.dart';
 import 'package:flutter/material.dart';
@@ -8,15 +9,15 @@ class OnboardingCubit extends Cubit<OnboardingState> {
 
   List<OnboardingModel> onBoardingData = [
     OnboardingModel(
-      image: 'assets/images/one.png',
+      image: AppAssets.onBoardingOne,
       title: 'Welcome To Crypto X',
     ),
     OnboardingModel(
-      image: 'assets/images/two.png',
+      image: AppAssets.onBoardingTwo,
       title: 'Transaction Security ',
     ),
     OnboardingModel(
-      image: 'assets/images/three.png',
+      image: AppAssets.onBoardingThree,
       title: 'Fast and reliable Market updated',
     ),
   ];
