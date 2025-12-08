@@ -1,4 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:fintech_app/features/buy/data/data_source/buy_remote_data_source.dart';
+import 'package:fintech_app/features/buy/data/repositories/buy_repository_impl.dart';
+import 'package:fintech_app/features/buy/domain/repositories/buy_repository.dart';
+import 'package:fintech_app/features/buy/domain/use_cases/calculate_transaction_use_case.dart';
+import 'package:fintech_app/features/buy/domain/use_cases/get_coins_list_use_case.dart';
+import 'package:fintech_app/features/buy/domain/use_cases/get_exchange_rate_use_case.dart';
+import 'package:fintech_app/features/buy/presentation/controllers/buy_cubit.dart';
 import 'package:fintech_app/features/coin/data/data_source/coins_remote_data_source.dart';
 import 'package:fintech_app/features/coin/data/repositories/coin_repository_impl.dart';
 import 'package:fintech_app/features/coin/domain/repositories/coin_repository.dart';
@@ -52,4 +59,18 @@ Future<void> setupGetIt() async {
   sl.registerLazySingleton<GetSupportedCurrenciesUseCase>(
     () => GetSupportedCurrenciesUseCase(sl()),
   );
+
+  /// Buy feature
+  sl.registerLazySingleton<BuyRemoteDataSource>(() => BuyRemoteDataSource(dio));
+  sl.registerLazySingleton<BuyRepository>(() => BuyRepositoryImpl(sl()));
+  sl.registerLazySingleton<GetExchangeRateUseCase>(
+    () => GetExchangeRateUseCase(sl()),
+  );
+  sl.registerLazySingleton<CalculateTransactionUseCase>(
+    () => CalculateTransactionUseCase(),
+  );
+  sl.registerLazySingleton<GetCoinsListUseCase>(
+    () => GetCoinsListUseCase(sl()),
+  );
+  sl.registerFactory<BuyCubit>(() => BuyCubit(sl(), sl(), sl()));
 }

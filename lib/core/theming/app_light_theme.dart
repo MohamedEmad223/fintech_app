@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'app_colors.dart';
 
 class AppLightTheme {
-
   ///ToDo : Change Later
   ///samples
   static AppBarTheme appBarTheme = AppBarTheme(

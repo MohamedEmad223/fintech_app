@@ -1,6 +1,7 @@
 import 'package:fintech_app/core/routing/routes.dart';
-import 'package:fintech_app/features/coin/presentation/screens/coin_details_screen.dart';
 import 'package:fintech_app/features/auth/login_screen.dart';
+import 'package:fintech_app/features/buy/presentation/screens/buy_screen.dart';
+import 'package:fintech_app/features/coin/presentation/screens/coin_details_screen.dart';
 import 'package:fintech_app/features/portfolio/presentation/portfolio_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -28,6 +29,8 @@ class AppRouter {
         );
       case Routes.portfolioScreen:
         return MaterialPageRoute(builder: (_) => const PortfolioScreen());
+      case Routes.buyScreen:
+        return MaterialPageRoute(builder: (_) => BuyScreen());
       default:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
     }
