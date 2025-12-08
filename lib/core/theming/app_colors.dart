@@ -7,6 +7,7 @@ abstract class AppColors {
   // Market Screen Colors
   static const background = Color(0xFFF8F9FC);
   static const darkBlue = Color(0xFF1A1F3D); // For titles
+  static const titleGray  = Color(0xFF5E5E5E); // For titles
   static const greyText = Color(0xFF808080);
   static const lightGrey = Color(0xFFF2F2F2); // For search bar/chips
   static const greenSuccess = Color(0xFF21BF73);
@@ -18,6 +19,7 @@ abstract class AppColors {
   static const primary = Color(0xFF1D3A70);
   static const secondary = Color(0xFFF56C2A);
   static const blue = Color(0xff4766F9);
+  static const black = Color(0xff1F1F1F);
 
   // Portfolio Colors
   // Gradient colors for portfolio card

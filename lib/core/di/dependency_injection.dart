@@ -13,6 +13,18 @@ import 'package:fintech_app/features/coin/domain/use_cases/get_coin_chart_data_u
 import 'package:fintech_app/features/coin/domain/use_cases/get_coin_details_use_case.dart';
 import 'package:fintech_app/features/coin/domain/use_cases/get_supported_currencies_use_case.dart';
 import 'package:fintech_app/features/coin/presentation/controllers/coin_cubit.dart';
+import 'package:fintech_app/features/home/data/data_source/home_data_source.dart';
+import 'package:fintech_app/features/home/data/repos/global_coin_repo_impl.dart';
+import 'package:fintech_app/features/home/data/repos/home_coin_repo_impl.dart';
+import 'package:fintech_app/features/home/data/repos/trending_coin_repo_impl.dart';
+import 'package:fintech_app/features/home/domain/repos/get_trending_coins_repo.dart';
+import 'package:fintech_app/features/home/domain/repos/home_coin_repo.dart';
+import 'package:fintech_app/features/home/domain/use_cases/get_coins_home_use_case.dart';
+import 'package:fintech_app/features/home/domain/use_cases/get_global_coin_use_case.dart';
+import 'package:fintech_app/features/home/domain/use_cases/get_trending_coins_use_case.dart';
+import 'package:fintech_app/features/home/presentation/logic/global_crypto/global_crypto_cubit.dart';
+import 'package:fintech_app/features/home/presentation/logic/home_coin/home_coin_cubit.dart';
+import 'package:fintech_app/features/home/presentation/logic/trending_cubit/trending_cubit.dart';
 import 'package:fintech_app/features/market/data/data_source/market_remote_data_source.dart';
 import 'package:fintech_app/features/market/data/repositories/market_repository_impl.dart';
 import 'package:fintech_app/features/market/domain/repositories/market_repository.dart';
@@ -53,11 +65,19 @@ Future<void> setupGetIt() async {
   sl.registerLazySingleton<GetCoinChartDataUseCase>(
     () => GetCoinChartDataUseCase(sl()),
   );
+  sl.registerLazySingleton<GetSupportedCurrenciesUseCase>(
+    () => GetSupportedCurrenciesUseCase(sl()),
+  );
   sl.registerFactory<CoinCubit>(() => CoinCubit(sl(), sl(), sl()));
 
   ///Supported Currencies
-  sl.registerLazySingleton<GetSupportedCurrenciesUseCase>(
-    () => GetSupportedCurrenciesUseCase(sl()),
+  sl.registerLazySingleton<HomeDataSource>(() => HomeDataSource(dio));
+
+  // Register repositories
+  sl.registerLazySingleton<GlobalCoinRepoImpl>(() => GlobalCoinRepoImpl(sl()));
+  sl.registerLazySingleton<HomeCoinRepo>(() => HomeCoinRepoImpl(sl()));
+  sl.registerLazySingleton<GetTrendingCoinsRepo>(
+    () => TrendingCoinRepoImpl(sl()),
   );
 
   /// Buy feature
