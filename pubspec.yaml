@@ -63,8 +63,13 @@ dependencies:
   fl_chart: ^1.1.1
   #Svgs for images
   flutter_svg: ^2.2.3
-
-
+  cached_network_image: ^3.4.1
+  #Shimmer
+  shimmer: ^3.0.0
+  #Switch
+  flutter_switch: ^0.3.2
+  #Splash screen
+  flutter_native_splash: ^2.4.7
   cupertino_icons: ^1.0.8
 
   shared_preferences: any
@@ -74,11 +79,12 @@ dev_dependencies:
     sdk: flutter
   #Code generator (mainly used with cubit & retrofit)
   json_serializable: ^6.11.1
-  build_runner: ^2.4.0
+  build_runner: ^2.7.1
   #testing
   bloc_test: ^10.0.0
   integration_test:
     sdk: flutter
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

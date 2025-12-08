@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - develop
-      - feature/**
 
 jobs:
   release:
@@ -27,6 +26,9 @@ jobs:
 
       - name: Flutter Pub Get
         run: fvm flutter pub get
+
+      - name: Generate code files   
+        run: fvm flutter pub run build_runner build --delete-conflicting-outputs
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
