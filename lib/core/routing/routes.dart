@@ -6,4 +6,6 @@ class Routes {
   static const String coinDetailsScreen = 'coinDetailsScreen';
   static const String settingsScreen = 'settingsScreen';
   static const String botnavbar = 'botnavbar';
+  static const String chooseAuthScreen = 'chooseAuthScreen';
+  static const String onBoardingScreen = 'onBoardingScreen';
 }
