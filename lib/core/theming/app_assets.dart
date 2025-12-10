@@ -23,4 +23,8 @@ class AppAssets {
       'assets/svgs/portofolioUnselected.svg';
   static const String settings = 'assets/svgs/setting.svg';
   static const String settingsUnselected = 'assets/svgs/settingUnselected.svg';
+  static const String authChooseScreen = 'assets/images/1 5055250.png';
+  static const String onBoardingOne = 'assets/images/one.png';
+  static const String onBoardingTwo = 'assets/images/two.png';
+  static const String onBoardingThree = 'assets/images/three.png';
 }
