@@ -1,6 +1,6 @@
 class NumberFormatter {
   NumberFormatter._();
-  static  String formatBigNumber(num number) {
+  static String formatBigNumber(num number) {
     if (number >= 1e12) {
       return "${(number / 1e12).toStringAsFixed(1)}T";
     } else if (number >= 1e9) {
@@ -31,7 +31,7 @@ class NumberFormatter {
     return "$before.$after";
   }
 
-  static  String formatPercentage(num value) {
+  static String formatPercentage(num value) {
     final formatted = value.toStringAsFixed(2);
     if (value > 0) return "+$formatted%";
     if (value < 0) return "-$formatted%";

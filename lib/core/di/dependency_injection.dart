@@ -1,4 +1,11 @@
 import 'package:dio/dio.dart';
+import 'package:fintech_app/features/buy/data/data_source/buy_remote_data_source.dart';
+import 'package:fintech_app/features/buy/data/repositories/buy_repository_impl.dart';
+import 'package:fintech_app/features/buy/domain/repositories/buy_repository.dart';
+import 'package:fintech_app/features/buy/domain/use_cases/calculate_transaction_use_case.dart';
+import 'package:fintech_app/features/buy/domain/use_cases/get_coins_list_use_case.dart';
+import 'package:fintech_app/features/buy/domain/use_cases/get_exchange_rate_use_case.dart';
+import 'package:fintech_app/features/buy/presentation/controllers/buy_cubit.dart';
 import 'package:fintech_app/features/coin/data/data_source/coins_remote_data_source.dart';
 import 'package:fintech_app/features/coin/data/repositories/coin_repository_impl.dart';
 import 'package:fintech_app/features/coin/domain/repositories/coin_repository.dart';
@@ -12,12 +19,6 @@ import 'package:fintech_app/features/home/data/repos/home_coin_repo_impl.dart';
 import 'package:fintech_app/features/home/data/repos/trending_coin_repo_impl.dart';
 import 'package:fintech_app/features/home/domain/repos/get_trending_coins_repo.dart';
 import 'package:fintech_app/features/home/domain/repos/home_coin_repo.dart';
-import 'package:fintech_app/features/home/domain/use_cases/get_coins_home_use_case.dart';
-import 'package:fintech_app/features/home/domain/use_cases/get_global_coin_use_case.dart';
-import 'package:fintech_app/features/home/domain/use_cases/get_trending_coins_use_case.dart';
-import 'package:fintech_app/features/home/presentation/logic/global_crypto/global_crypto_cubit.dart';
-import 'package:fintech_app/features/home/presentation/logic/home_coin/home_coin_cubit.dart';
-import 'package:fintech_app/features/home/presentation/logic/trending_cubit/trending_cubit.dart';
 import 'package:fintech_app/features/market/data/data_source/market_remote_data_source.dart';
 import 'package:fintech_app/features/market/data/repositories/market_repository_impl.dart';
 import 'package:fintech_app/features/market/domain/repositories/market_repository.dart';
@@ -73,21 +74,17 @@ Future<void> setupGetIt() async {
     () => TrendingCoinRepoImpl(sl()),
   );
 
-  // Register use cases
-  sl.registerLazySingleton<GetTrendingCoinsUseCase>(
-    () => GetTrendingCoinsUseCase(sl()),
+  /// Buy feature
+  sl.registerLazySingleton<BuyRemoteDataSource>(() => BuyRemoteDataSource(dio));
+  sl.registerLazySingleton<BuyRepository>(() => BuyRepositoryImpl(sl()));
+  sl.registerLazySingleton<GetExchangeRateUseCase>(
+    () => GetExchangeRateUseCase(sl()),
   );
-
-  sl.registerLazySingleton<GetHomeCoinsUseCase>(
-    () => GetHomeCoinsUseCase(sl()),
+  sl.registerLazySingleton<CalculateTransactionUseCase>(
+    () => CalculateTransactionUseCase(),
   );
-
-  sl.registerLazySingleton<GetGlobalCoinUseCase>(
-    () => GetGlobalCoinUseCase(sl()),
+  sl.registerLazySingleton<GetCoinsListUseCase>(
+    () => GetCoinsListUseCase(sl()),
   );
-
-  // Register cubits
-  sl.registerFactory<GlobalCryptoCubit>(() => GlobalCryptoCubit(sl()));
-  sl.registerFactory<HomeCoinCubit>(() => HomeCoinCubit(sl()));
-  sl.registerFactory<TrendingCubit>(() => TrendingCubit(sl()));
+  sl.registerFactory<BuyCubit>(() => BuyCubit(sl(), sl(), sl()));
 }

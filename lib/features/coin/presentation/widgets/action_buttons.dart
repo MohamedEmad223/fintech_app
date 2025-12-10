@@ -1,3 +1,5 @@
+import 'package:fintech_app/core/extensions/navigation_extension.dart';
+import 'package:fintech_app/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../core/utils/spacing.dart';
@@ -30,7 +32,7 @@ class ActionButtons extends StatelessWidget {
         horizontalSpace(16),
         Expanded(
           child: ElevatedButton(
-            onPressed: () {},
+            onPressed: () => context.pushNamed(Routes.buyScreen),
             style: ElevatedButton.styleFrom(
               backgroundColor: const Color(0xFF1D3A70),
               foregroundColor: Colors.white,

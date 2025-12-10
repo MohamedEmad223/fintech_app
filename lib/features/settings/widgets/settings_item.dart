@@ -27,12 +27,16 @@ class SettingsItem extends StatelessWidget {
             child: Icon(icon, color: AppColors.whiteColor),
           ),
           title: Text(title, style: AppStyles.font16PrimaryMedium),
-          trailing: SvgPicture.asset(AppAssets.arrow, width: 20.w, height: 20.h),
+          trailing: SvgPicture.asset(
+            AppAssets.arrow,
+            width: 20.w,
+            height: 20.h,
+          ),
           onTap: onTap,
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: Divider(height: 1.h, color: AppColors.titleGray ),
+          child: Divider(height: 1.h, color: AppColors.titleGray),
         ),
       ],
     );

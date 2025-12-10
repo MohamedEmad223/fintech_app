@@ -12,8 +12,6 @@ class HomeTotalValueCard extends StatelessWidget {
 
   final List<HomeCoinEntity> items;
 
- 
-
   @override
   Widget build(BuildContext context) {
     return Container(
