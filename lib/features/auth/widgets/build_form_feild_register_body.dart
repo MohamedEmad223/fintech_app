@@ -9,37 +9,37 @@ class BuildFormFeildRegisterBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        CustomTextField(
+        CustomTextFormField(
           hintText: 'First Name',
           prefixIcon: Icons.person_outline,
           keyboardType: TextInputType.name,
         ),
         SizedBox(height: 16.h),
-        CustomTextField(
+        CustomTextFormField(
           hintText: 'Last Name',
           prefixIcon: Icons.person_outline,
           keyboardType: TextInputType.name,
         ),
         SizedBox(height: 16.h),
-        CustomTextField(
+        CustomTextFormField(
           hintText: 'Email-ID',
           prefixIcon: Icons.email_outlined,
           keyboardType: TextInputType.emailAddress,
         ),
         SizedBox(height: 16.h),
-        CustomTextField(
+        CustomTextFormField(
           hintText: 'Password',
           prefixIcon: Icons.lock_outline,
           obscureText: true,
         ),
         SizedBox(height: 16.h),
-        CustomTextField(
+        CustomTextFormField(
           hintText: 'Confirm Password',
           prefixIcon: Icons.lock_outline,
           obscureText: true,
         ),
         SizedBox(height: 16.h),
-        CustomTextField(
+        CustomTextFormField(
           hintText: 'xxx xxx xxxx',
           prefixIcon: Icons.phone_outlined,
           keyboardType: TextInputType.phone,
