@@ -4,20 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class BuildHeaderOfAuth extends StatelessWidget {
-  const BuildHeaderOfAuth({super.key});
+  const BuildHeaderOfAuth({super.key, required this.title, required this.subtitle});
+  final String title;
+  final String subtitle;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
         Text(
-          'Create Your Account',
+          title,
           style: AppStyles.font28BlackBold,
           textAlign: TextAlign.center,
         ),
         SizedBox(height: 12.h),
         Text(
-          'Sign up to enjoy the best managing\nexperience!',
+          subtitle,
           style: TextStyle(
             fontSize: 16.sp,
             fontWeight: FontWeight.w400,

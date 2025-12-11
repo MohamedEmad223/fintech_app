@@ -168,6 +168,8 @@ class AppStyles {
     fontFamily: FontFamily.fontName,
   );
 
+
+
   static TextStyle font12GreyRegular = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeightHelper.regular,

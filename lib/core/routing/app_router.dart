@@ -2,6 +2,7 @@ import 'package:fintech_app/core/routing/routes.dart';
 import 'package:fintech_app/core/widgets/BotNavBar/cubit/cubit/botnavbar_cubit.dart';
 import 'package:fintech_app/core/widgets/bot_nav_bar.dart';
 import 'package:fintech_app/features/auth/choose_auth_screen.dart';
+import 'package:fintech_app/features/auth/login_screen.dart';
 import 'package:fintech_app/features/auth/register_screen.dart';
 import 'package:fintech_app/features/on_boarding/on_boarding_screen.dart';
 import 'package:fintech_app/features/portfolio/presentation/portfolio_screen.dart';
@@ -49,6 +50,8 @@ class AppRouter {
         );
       case Routes.registerScreen:
         return MaterialPageRoute(builder: (_) => const RegisterScreen());
+      case Routes.loginScreen:
+        return MaterialPageRoute(builder: (_) => const LoginScreen());
       default:
         return MaterialPageRoute(
           builder: (_) =>
