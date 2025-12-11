@@ -30,4 +30,5 @@ class AppAssets {
   static const String fingerprintSvg = 'assets/svgs/fingerprint.svg';
   static const String faceIdSvg = 'assets/svgs/faceid.svg';
   static const String rightSvg = 'assets/svgs/right.svg';
+  static const String faceSvg = 'assets/svgs/face.svg';
 }

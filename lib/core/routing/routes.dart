@@ -12,4 +12,5 @@ class Routes {
   static const String registerScreen = 'registerScreen';
   static const String fingerPrintScreen = 'fingerPrintScreen';
   static const String verifyAccountScreen = 'verifyAccountScreen';
+  static const String faceIdScreen = 'faceIdScreen';
 }

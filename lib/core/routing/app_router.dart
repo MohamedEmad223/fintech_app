@@ -2,6 +2,7 @@ import 'package:fintech_app/core/routing/routes.dart';
 import 'package:fintech_app/core/widgets/BotNavBar/cubit/cubit/botnavbar_cubit.dart';
 import 'package:fintech_app/core/widgets/bot_nav_bar.dart';
 import 'package:fintech_app/features/auth/choose_auth_screen.dart';
+import 'package:fintech_app/features/auth/face_id_screen.dart';
 import 'package:fintech_app/features/auth/finger_print_screen.dart';
 import 'package:fintech_app/features/auth/login_screen.dart';
 import 'package:fintech_app/features/auth/register_screen.dart';
@@ -58,6 +59,8 @@ class AppRouter {
         return MaterialPageRoute(builder: (_) => const FingerPrintScreen());
       case Routes.verifyAccountScreen:
         return MaterialPageRoute(builder: (_) => const VerifiyAccountScreen());
+      case Routes.faceIdScreen:
+        return MaterialPageRoute(builder: (_) => const FaceIdScreen());
       default:
         return MaterialPageRoute(
           builder: (_) =>
