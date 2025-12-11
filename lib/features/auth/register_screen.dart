@@ -24,7 +24,10 @@ class RegisterScreen extends StatelessWidget {
                 child: Column(
                   children: [
                     SizedBox(height: 40.h),
-                    BuildHeaderOfAuth(),
+                    BuildHeaderOfAuth(
+                      title: 'Create Your Account',
+                      subtitle: 'Sign up to enjoy the best managing\nexperience!',
+                    ),
                     SizedBox(height: 40.h),
                     BuildFormFeildRegisterBody(),
                     SizedBox(height: 32.h),
