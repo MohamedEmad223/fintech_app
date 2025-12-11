@@ -4,6 +4,7 @@ import 'package:retrofit/http.dart';
 import '../../../../core/networking/api_constants.dart';
 import '../models/coin_list_response_model.dart';
 import '../models/exchange_rate_response_model.dart';
+import '../../../../core/networking/parse_error_logger.dart';
 
 part 'buy_remote_data_source.g.dart';
 

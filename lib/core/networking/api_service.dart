@@ -2,6 +2,8 @@ import 'package:dio/dio.dart';
 import 'package:retrofit/http.dart';
 
 import 'api_constants.dart';
+import '../../../../core/networking/parse_error_logger.dart';
+
 
 part 'api_service.g.dart';
 

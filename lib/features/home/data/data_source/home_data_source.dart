@@ -4,6 +4,7 @@ import 'package:fintech_app/features/home/data/models/coin_home_response_model.d
 import 'package:fintech_app/features/home/data/models/global_crypto_response_model.dart';
 import 'package:fintech_app/features/home/data/models/trending_coins_response_model.dart';
 import 'package:retrofit/http.dart';
+import '../../../../core/networking/parse_error_logger.dart';
 
 part 'home_data_source.g.dart';
 

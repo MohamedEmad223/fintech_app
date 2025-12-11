@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:fintech_app/features/coin/data/models/coin_response_model.dart';
 import 'package:retrofit/http.dart';
+import '../../../../core/networking/parse_error_logger.dart';
 
 import '../../../../core/networking/api_constants.dart';
 import '../models/coin_chart_response_model.dart';

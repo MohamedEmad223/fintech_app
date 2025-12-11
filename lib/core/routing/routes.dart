@@ -9,4 +9,5 @@ class Routes {
   static const String buyScreen = 'buyScreen';
   static const String chooseAuthScreen = 'chooseAuthScreen';
   static const String onBoardingScreen = 'onBoardingScreen';
+  static const String registerScreen = 'registerScreen';
 }
