@@ -135,6 +135,13 @@ class AppStyles {
     fontFamily: FontFamily.fontName,
   );
 
+   static TextStyle font18BlackRegular = TextStyle(
+    fontSize: 18.sp,
+    fontWeight: FontWeightHelper.regular,
+    color: Colors.black,
+    fontFamily: FontFamily.fontName,
+  );
+
   static TextStyle font24PrimaryBold = TextStyle(
     fontSize: 24.sp,
     fontWeight: FontWeightHelper.bold,

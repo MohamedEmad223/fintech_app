@@ -10,4 +10,7 @@ class Routes {
   static const String chooseAuthScreen = 'chooseAuthScreen';
   static const String onBoardingScreen = 'onBoardingScreen';
   static const String registerScreen = 'registerScreen';
+  static const String fingerPrintScreen = 'fingerPrintScreen';
+  static const String verifyAccountScreen = 'verifyAccountScreen';
+  static const String faceIdScreen = 'faceIdScreen';
 }
