@@ -1,4 +1,5 @@
 import 'package:fintech_app/core/theming/app_colors.dart';
+import 'package:fintech_app/core/theming/app_styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -11,11 +12,7 @@ class BuildHeaderOfAuth extends StatelessWidget {
       children: [
         Text(
           'Create Your Account',
-          style: TextStyle(
-            fontSize: 28.sp,
-            fontWeight: FontWeight.bold,
-            color: AppColors.darkBlue,
-          ),
+          style: AppStyles.font28BlackBold,
           textAlign: TextAlign.center,
         ),
         SizedBox(height: 12.h),
