@@ -29,4 +29,5 @@ class AppAssets {
   static const String onBoardingThree = 'assets/images/three.png';
   static const String fingerprintSvg = 'assets/svgs/fingerprint.svg';
   static const String faceIdSvg = 'assets/svgs/faceid.svg';
+  static const String rightSvg = 'assets/svgs/right.svg';
 }

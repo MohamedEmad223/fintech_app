@@ -11,4 +11,5 @@ class Routes {
   static const String onBoardingScreen = 'onBoardingScreen';
   static const String registerScreen = 'registerScreen';
   static const String fingerPrintScreen = 'fingerPrintScreen';
+  static const String verifyAccountScreen = 'verifyAccountScreen';
 }
