@@ -57,7 +57,7 @@ class HomeScreen extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (_) => BlocProvider.value(
-                          value: context.read<TrendingCubit>(),
+                          value: sl<TrendingCubit>(),
                           child: const TrendingCoinsScreen(),
                         ),
                       ),

@@ -5,7 +5,7 @@ import 'package:fintech_app/features/auth/choose_auth_screen.dart';
 import 'package:fintech_app/features/auth/face_id_screen.dart';
 import 'package:fintech_app/features/auth/finger_print_screen.dart';
 import 'package:fintech_app/features/auth/login_screen.dart';
-import 'package:fintech_app/features/auth/register_screen.dart';
+import 'package:fintech_app/features/auth/register/presentation/register_screen.dart';
 import 'package:fintech_app/features/auth/verifiy_account_screen.dart';
 import 'package:fintech_app/features/on_boarding/on_boarding_screen.dart';
 import 'package:fintech_app/features/portfolio/presentation/portfolio_screen.dart';
