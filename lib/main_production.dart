@@ -50,7 +50,9 @@ void main() async {
           BlocProvider<LocalizationCubit>(create: (_) => LocalizationCubit()),
           BlocProvider<ThemeCubit>(create: (_) => ThemeCubit()),
         ],
-        child: FintechApp(initialRoute: initialRoute),
+        child: FintechApp(
+          initialRoute: initialRoute,
+        ),
       ),
     ),
   );

@@ -167,7 +167,7 @@ class _BuyScreenContent extends StatelessWidget {
               // Continue Button
               ContinueButton(
                 onPressed: () {
-                  // TODO: Navigate to confirmation screen
+                 
                   ScaffoldMessenger.of(context).showSnackBar(
                     const SnackBar(
                       content: Text('Continue to payment confirmation'),

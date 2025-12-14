@@ -1,5 +1,4 @@
-import 'package:fintech_app/core/networking/firbase_services/firebase_service.dart';
-import 'package:fintech_app/features/auth/register/data/repos/register_repo.dart';
+import 'package:fintech_app/core/di/dependency_injection.dart';
 import 'package:fintech_app/features/auth/register/presentation/widgets/already_have_an_account_widget.dart';
 import 'package:fintech_app/features/auth/register/presentation/widgets/build_form_feild_register_body.dart';
 import 'package:fintech_app/features/auth/register/presentation/cubit/register_cubit.dart';
@@ -18,7 +17,7 @@ class RegisterScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => RegisterCubit(RegisterRepo(FirebaseService())),
+      create: (context) => sl<RegisterCubit>(),
       child: Scaffold(
         backgroundColor: AppColors.background,
         body: Stack(

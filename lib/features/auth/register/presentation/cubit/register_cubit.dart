@@ -4,7 +4,7 @@ import 'package:fintech_app/core/networking/firbase_services/firebase_results.da
 import 'package:fintech_app/core/utils/app_constants.dart';
 import 'package:fintech_app/features/auth/register/data/models/create_user_request_body.dart';
 import 'package:fintech_app/features/auth/register/data/models/register_request_body.dart';
-import 'package:fintech_app/features/auth/register/data/repos/register_repo.dart';
+import 'package:fintech_app/features/auth/register/domain/use_cases/register_use_case.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -13,9 +13,9 @@ part 'register_state.dart';
 part 'register_cubit.freezed.dart';
 
 class RegisterCubit extends Cubit<RegisterState> {
-  RegisterCubit(this._registerRepo) : super(RegisterState.initial());
+  RegisterCubit(this._registerUseCase) : super(const RegisterState.initial());
 
-  final RegisterRepo _registerRepo;
+  final RegisterUseCase _registerUseCase;
   TextEditingController firstNameController = TextEditingController();
   TextEditingController lastNameController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
@@ -28,7 +28,7 @@ class RegisterCubit extends Cubit<RegisterState> {
     emit(const RegisterState.loading());
 
     try {
-      final response = await _registerRepo.createUser(
+      final response = await _registerUseCase.createUser(
         RegisterUserRequestBody(
           email: emailController.text.trim(),
           password: passwordController.text.trim(),
@@ -51,7 +51,7 @@ class RegisterCubit extends Cubit<RegisterState> {
   }
 
   Future<void> _storeUser(UserCredential user) async {
-    final response = await _registerRepo.storeUser(
+    final response = await _registerUseCase.storeUser(
       user: user,
       createUserRequestBody: CreateUserRequestBody(
         uid: user.user!.uid,

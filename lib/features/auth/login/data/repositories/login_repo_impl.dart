@@ -1,10 +1,12 @@
 import 'package:fintech_app/core/helpers/helper_methods.dart';
+import 'package:fintech_app/features/auth/login/domain/repositories/login_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-class LoginRepo {
+class LoginRepoImpl implements LoginRepository {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
 
-   Future<User> signInWithEmailAndPassword({
+  @override
+  Future<UserCredential> login({
     required String email,
     required String password,
   }) async {
@@ -13,20 +15,11 @@ class LoginRepo {
         email: email,
         password: password,
       );
-
-      final user = userCredential.user;
-      if (user == null) {
-        throw Exception('User not found after sign-in');
-      }
-
-      return user;
+      return userCredential;
     } on FirebaseAuthException catch (e) {
       throw HelperMethods.handleAuthException(e);
     } catch (e) {
       throw Exception('Login failed: ${e.toString()}');
     }
   }
-
-  /// Handle Firebase auth exceptions and return user-friendly messages
-
 }

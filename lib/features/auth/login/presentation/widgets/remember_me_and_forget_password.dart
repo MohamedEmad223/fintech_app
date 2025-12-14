@@ -44,7 +44,7 @@ class _RememberMeAndForgetPasswordState
         ),
         GestureDetector(
           onTap: () {
-            // TODO: Navigate to forget password screen
+            
           },
           child: Text('Forget password?', style: AppStyles.font14PrimaryMedium),
         ),

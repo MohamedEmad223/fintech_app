@@ -1,5 +1,5 @@
 import 'package:fintech_app/core/theming/app_styles.dart';
-import 'package:fintech_app/features/auth/choose_auth_screen.dart';
+import 'package:fintech_app/features/auth/biometric/presentation/choose_auth_screen.dart';
 import 'package:fintech_app/features/on_boarding/presentation/cubit/cubit/onboarding_cubit.dart';
 import 'package:flutter/material.dart';
 
