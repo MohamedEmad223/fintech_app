@@ -108,6 +108,4 @@ class SharedPrefHelper {
     const flutterSecureStorage = FlutterSecureStorage();
     await flutterSecureStorage.deleteAll();
   }
-
-  
 }

@@ -24,62 +24,61 @@ class RegisterCubit extends Cubit<RegisterState> {
   TextEditingController confirmPasswordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
- void register() async {
-  emit(const RegisterState.loading());
+  void register() async {
+    emit(const RegisterState.loading());
 
-  try {
-    final response = await _registerRepo.createUser(
-      RegisterUserRequestBody(
+    try {
+      final response = await _registerRepo.createUser(
+        RegisterUserRequestBody(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim(),
+        ),
+      );
+
+      response.when(
+        success: (user) async {
+          await SharedPrefHelper.saveUserUid(user.user!.uid);
+          isLoggedInUser = true;
+          await _storeUser(user);
+        },
+        failure: (error) {
+          emit(RegisterState.error(error));
+        },
+      );
+    } catch (e) {
+      emit(RegisterState.error(e.toString()));
+    }
+  }
+
+  Future<void> _storeUser(UserCredential user) async {
+    final response = await _registerRepo.storeUser(
+      user: user,
+      createUserRequestBody: CreateUserRequestBody(
+        uid: user.user!.uid,
+        firstName: firstNameController.text.trim(),
+        lastName: lastNameController.text.trim(),
         email: emailController.text.trim(),
-        password: passwordController.text.trim(),
+        phoneNumber: phoneController.text.trim(),
       ),
     );
 
     response.when(
-      success: (user) async {
-        await SharedPrefHelper.saveUserUid(user.user!.uid);
-        isLoggedInUser = true;
-        await _storeUser(user); 
+      success: (message) {
+        clearControllers();
+        emit(RegisterState.success(message));
       },
       failure: (error) {
         emit(RegisterState.error(error));
       },
     );
-  } catch (e) {
-    emit(RegisterState.error(e.toString()));
   }
-}
 
-Future<void> _storeUser(UserCredential user) async {
-  final response = await _registerRepo.storeUser(
-    user: user,
-    createUserRequestBody: CreateUserRequestBody(
-      uid: user.user!.uid,
-      firstName: firstNameController.text.trim(),
-      lastName: lastNameController.text.trim(),
-      email: emailController.text.trim(),
-      phoneNumber: phoneController.text.trim(),
-    ),
-  );
-
-  response.when(
-    success: (message) {
-      clearControllers();
-      emit(RegisterState.success(message));
-    },
-    failure: (error) {
-      emit(RegisterState.error(error));
-    },
-  );
-}
-
-void clearControllers() {
-  firstNameController.clear();
-  lastNameController.clear();
-  emailController.clear();
-  phoneController.clear();
-  passwordController.clear();
-  confirmPasswordController.clear();
-}
-
+  void clearControllers() {
+    firstNameController.clear();
+    lastNameController.clear();
+    emailController.clear();
+    phoneController.clear();
+    passwordController.clear();
+    confirmPasswordController.clear();
+  }
 }
