@@ -1,4 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:fintech_app/core/helpers/shared_pref_helper.dart';
+import 'package:fintech_app/core/helpers/shared_pref_keys.dart';
+import 'package:fintech_app/core/routing/routes.dart';
 import 'package:fintech_app/fintech_app.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:fintech_app/firebase_options.dart';
@@ -30,6 +33,10 @@ void main() async {
     ),
   );
 
+  final uid = await SharedPrefHelper.getString(SharedPrefKeys.uid);
+  final initialRoute =
+      uid != null && uid.isNotEmpty ? Routes.botnavbar : Routes.loginScreen;
+
   Bloc.observer = MyBlocObserver();
   await setupGetIt();
 
@@ -43,7 +50,7 @@ void main() async {
           BlocProvider<LocalizationCubit>(create: (_) => LocalizationCubit()),
           BlocProvider<ThemeCubit>(create: (_) => ThemeCubit()),
         ],
-        child: FintechApp(),
+        child: FintechApp(initialRoute: initialRoute),
       ),
     ),
   );

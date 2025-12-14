@@ -93,10 +93,10 @@ Future<void> setupGetIt() async {
   sl.registerLazySingleton<GetHomeCoinsUseCase>(
     () => GetHomeCoinsUseCase(sl()),
   );
-  sl.registerFactory<BuyCubit>(() => BuyCubit(sl(), sl(), sl()));
+  sl.registerLazySingleton<BuyCubit>(() => BuyCubit(sl(), sl(), sl()));
   sl.registerLazySingleton<GetTrendingCoinsUseCase>(
     () => GetTrendingCoinsUseCase(sl()),
   );
-  sl.registerLazySingleton<HomeCoinCubit>(() => HomeCoinCubit(sl()));
-  sl.registerLazySingleton<TrendingCubit>(() => TrendingCubit(sl()));
+  sl.registerFactory<HomeCoinCubit>(() => HomeCoinCubit(sl()));
+  sl.registerFactory<TrendingCubit>(() => TrendingCubit(sl()));
 }
