@@ -1,3 +1,4 @@
+import 'package:fintech_app/core/helpers/shared_pref_keys.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -18,6 +19,14 @@ class SharedPrefHelper {
     debugPrint('SharedPrefHelper : all data has been cleared');
     SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
     await sharedPreferences.clear();
+  }
+
+  static Future<void> saveUserUid(String uid) async {
+    await setData(SharedPrefKeys.uid, uid);
+  }
+
+  static Future<bool> checkIfLoggedInUser() async {
+    return await getString(SharedPrefKeys.uid) != null;
   }
 
   /// Saves a [value] with a [key] in the SharedPreferences.
@@ -99,4 +108,6 @@ class SharedPrefHelper {
     const flutterSecureStorage = FlutterSecureStorage();
     await flutterSecureStorage.deleteAll();
   }
+
+  
 }

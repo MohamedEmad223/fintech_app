@@ -19,6 +19,10 @@ import 'package:fintech_app/features/home/data/repos/home_coin_repo_impl.dart';
 import 'package:fintech_app/features/home/data/repos/trending_coin_repo_impl.dart';
 import 'package:fintech_app/features/home/domain/repos/get_trending_coins_repo.dart';
 import 'package:fintech_app/features/home/domain/repos/home_coin_repo.dart';
+import 'package:fintech_app/features/home/domain/use_cases/get_coins_home_use_case.dart';
+import 'package:fintech_app/features/home/domain/use_cases/get_trending_coins_use_case.dart';
+import 'package:fintech_app/features/home/presentation/logic/home_coin/home_coin_cubit.dart';
+import 'package:fintech_app/features/home/presentation/logic/trending_cubit/trending_cubit.dart';
 import 'package:fintech_app/features/market/data/data_source/market_remote_data_source.dart';
 import 'package:fintech_app/features/market/data/repositories/market_repository_impl.dart';
 import 'package:fintech_app/features/market/domain/repositories/market_repository.dart';
@@ -86,5 +90,13 @@ Future<void> setupGetIt() async {
   sl.registerLazySingleton<GetCoinsListUseCase>(
     () => GetCoinsListUseCase(sl()),
   );
+  sl.registerLazySingleton<GetHomeCoinsUseCase>(
+    () => GetHomeCoinsUseCase(sl()),
+  );
   sl.registerFactory<BuyCubit>(() => BuyCubit(sl(), sl(), sl()));
+  sl.registerLazySingleton<GetTrendingCoinsUseCase>(
+    () => GetTrendingCoinsUseCase(sl()),
+  );
+  sl.registerLazySingleton<HomeCoinCubit>(() => HomeCoinCubit(sl()));
+  sl.registerLazySingleton<TrendingCubit>(() => TrendingCubit(sl()));
 }

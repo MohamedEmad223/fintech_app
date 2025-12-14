@@ -1,21 +1,40 @@
 {
   "project_info": {
-    "project_number": "000000000000",
-    "project_id": "fintech-app-dev",
-    "storage_bucket": "fintech-app-dev.appspot.com"
+    "project_number": "470699096354",
+    "project_id": "finetech-app",
+    "storage_bucket": "finetech-app.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:000000000000:android:0000000000000000",
+        "mobilesdk_app_id": "1:470699096354:android:3110db81b6f756c7a48d7b",
         "android_client_info": {
-          "package_name": "com.example.fintech_app.dev"
+          "package_name": "com.android.application.dev"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaDummyKeyForDevelopmentFlavor000000000"
+          "current_key": "AIzaSyANsBHnxIvMV2nDacVYxAEgYGIWYQ2dVzc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:470699096354:android:536cd79e4854b08aa48d7b",
+        "android_client_info": {
+          "package_name": "com.example.fintech_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANsBHnxIvMV2nDacVYxAEgYGIWYQ2dVzc"
         }
       ],
       "services": {
@@ -27,4 +46,3 @@
   ],
   "configuration_version": "1"
 }
-
