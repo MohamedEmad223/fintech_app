@@ -3,7 +3,6 @@ import 'package:fintech_app/core/networking/api_error_handler.dart';
 import 'package:fintech_app/features/auth/biometric/domain/use_cases/authenticate_with_biometrics_use_case.dart';
 import 'package:fintech_app/features/auth/biometric/domain/use_cases/check_biometric_support_use_case.dart';
 import 'package:fintech_app/features/auth/biometric/presentation/cubit/biometric_state.dart';
-import 'package:flutter/foundation.dart';
 
 class BiometricCubit extends Cubit<BiometricState> {
   final CheckBiometricSupportUseCase _checkBiometricSupportUseCase;
@@ -14,24 +13,18 @@ class BiometricCubit extends Cubit<BiometricState> {
     this._authenticateWithBiometricsUseCase,
   ) : super(const BiometricState.initial());
 
-  /// Check if device supports biometric authentication
   Future<void> checkBiometricSupport() async {
     try {
       final bool isSupported = await _checkBiometricSupportUseCase();
+      if (isClosed) return;
 
       if (!isSupported) {
-        if (!isClosed) {
-          emit(const BiometricState.notSupported());
-        }
+        emit(const BiometricState.notSupported());
       }
     } catch (e) {
-      if (kDebugMode) {
-        debugPrint('[BiometricCubit] Error checking biometric support: $e');
-      }
-      if (!isClosed) {
-        final failure =  ApiErrorHandler.handle(e);
-        emit(BiometricState.error(failure.message!));
-      }
+      if (isClosed) return;
+      final failure = ApiErrorHandler.handle(e);
+      emit(BiometricState.error(failure.message!));
     }
   }
 
@@ -40,39 +33,27 @@ class BiometricCubit extends Cubit<BiometricState> {
     required String password,
     required String localizedReason,
   }) async {
-    if (!isClosed) {
-      emit(const BiometricState.loading());
-    }
+    if (isClosed) return;
+    emit(const BiometricState.loading());
 
     try {
-      if (kDebugMode) {
-        debugPrint('[BiometricCubit] Starting biometric authentication');
-      }
-
       final user = await _authenticateWithBiometricsUseCase(
         email: email,
         password: password,
         localizedReason: localizedReason,
       );
 
-      if (user != null && !isClosed) {
-        if (kDebugMode) {
-          debugPrint(
-            '[BiometricCubit] Authentication successful for user: ${user.email}',
-          );
-        }
+      if (isClosed) return;
+
+      if (user != null) {
         emit(BiometricState.authenticated(user.uid));
-      } else if (!isClosed) {
+      } else {
         emit(const BiometricState.error('Authentication failed'));
       }
     } on Exception catch (e) {
-      if (kDebugMode) {
-        debugPrint('[BiometricCubit] Authentication error: $e');
-      }
-      if (!isClosed) {
-        final failure = ApiErrorHandler.handle(e);
-        emit(BiometricState.error(failure.message!));
-      }
+      if (isClosed) return;
+      final failure = ApiErrorHandler.handle(e);
+      emit(BiometricState.error(failure.message!));
     }
   }
 }
