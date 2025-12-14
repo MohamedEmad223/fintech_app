@@ -35,8 +35,6 @@ class BiometricCubit extends Cubit<BiometricState> {
     }
   }
 
-  /// Authenticate user with biometrics
-  /// Requires email and password for Firebase sign-in after biometric verification
   Future<void> authenticateWithBiometrics({
     required String email,
     required String password,
