@@ -1,4 +1,19 @@
 import 'package:dio/dio.dart';
+import 'package:fintech_app/core/networking/firbase_services/firebase_service.dart';
+import 'package:fintech_app/features/auth/biometric/data/repositories/biometric_repo_impl.dart';
+import 'package:fintech_app/features/auth/biometric/domain/repositories/biometric_repo.dart';
+import 'package:fintech_app/features/auth/biometric/domain/use_cases/authenticate_with_biometrics_use_case.dart';
+import 'package:fintech_app/features/auth/biometric/domain/use_cases/check_biometric_support_use_case.dart';
+import 'package:fintech_app/features/auth/biometric/domain/use_cases/get_available_biometrics_use_case.dart';
+import 'package:fintech_app/features/auth/biometric/presentation/cubit/biometric_cubit.dart';
+import 'package:fintech_app/features/auth/login/data/repositories/login_repo_impl.dart';
+import 'package:fintech_app/features/auth/login/domain/repositories/login_repo.dart';
+import 'package:fintech_app/features/auth/login/domain/use_cases/login_use_case.dart';
+import 'package:fintech_app/features/auth/login/presentation/cubit/login_cubit.dart';
+import 'package:fintech_app/features/auth/register/data/repositories/register_repo_impl.dart';
+import 'package:fintech_app/features/auth/register/domain/repositories/register_repo.dart';
+import 'package:fintech_app/features/auth/register/domain/use_cases/register_use_case.dart';
+import 'package:fintech_app/features/auth/register/presentation/cubit/register_cubit.dart';
 import 'package:fintech_app/features/buy/data/data_source/buy_remote_data_source.dart';
 import 'package:fintech_app/features/buy/data/repositories/buy_repository_impl.dart';
 import 'package:fintech_app/features/buy/domain/repositories/buy_repository.dart';
@@ -17,10 +32,13 @@ import 'package:fintech_app/features/home/data/data_source/home_data_source.dart
 import 'package:fintech_app/features/home/data/repos/global_coin_repo_impl.dart';
 import 'package:fintech_app/features/home/data/repos/home_coin_repo_impl.dart';
 import 'package:fintech_app/features/home/data/repos/trending_coin_repo_impl.dart';
+import 'package:fintech_app/features/home/domain/repos/get_global_coin_repo.dart';
 import 'package:fintech_app/features/home/domain/repos/get_trending_coins_repo.dart';
 import 'package:fintech_app/features/home/domain/repos/home_coin_repo.dart';
 import 'package:fintech_app/features/home/domain/use_cases/get_coins_home_use_case.dart';
+import 'package:fintech_app/features/home/domain/use_cases/get_global_coin_use_case.dart';
 import 'package:fintech_app/features/home/domain/use_cases/get_trending_coins_use_case.dart';
+import 'package:fintech_app/features/home/presentation/logic/global_crypto/global_crypto_cubit.dart';
 import 'package:fintech_app/features/home/presentation/logic/home_coin/home_coin_cubit.dart';
 import 'package:fintech_app/features/home/presentation/logic/trending_cubit/trending_cubit.dart';
 import 'package:fintech_app/features/market/data/data_source/market_remote_data_source.dart';
@@ -29,6 +47,7 @@ import 'package:fintech_app/features/market/domain/repositories/market_repositor
 import 'package:fintech_app/features/market/domain/use_cases/get_market_coins_use_case.dart';
 import 'package:fintech_app/features/market/domain/use_cases/search_market_coins_use_case.dart';
 import 'package:fintech_app/features/market/presentation/controllers/market_cubit.dart';
+
 import 'package:get_it/get_it.dart';
 
 import '../networking/dio_factory.dart';
@@ -72,7 +91,7 @@ Future<void> setupGetIt() async {
   sl.registerLazySingleton<HomeDataSource>(() => HomeDataSource(dio));
 
   // Register repositories
-  sl.registerLazySingleton<GlobalCoinRepoImpl>(() => GlobalCoinRepoImpl(sl()));
+  sl.registerLazySingleton<GetGlobalCoinRepo>(() => GlobalCoinRepoImpl(sl()));
   sl.registerLazySingleton<HomeCoinRepo>(() => HomeCoinRepoImpl(sl()));
   sl.registerLazySingleton<GetTrendingCoinsRepo>(
     () => TrendingCoinRepoImpl(sl()),
@@ -97,6 +116,39 @@ Future<void> setupGetIt() async {
   sl.registerLazySingleton<GetTrendingCoinsUseCase>(
     () => GetTrendingCoinsUseCase(sl()),
   );
+  sl.registerLazySingleton<GetGlobalCoinUseCase>(
+    () => GetGlobalCoinUseCase(sl()),
+  );
+
   sl.registerFactory<HomeCoinCubit>(() => HomeCoinCubit(sl()));
   sl.registerFactory<TrendingCubit>(() => TrendingCubit(sl()));
+  sl.registerFactory<GlobalCryptoCubit>(() => GlobalCryptoCubit(sl()));
+
+  /// Auth: Biometric feature
+  sl.registerLazySingleton<BiometricRepository>(
+    () => BiometricRepositoryImpl(),
+  );
+  sl.registerLazySingleton<CheckBiometricSupportUseCase>(
+    () => CheckBiometricSupportUseCase(sl()),
+  );
+  sl.registerLazySingleton<AuthenticateWithBiometricsUseCase>(
+    () => AuthenticateWithBiometricsUseCase(sl()),
+  );
+  sl.registerLazySingleton<GetAvailableBiometricsUseCase>(
+    () => GetAvailableBiometricsUseCase(sl()),
+  );
+
+  sl.registerFactory<BiometricCubit>(() => BiometricCubit(sl(), sl()));
+
+  /// Auth: Login feature
+  sl.registerLazySingleton<LoginRepository>(() => LoginRepoImpl());
+  sl.registerLazySingleton<LoginUseCase>(() => LoginUseCase(sl()));
+  sl.registerFactory<LoginCubit>(() => LoginCubit(sl()));
+
+  /// Auth: Register feature
+  sl.registerLazySingleton<RegisterRepository>(
+    () => RegisterRepoImpl(FirebaseService()),
+  );
+  sl.registerLazySingleton<RegisterUseCase>(() => RegisterUseCase(sl()));
+  sl.registerFactory<RegisterCubit>(() => RegisterCubit(sl()));
 }

@@ -13,4 +13,6 @@ class Routes {
   static const String fingerPrintScreen = 'fingerPrintScreen';
   static const String verifyAccountScreen = 'verifyAccountScreen';
   static const String faceIdScreen = 'faceIdScreen';
+  static const String fingerPrintScanComplete = 'fingerPrintScanComplete';
+  static const String setFaceIdOrSkipScreen = 'setFaceIdOrSkipScreen';
 }

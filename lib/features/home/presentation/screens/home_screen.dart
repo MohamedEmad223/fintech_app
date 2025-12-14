@@ -35,44 +35,79 @@ class HomeScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
         body: SafeArea(
-          child: SingleChildScrollView(
-            padding: EdgeInsets.symmetric(horizontal: 16.w),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 10.h),
-                HeaderOfHomeWidget(),
-                SizedBox(height: 30.h),
-                BlocBuilderForHomeTitleValueCard(),
-                SizedBox(height: 14.h),
-                LableTextWidget(text: 'Market Overview'),
-                SizedBox(height: 10.h),
-                BlocBuilderForMarketOverView(),
-                SizedBox(height: 14.h),
-                LableTextWidget(
-                  text: 'Trending Now',
-                  viewAll: 'View All',
-                  onViewAllTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (_) => BlocProvider(
-                          create: (context) =>
-                              sl<TrendingCubit>()..getTrendingCoinsRequest(),
-                          child: const TrendingCoinsScreen(),
-                        ),
-                      ),
-                    );
-                  },
+          child: Builder(
+            builder: (context) {
+              final homeCoinState = context.watch<HomeCoinCubit>().state;
+              final globalCryptoState = context
+                  .watch<GlobalCryptoCubit>()
+                  .state;
+              final trendingState = context.watch<TrendingCubit>().state;
+
+              final bool isHomeCoinLoading = homeCoinState.maybeWhen(
+                loadingCoinHome: () => true,
+                initial: () => true,
+                orElse: () => false,
+              );
+              final bool isGlobalCryptoLoading = globalCryptoState.maybeWhen(
+                loadingGlobalCryptoRequest: () => true,
+                initial: () => true,
+                orElse: () => false,
+              );
+              final bool isTrendingLoading = trendingState.maybeWhen(
+                loadingTrendingCoins: () => true,
+                initial: () => true,
+                orElse: () => false,
+              );
+
+              if (isHomeCoinLoading ||
+                  isGlobalCryptoLoading ||
+                  isTrendingLoading) {
+                return const Center(child: CircularProgressIndicator());
+              }
+
+              // Optional: Check for errors here and show an error widget
+
+              return SingleChildScrollView(
+                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: 10.h),
+                    HeaderOfHomeWidget(),
+                    SizedBox(height: 30.h),
+                    BlocBuilderForHomeTitleValueCard(),
+                    SizedBox(height: 14.h),
+                    LableTextWidget(text: 'Market Overview'),
+                    SizedBox(height: 10.h),
+                    BlocBuilderForMarketOverView(),
+                    SizedBox(height: 14.h),
+                    LableTextWidget(
+                      text: 'Trending Now',
+                      viewAll: 'View All',
+                      onViewAllTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => BlocProvider(
+                              create: (context) =>
+                                  sl<TrendingCubit>()
+                                    ..getTrendingCoinsRequest(),
+                              child: const TrendingCoinsScreen(),
+                            ),
+                          ),
+                        );
+                      },
+                    ),
+                    SizedBox(height: 10.h),
+                    BlocBuliderForTrendingNow(),
+                    SizedBox(height: 14.h),
+                    LableTextWidget(text: 'Top Gainers'),
+                    SizedBox(height: 10.h),
+                    BlocBuilderForTopGainer(),
+                  ],
                 ),
-                SizedBox(height: 10.h),
-                BlocBuliderForTrendingNow(),
-                SizedBox(height: 14.h),
-                LableTextWidget(text: 'Top Gainers'),
-                SizedBox(height: 10.h),
-                BlocBuilderForTopGainer(),
-              ],
-            ),
+              );
+            },
           ),
         ),
       ),

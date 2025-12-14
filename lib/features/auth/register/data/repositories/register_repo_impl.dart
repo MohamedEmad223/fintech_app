@@ -3,13 +3,15 @@ import 'package:fintech_app/core/networking/firbase_services/firebase_results.da
 import 'package:fintech_app/core/networking/firbase_services/firebase_service.dart';
 import 'package:fintech_app/features/auth/register/data/models/create_user_request_body.dart';
 import 'package:fintech_app/features/auth/register/data/models/register_request_body.dart';
+import 'package:fintech_app/features/auth/register/domain/repositories/register_repo.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart' as firebase_core;
 
-class RegisterRepo {
+class RegisterRepoImpl implements RegisterRepository {
   final FirebaseService _firebaseService;
-  RegisterRepo(this._firebaseService);
+  RegisterRepoImpl(this._firebaseService);
 
+  @override
   Future<FirebaseResult<UserCredential>> createUser(
     RegisterUserRequestBody user,
   ) async {

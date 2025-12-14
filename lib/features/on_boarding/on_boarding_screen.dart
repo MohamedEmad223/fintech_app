@@ -1,5 +1,5 @@
 import 'package:fintech_app/core/theming/app_colors.dart';
-import 'package:fintech_app/features/auth/choose_auth_screen.dart';
+import 'package:fintech_app/features/auth/biometric/presentation/choose_auth_screen.dart';
 import 'package:fintech_app/features/on_boarding/presentation/widgets/page_view_widget.dart';
 import 'package:fintech_app/features/on_boarding/presentation/widgets/skip_button.dart';
 import 'package:fintech_app/features/on_boarding/presentation/widgets/smooth_page_and_circle_button_row_widget.dart';

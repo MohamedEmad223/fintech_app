@@ -5,7 +5,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class CustomButton extends StatelessWidget {
   final String text;
   final VoidCallback onPressed;
-  final bool isFilled; 
+  final bool isFilled;
   final Color filledColor;
   final Color textColor;
   final Color borderColor;
@@ -17,7 +17,7 @@ class CustomButton extends StatelessWidget {
     required this.text,
     required this.onPressed,
     this.isFilled = true,
-    this.filledColor =  AppColors.primary,
+    this.filledColor = AppColors.primary,
     this.textColor = AppColors.primary,
     this.borderColor = AppColors.primary,
     this.height = 55,
@@ -26,34 +26,35 @@ class CustomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: height,
-      width: double.infinity,
-      child: InkWell(
-        onTap: onPressed,
-        borderRadius: BorderRadius.circular(radius),
-        child: Container(
-          decoration: BoxDecoration(
-            color: isFilled ? filledColor : Colors.transparent,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        return SizedBox(
+          height: height,
+          width: !constraints.hasBoundedWidth ? null : double.infinity,
+          child: InkWell(
+            onTap: onPressed,
             borderRadius: BorderRadius.circular(radius),
-            border: isFilled
-                ? null
-                : Border.all(
-                    color: borderColor,
-                    width: 2.w,
-                  ),
-          ),
-          alignment: Alignment.center,
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: 18.sp,
-              color: isFilled ? Colors.white : textColor,
-              fontWeight: FontWeight.w600,
+            child: Container(
+              decoration: BoxDecoration(
+                color: isFilled ? filledColor : Colors.transparent,
+                borderRadius: BorderRadius.circular(radius),
+                border: isFilled
+                    ? null
+                    : Border.all(color: borderColor, width: 2.w),
+              ),
+              alignment: Alignment.center,
+              child: Text(
+                text,
+                style: TextStyle(
+                  fontSize: 18.sp,
+                  color: isFilled ? Colors.white : textColor,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
