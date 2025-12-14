@@ -29,7 +29,7 @@ class BiometricCubit extends Cubit<BiometricState> {
         debugPrint('[BiometricCubit] Error checking biometric support: $e');
       }
       if (!isClosed) {
-        final failure = await ApiErrorHandler.handle(e);
+        final failure =  ApiErrorHandler.handle(e);
         emit(BiometricState.error(failure.message!));
       }
     }

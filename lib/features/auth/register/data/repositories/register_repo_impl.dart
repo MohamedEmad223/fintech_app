@@ -24,7 +24,9 @@ class RegisterRepoImpl implements RegisterRepository {
       return const FirebaseResult.failure('Email is already in use');
     }
   }
-
+ 
+ 
+  @override
   Future<FirebaseResult<String>> storeUser({
     required UserCredential user,
     required CreateUserRequestBody createUserRequestBody,
