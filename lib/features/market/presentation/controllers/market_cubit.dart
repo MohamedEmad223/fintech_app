@@ -39,13 +39,13 @@ class MarketCubit extends Cubit<MarketState> {
         }
         _currentPage++;
         isPaginationLoading = false;
-        emit(MarketState.success(_allCoins));
+        if (!isClosed) emit(MarketState.success(_allCoins));
       case Failure(apiErrorModel: final error):
         if (_currentPage == 1) {
-          emit(MarketState.error(error));
+          if (!isClosed) emit(MarketState.error(error));
         } else {
           isPaginationLoading = false;
-          emit(MarketState.paginationError(_allCoins, error));
+          if (!isClosed) emit(MarketState.paginationError(_allCoins, error));
         }
     }
   }
@@ -66,9 +66,9 @@ class MarketCubit extends Cubit<MarketState> {
 
     switch (result) {
       case Success(data: final coins):
-        emit(MarketState.success(coins));
+        if (!isClosed) emit(MarketState.success(coins));
       case Failure(apiErrorModel: final error):
-        emit(MarketState.error(error));
+        if (!isClosed) emit(MarketState.error(error));
     }
   }
 }

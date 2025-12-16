@@ -5,12 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:fintech_app/features/portfolio/data/models/assets_data_model.dart';
 
 class PortfolioChartValueWidget extends StatelessWidget {
-  const PortfolioChartValueWidget({super.key});
+  final String? totalValue;
+
+  const PortfolioChartValueWidget({super.key, this.totalValue});
 
   @override
   Widget build(BuildContext context) {
     return PortfolioChartWidget(
-      totalValue: '\$143,421.20',
+      totalValue: totalValue ?? '\$143,421.20',
       assets: [
         AssetsDataModel(
           name: 'Bitcoin',
