@@ -1,5 +1,4 @@
 import 'package:fintech_app/core/routing/app_router.dart';
-import 'package:fintech_app/core/routing/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -24,7 +23,7 @@ class FintechApp extends StatelessWidget {
             title: 'Fintech App',
             theme: themeState.themeData,
             onGenerateRoute: AppRouter().generateRoute,
-            initialRoute: Routes.botnavbar,
+            initialRoute: initialRoute,
           );
         },
       ),
