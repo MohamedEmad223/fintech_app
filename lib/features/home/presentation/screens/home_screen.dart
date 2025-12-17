@@ -13,6 +13,7 @@ import 'package:fintech_app/core/widgets/lable_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:fintech_app/features/home/presentation/widgets/home_skeleton_loader.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -62,11 +63,8 @@ class HomeScreen extends StatelessWidget {
               if (isHomeCoinLoading ||
                   isGlobalCryptoLoading ||
                   isTrendingLoading) {
-                return const Center(child: CircularProgressIndicator());
+                return const HomeSkeletonLoader();
               }
-
-              // Optional: Check for errors here and show an error widget
-
               return SingleChildScrollView(
                 padding: EdgeInsets.symmetric(horizontal: 16.w),
                 child: Column(

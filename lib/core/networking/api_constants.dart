@@ -3,6 +3,9 @@ class ApiConstants {
   static const String coinsMarkets = "/coins/markets";
   static const String globalCrypto = "/global";
   static const String trendingCoins = "/search/trending";
+  static const String portfolio = "/simple/price";
+  static const String queryPortfolio = "ids";
+  static const String queryPortfolio2 = "vs_currencies";
 }
 
 class ApiErrors {

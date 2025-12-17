@@ -1,5 +1,10 @@
 import 'package:dio/dio.dart';
 import 'package:fintech_app/core/networking/firbase_services/firebase_service.dart';
+import 'package:fintech_app/features/portfolio/data/data_source/portfolio_remote_data_source.dart';
+import 'package:fintech_app/features/portfolio/data/repositories/portfolio_repo_impl.dart';
+import 'package:fintech_app/features/portfolio/domain/repositories/portfolio_repo.dart';
+import 'package:fintech_app/features/portfolio/domain/use_cases/get_portfolio_data_use_case.dart';
+import 'package:fintech_app/features/portfolio/presentation/cubit/portfolio_cubit.dart';
 import 'package:fintech_app/features/auth/biometric/data/repositories/biometric_repo_impl.dart';
 import 'package:fintech_app/features/auth/biometric/domain/repositories/biometric_repo.dart';
 import 'package:fintech_app/features/auth/biometric/domain/use_cases/authenticate_with_biometrics_use_case.dart';
@@ -151,4 +156,14 @@ Future<void> setupGetIt() async {
   );
   sl.registerLazySingleton<RegisterUseCase>(() => RegisterUseCase(sl()));
   sl.registerFactory<RegisterCubit>(() => RegisterCubit(sl()));
+
+  /// Portfolio Feature
+  sl.registerLazySingleton<PortfolioRemoteDataSource>(
+    () => PortfolioRemoteDataSource(dio),
+  );
+  sl.registerLazySingleton<PortfolioRepo>(() => PortfolioRepoImpl(sl()));
+  sl.registerLazySingleton<GetPortfolioDataUseCase>(
+    () => GetPortfolioDataUseCase(sl()),
+  );
+  sl.registerFactory<PortfolioCubit>(() => PortfolioCubit(sl()));
 }

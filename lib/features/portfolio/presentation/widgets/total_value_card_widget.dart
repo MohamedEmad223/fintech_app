@@ -5,7 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TotalValueCard extends StatelessWidget {
-  const TotalValueCard({super.key});
+  final String? totalValue;
+  final String? priceChange;
+
+  const TotalValueCard({super.key, this.totalValue, this.priceChange});
 
   @override
   Widget build(BuildContext context) {
@@ -68,12 +71,15 @@ class TotalValueCard extends StatelessWidget {
               children: [
                 Text('Total Value', style: AppStyles.font20grayebold),
                 SizedBox(height: 16),
-                Text('\$143,421.20', style: AppStyles.font28WhiteMedium),
+                Text(
+                  totalValue ?? '\$143,421.20',
+                  style: AppStyles.font28WhiteMedium,
+                ),
                 SizedBox(height: 16),
                 Row(
                   children: [
                     Text(
-                      '+2.5% (\$305.20) Today',
+                      priceChange ?? '+2.5% (\$305.20) Today',
                       style: TextStyle(
                         color: Color(0xFF4ade80),
                         fontSize: 18,
