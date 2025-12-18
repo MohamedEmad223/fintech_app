@@ -10,6 +10,8 @@ import 'package:fintech_app/features/home/presentation/widgets/bloc_builder_for_
 import 'package:fintech_app/features/home/presentation/widgets/bloc_bulider_for_trending_now.dart';
 import 'package:fintech_app/features/home/presentation/widgets/header_of_home_widget.dart';
 import 'package:fintech_app/core/widgets/lable_text_widget.dart';
+import 'package:fintech_app/features/settings/presentation/cubit/settings_cubit.dart';
+import 'package:fintech_app/features/settings/presentation/cubit/settings_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -32,6 +34,9 @@ class HomeScreen extends StatelessWidget {
         BlocProvider(
           create: (context) => sl<TrendingCubit>()..getTrendingCoinsRequest(),
         ),
+        BlocProvider(
+          create: (context) => sl<SettingsCubit>()..fetchUserProfile(),
+        ),
       ],
       child: Scaffold(
         backgroundColor: AppColors.backgroundColor,
@@ -43,6 +48,13 @@ class HomeScreen extends StatelessWidget {
                   .watch<GlobalCryptoCubit>()
                   .state;
               final trendingState = context.watch<TrendingCubit>().state;
+              final settingsState = context.watch<SettingsCubit>().state;
+
+              // Extract Name from settings state
+              final username = settingsState.maybeWhen(
+                loaded: (userProfile) => userProfile.firstName+userProfile.lastName,
+                orElse: () => '',
+              );
 
               final bool isHomeCoinLoading = homeCoinState.maybeWhen(
                 loadingCoinHome: () => true,
@@ -71,7 +83,7 @@ class HomeScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: 10.h),
-                    HeaderOfHomeWidget(),
+                    HeaderOfHomeWidget(name: username),
                     SizedBox(height: 30.h),
                     BlocBuilderForHomeTitleValueCard(),
                     SizedBox(height: 14.h),

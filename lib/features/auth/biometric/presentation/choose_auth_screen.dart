@@ -1,3 +1,5 @@
+import 'package:fintech_app/core/extensions/navigation_extension.dart';
+import 'package:fintech_app/core/routing/routes.dart';
 import 'package:fintech_app/core/theming/app_assets.dart';
 import 'package:fintech_app/core/widgets/custom_button.dart';
 import 'package:flutter/material.dart';
@@ -26,11 +28,24 @@ class ChooseAuthScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 50.h),
-                CustomButton(text: 'Login', onPressed: () {}),
+                CustomButton(
+                  text: 'Login',
+                  onPressed: () {
+                    context.pushNameAndRemoveUntil(
+                      Routes.loginScreen,
+                      predicate: (route) => false,
+                    );
+                  },
+                ),
                 SizedBox(height: 20.h),
                 CustomButton(
                   text: 'Sign Up',
-                  onPressed: () {},
+                  onPressed: () {
+                    context.pushNameAndRemoveUntil(
+                      Routes.registerScreen,
+                      predicate: (route) => false,
+                    );
+                  },
                   isFilled: false,
                 ),
               ],

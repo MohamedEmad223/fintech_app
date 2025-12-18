@@ -5,7 +5,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class HeaderOfHomeWidget extends StatelessWidget {
-  const HeaderOfHomeWidget({super.key});
+  final String name;
+
+  const HeaderOfHomeWidget({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class HeaderOfHomeWidget extends StatelessWidget {
               backgroundImage: AssetImage(AppAssets.personImage),
             ),
             SizedBox(width: 8.w),
-            Text("Hi, Ahmed 👋", style: AppStyles.font18BlackPrimary),
+            Text("Hi, $name 👋", style: AppStyles.font18BlackPrimary),
           ],
         ),
         SvgPicture.asset(AppAssets.notificationSvg),

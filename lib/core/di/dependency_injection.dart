@@ -52,16 +52,33 @@ import 'package:fintech_app/features/market/domain/repositories/market_repositor
 import 'package:fintech_app/features/market/domain/use_cases/get_market_coins_use_case.dart';
 import 'package:fintech_app/features/market/domain/use_cases/search_market_coins_use_case.dart';
 import 'package:fintech_app/features/market/presentation/controllers/market_cubit.dart';
+import 'package:fintech_app/features/settings/presentation/cubit/settings_cubit.dart';
 
 import 'package:get_it/get_it.dart';
 
 import '../networking/dio_factory.dart';
+import 'package:fintech_app/features/settings/data/data_source/settings_remote_data_source.dart';
+import 'package:fintech_app/features/settings/data/repositories/settings_repo_impl.dart';
+import 'package:fintech_app/features/settings/domain/repositories/settings_repo.dart';
+import 'package:fintech_app/features/settings/domain/use_cases/get_user_profile_use_case.dart';
+import 'package:fintech_app/features/settings/domain/use_cases/logout_use_case.dart';
 
 final sl = GetIt.instance;
 
 Future<void> setupGetIt() async {
   // ignore: unused_local_variable
   Dio dio = DioFactory.getDio();
+
+  /// Settings Feature
+  sl.registerLazySingleton<SettingsRemoteDataSource>(
+    () => SettingsRemoteDataSource(),
+  );
+  sl.registerLazySingleton<SettingsRepo>(() => SettingsRepoImpl(sl()));
+  sl.registerLazySingleton<GetUserProfileUseCase>(
+    () => GetUserProfileUseCase(sl()),
+  );
+  sl.registerLazySingleton<LogoutUseCase>(() => LogoutUseCase(sl()));
+  sl.registerFactory<SettingsCubit>(() => SettingsCubit(sl(), sl()));
 
   /// Market feature
   sl.registerLazySingleton<MarketRemoteDataSource>(

@@ -1,3 +1,5 @@
+import 'package:fintech_app/core/helpers/shared_pref_helper.dart';
+import 'package:fintech_app/core/helpers/shared_pref_keys.dart';
 import 'package:fintech_app/core/theming/app_colors.dart';
 import 'package:fintech_app/features/auth/biometric/presentation/choose_auth_screen.dart';
 import 'package:fintech_app/features/on_boarding/presentation/widgets/page_view_widget.dart';
@@ -20,6 +22,7 @@ class OnBoardingScreen extends StatelessWidget {
         listener: (context, state) {
           state.whenOrNull(
             goHomeState: () {
+              SharedPrefHelper.setData(SharedPrefKeys.onBoarding, true);
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(builder: (_) => const ChooseAuthScreen()),
